@@ -6,6 +6,7 @@ __pycache__/
 # data
 data
 data/
+DadaGP
 
 # C extensions
 *.so
