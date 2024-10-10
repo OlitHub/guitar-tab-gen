@@ -6,13 +6,15 @@ authors = ["Olit <93828847+OlitHub@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 pandas = "^2.2.3"
 numpy = "^2.1.2"
 scikit-learn = "^1.5.2"
 seaborn = "^0.13.2"
 matplotlib = "^3.9.2"
 PyGuitarPro = "^0.9.3"
+scipy = "^1.14.1"
+ipykernel = "^6.29.5"
 
 
 [build-system]
