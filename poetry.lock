@@ -297,6 +297,18 @@ files = [
 ]
 
 [[package]]
+name = "enum34"
+version = "1.1.10"
+description = "Python 3.4 Enum backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.4"
+optional = false
+python-versions = "*"
+files = [
+    {file = "enum34-1.1.10-py2-none-any.whl", hash = "sha256:a98a201d6de3f2ab3db284e70a33b0f896fbf35f8086594e8c9e74b909058d53"},
+    {file = "enum34-1.1.10-py3-none-any.whl", hash = "sha256:c3858660960c984d6ab0ebad691265180da2b43f07e061c0f8dca9ef3cffd328"},
+    {file = "enum34-1.1.10.tar.gz", hash = "sha256:cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248"},
+]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
@@ -1145,17 +1157,19 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyguitarpro"
-version = "0.9.3"
+version = "0.6"
 description = "Read, write, and manipulate GP3, GP4 and GP5 files."
 optional = false
-python-versions = ">=3.7"
+python-versions = "*"
 files = [
-    {file = "PyGuitarPro-0.9.3-py3-none-any.whl", hash = "sha256:51eed875a65623686443f5546deb71b8ed64e0887dc2e273ca9a493620241a15"},
-    {file = "PyGuitarPro-0.9.3.tar.gz", hash = "sha256:6ba33eabc46d42d70273bb52e7050f2a937ec4e576c900cafed0b9c131524dba"},
+    {file = "PyGuitarPro-0.6-py2.py3-none-any.whl", hash = "sha256:56dfa71f051c5f4a6b99fc683714ac1080f206032604fcba2209138758b0255a"},
+    {file = "PyGuitarPro-0.6.tar.gz", hash = "sha256:a7d1ceaa2ffaa008505bf0cf29ab64d49cf4813cbfe4d3c93f998f38ea84de4b"},
 ]
 
 [package.dependencies]
 attrs = ">=19.2"
+enum34 = "*"
+six = "*"
 
 [[package]]
 name = "pyparsing"
@@ -1577,4 +1591,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7d1bfdd9c320617dd0dfb0d781f5d9031f8ddd5acf5837050651f1884d4957eb"
+content-hash = "428962480ab5885a44d6eaa6839f2d49d58ebaa65284319a28e370b99de7a6a4"

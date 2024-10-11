@@ -1,0 +1,3 @@
+08/10/2024
+Learn about transformers. Try a DadaGP model to generate something and turn it to a score.
+

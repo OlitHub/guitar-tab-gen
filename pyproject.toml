@@ -12,7 +12,7 @@ numpy = "^2.1.2"
 scikit-learn = "^1.5.2"
 seaborn = "^0.13.2"
 matplotlib = "^3.9.2"
-PyGuitarPro = "^0.9.3"
+PyGuitarPro = "0.6"
 scipy = "^1.14.1"
 ipykernel = "^6.29.5"
 
