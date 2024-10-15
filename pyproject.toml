@@ -17,6 +17,9 @@ scipy = "^1.14.1"
 ipykernel = "^6.29.5"
 torch = "^2.4.1"
 pyyaml = "^6.0.2"
+miditoolkit = "^1.0.1"
+transformers = "^4.45.2"
+saver = "^0.0.2"
 
 
 [build-system]
