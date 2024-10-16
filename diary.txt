@@ -1,6 +1,8 @@
 08/10/2024
 Learn about transformers. Try a DadaGP model to generate something and turn it to a score.
 
+----------------------------------------------------------------------------------------------------------------------------
+
 16/10/2024
 Tested DadaGP model on free generation.
 I should try to better understand Pedro's code and generate only a bass guitar score if it is possible.
@@ -16,5 +18,8 @@ Also, read GTR-CTRL paper and try to understand the model.
 I may have to retrain the model on bass guitar scores only or to at least fine-tune the model on bass guitar scores.
 This will give us a better baseline.
 I should create a kaggle or colab notebook for the training and inference as I will need computational resources.
+Colab can connect to a github repository and I can use the free GPU provided by google.
+
+----------------------------------------------------------------------------------------------------------------------------
 
 22/10/2024
