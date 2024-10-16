@@ -1,3 +1,20 @@
 08/10/2024
 Learn about transformers. Try a DadaGP model to generate something and turn it to a score.
 
+16/10/2024
+Tested DadaGP model on free generation.
+I should try to better understand Pedro's code and generate only a bass guitar score if it is possible.
+I can try to modify the prompt to generate only bass guitar scores.
+Or I can put the probabilities of the tokens that are not bass guitar notes to zero.
+This will give us a baseline.
+
+Also try to generate specific style of music using the artist in the prompt.
+
+How does DadaGP sample?
+Also, read GTR-CTRL paper and try to understand the model.
+
+I may have to retrain the model on bass guitar scores only or to at least fine-tune the model on bass guitar scores.
+This will give us a better baseline.
+I should create a kaggle or colab notebook for the training and inference as I will need computational resources.
+
+22/10/2024
