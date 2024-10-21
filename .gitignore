@@ -9,8 +9,8 @@ data/
 DadaGP
 
 # models
-models
-models/
+models/dadaGP-model-checkpoints/fulldataset-song-artist-train_data_XL.npz
+models/dadaGP-model-checkpoints/model-weights
 
 # C extensions
 *.so
