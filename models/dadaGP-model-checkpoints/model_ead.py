@@ -365,15 +365,13 @@ class TransformerXL(object):
                     'wait:240']
 
         prompt_empty = ['artist:unknown_artist', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure']
-              
-        if primer==1:
-            beg_list = prompt_e
-        elif primer == 2:
-            beg_list = prompt_a
-        elif primer==3:
-            beg_list = prompt_d
-        elif primer==4:
-            beg_list = prompt_empty
+        
+        prompt_bass_guitar = ['artist:unknown_artist', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure',
+                            'bass:note:s3:f0',
+                            'wait:240']
+        
+        map_primer = {1: prompt_e, 2: prompt_a, 3: prompt_d, 4: prompt_empty, 5: prompt_bass_guitar}
+        beg_list = map_primer[primer]
 
         # FOR THE SPLITTED APPROACH
         others_splitted=[]

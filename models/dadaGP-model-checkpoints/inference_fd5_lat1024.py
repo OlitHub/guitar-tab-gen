@@ -73,11 +73,8 @@ def main():
     song_time_list = []
     words_len_list = []
     num_samples = inferenceConfig["num_sample"]
-    primer = 1      # use the empty prompt
+    primer = 5 
     print(primer)
-    # primer 4 -> E
-    # primer 5 -> A
-    # primer 6 -> D
     #tempi = np.arange(40,240,10)
     #bpm = random.choice(tempi)
     bpm = 100        # bpm initial
@@ -90,7 +87,7 @@ def main():
         #print(midi_folder, output_prefix + str(idx))
         song_time, word_len = model.inference(
             model_path = model_path,
-            token_lim=2048,
+            token_lim=1024,
             strategies=['temperature', 'nucleus'],
             params={'t': 1.2 ,'p': 0.9},
             bpm=bpm,
