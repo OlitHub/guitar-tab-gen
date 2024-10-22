@@ -32,7 +32,7 @@ TICK_RESOL = BEAT_RESOL // 4
 INSTR_NAME_MAP = {'piano': 0, 'melody': 1}
 
 
-def wrtie_midi(words, path_midi, word2event):
+def write_midi(words, path_midi, word2event):
     notes_all = []
 
     events = [word2event[words[i]] for i in range(len(words))]
@@ -328,16 +328,8 @@ class TransformerXL(object):
         # text string to save into file
         final = str()
 
-        # add beginning
-        #beg_list = ['artist:unknown_artist', 'downtune:0', 'tempo:110', 'start', 'new_measure', 'distorted0:note:s5:f0']
-        '''
-        distorted1:note:s6:f0
-        bass:note:s5:f0
-        drums:note:49
-        nfx:let_ring
-        drums:note:42
-        drums:note:35
-        '''
+        # add beginning tokens (prompt)
+        
         
         # For the unsplitted approach
         # wait = 480 for 8th note
@@ -368,9 +360,11 @@ class TransformerXL(object):
         
         prompt_bass_guitar = ['artist:unknown_artist', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure',
                             'bass:note:s3:f0',
-                            'wait:240']
+                            'wait:960']
         
-        map_primer = {1: prompt_e, 2: prompt_a, 3: prompt_d, 4: prompt_empty, 5: prompt_bass_guitar}
+        prompt_beatles = ['artist:the_beatles', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure']
+        
+        map_primer = {1: prompt_e, 2: prompt_a, 3: prompt_d, 4: prompt_empty, 5: prompt_bass_guitar, 6: prompt_beatles}
         beg_list = map_primer[primer]
 
         # FOR THE SPLITTED APPROACH
@@ -401,6 +395,7 @@ class TransformerXL(object):
         #beg_list = ['artist:', 'metallica', 'downtune:', '0', 'tempo:', '120', 'start', 'new_measure']
         # For VLB
         #beg_list = ['villa-lobos_etude1', 'downtune:0', 'tempo:120', 'start', 'new_measure']
+        
         beg_event2word = list()
         for ele in beg_list:
             beg_event2word.append(self.event2word[ele])
@@ -505,7 +500,7 @@ class TransformerXL(object):
         with open(generated_file_name, "w") as text_file:
             final += 'end\n'
             text_file.write(final)
-        #wrtie_midi(words[0], output_path, self.word2event)       
+        #write_midi(words[0], output_path, self.word2event)       
         
 
         song_total_time = time.time() - song_init_time

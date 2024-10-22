@@ -23,3 +23,13 @@ Colab can connect to a github repository and I can use the free GPU provided by 
 ----------------------------------------------------------------------------------------------------------------------------
 
 22/10/2024
+
+Tried understanding the code from the DadaGP checkpoint. DadaGP seems to be a TransformerXL extended with MemTransformerLM.
+Ask Pedro about this.
+
+I tried generating an only bass guitar score using the prompt but it doesn't seem possible just like that.
+My prompt was to start the generation with a note of bass guitar only. It delays the appearance of other instruments but they still appear after a while.
+I also tried generating in the style of the Beatles as there is a consistent dataset of their songs.
+
+GTR-CTRL:
+CTRL model does conditional generation using categorization tokens appended to text sequences.
