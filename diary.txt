@@ -33,3 +33,12 @@ I also tried generating in the style of the Beatles as there is a consistent dat
 
 GTR-CTRL:
 CTRL model does conditional generation using categorization tokens appended to text sequences.
+
+Look at pkl files of the vocabulary in a notebook, retrieve the unwanted instruments tokens and set their probabilities to 0 in the logits.
+--> baseline
+
+Look at github CP Drums Generation and their model to understand how the conditional information is given to the decoder.
+
+
+
+

@@ -269,7 +269,7 @@ class TransformerXL(object):
                     group_y = torch.from_numpy(group_y).permute(1, 0).contiguous().to(self.device).long()
                     group_mask = torch.from_numpy(group_mask).to(self.device).float()
                     
-                    ret = model(group_x, group_y, group_mask, *mems)
+                    ret = model(group_x, group_y, group_mask, *mems) # forward
                     loss, mems = ret[0], ret[1:]              
                     train_loss.append(loss.item()) 
                     loss.backward()
@@ -434,6 +434,8 @@ class TransformerXL(object):
             _logits, mems = model.generate(temp_x, *mems)
             logits = _logits.cpu().squeeze().detach().numpy()
 
+            # Set to 0 the logits of the unwanted instruments
+            
             # temperature or not
             if 'temperature' in strategies:
                 probs = self.temperature(logits=logits, temperature=params['t'])
