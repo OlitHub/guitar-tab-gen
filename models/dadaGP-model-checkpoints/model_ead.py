@@ -435,6 +435,10 @@ class TransformerXL(object):
             logits = _logits.cpu().squeeze().detach().numpy()
 
             # Set to 0 the logits of the unwanted instruments
+            # Retrieve pkl file indexes_to_remove.pkl
+            indexes = pickle.load(open("indexes_to_remove.pkl", 'rb'))
+            for i in indexes:
+                logits[i] = -1000000 
             
             # temperature or not
             if 'temperature' in strategies:
