@@ -73,7 +73,7 @@ def main():
     song_time_list = []
     words_len_list = []
     num_samples = inferenceConfig["num_sample"]
-    primer = 6 
+    primer = 5 # primers in model_ead
     print(primer)
     #tempi = np.arange(40,240,10)
     #bpm = random.choice(tempi)

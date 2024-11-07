@@ -359,7 +359,7 @@ class TransformerXL(object):
         prompt_empty = ['artist:unknown_artist', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure']
         
         prompt_bass_guitar = ['artist:unknown_artist', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure',
-                            'bass:note:s3:f0',
+                            'bass:note:s4:f7', # Change the note to get a different output
                             'wait:960']
         
         prompt_beatles = ['artist:the_beatles', 'downtune:0', 'tempo:' + str(bpm), 'start', 'new_measure']
