@@ -39,6 +39,21 @@ Look at pkl files of the vocabulary in a notebook, retrieve the unwanted instrum
 
 Look at github CP Drums Generation and their model to understand how the conditional information is given to the decoder.
 
+08/11/2024
 
+I generated some baselines by setting the logits of the other instruments to 0 but it wasn't great.
+--> We need to try something else.
+
+Look at dadagp.py and modify it to output a new token text version of the gp files.
+Look at the mapping between int and instruments in pyguitarpro
+We should have token text files for each instruments of the track
+so that we can choose which instruments we use to condition the bass:
+
+Especially, we need one with the rythmic guitar, and one with the drums.
+
+Then we of course need one with the bass guitar (input and testing output).
+
+Once we successfully have this training data, we will try the model from the CP Drums Generation article on it.
+(BiLSTM + Word Decoder)
 
 
