@@ -65,10 +65,27 @@ Add the instruments to keep as a parameter of the function!
 Try to apply the notebook to a large number of files.
 Output the generated files in a separate folder.
 
+22/11/2024
 
-Next step is to identify the rythmic guitar to be able to condition on it.
+Finished the function to generate the token text files of the instruments asked.
+
+Send the DadaGP model to Alexandre using filesender.
+
+Review the part that that filters the tracks that don't contain the instruments asked
+(At the moment it only removes the track if ALL the tracks of the group don't contain the instruments.)
+Select the combination of instruments we want to ouput. Do the computation on the ssh servers?
+
+To select the combination we identify the rythmic guitar to be able to condition on it.
+Look at the CSV file provided by Alexandre, analyze it and select for each track the rythmic guitars.
+(We could keep the guitars that have the most rythmic measures or set a threshold on the percentage of rythmic measures)
+
+Potential issue: The parts' name in the csv are not the instruments' name in DadaGP!
+Prepare the code as if we had the track name in the CSV.
+
 We also could try to identify the genre of the artists and add a token for it.
 This would allow us to condition the generation on the genre.
+
+Next step, look at the BiLSTM code from the CP Drums Generation article.
 
 
 
