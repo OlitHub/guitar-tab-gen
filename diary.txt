@@ -65,6 +65,7 @@ Add the instruments to keep as a parameter of the function!
 Try to apply the notebook to a large number of files.
 Output the generated files in a separate folder.
 
+
 Next step is to identify the rythmic guitar to be able to condition on it.
 We also could try to identify the genre of the artists and add a token for it.
 This would allow us to condition the generation on the genre.
