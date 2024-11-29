@@ -69,13 +69,13 @@ def merge_consecutive_waits(file_path):
         file.write("\n".join(merged_lines))
 
 
-def get_tokens_inst(instrument_dict, path_to_read_folder, path_to_write_folder):
-    """Get the tokens of the instruments in instrument_dict from the file in path_to_read_folder and write them to path_to_write_folder.
+def get_tokens_inst_iter_files(instrument_dict, path_to_read_folder, path_to_write_folder):
+    """Get the tokens of the instruments in instrument_dict from the files in path_to_read_folder and write them to path_to_write_folder.
 
     Args:
         instrument_dict (dict): Dictionary with instruments as keys and boolean values indicating whether to keep them or not.
-        path_to_read_folder (str): Path to the folder containing the file to read.
-        path_to_write_folder (str): Path to the folder to write the file to
+        path_to_read_folder (str): Path to the folder containing the files to read.
+        path_to_write_folder (str): Path to the folder to write the files to.
     """
     
     # Generate write folder if it does not exist
@@ -84,41 +84,37 @@ def get_tokens_inst(instrument_dict, path_to_read_folder, path_to_write_folder):
     
     # Generate a list of the instruments to keep
     instrument_list = [key for key, value in instrument_dict.items() if value]
-    
-    instruments_in_file ={
-        "distorted0": False,
-        "distorted1": False,
-        "distorted2": False,
-        "clean0": False,
-        "clean1": False,
-        "bass": False,
-        "leads": False,    
-        "pads": False,
-        "drums": False,
-    }
-    
-    # Set the instruments in the file to True if they are in the file
-    for current_file in glob.glob(f"{path_to_read_folder}/*.txt"):
-        with open(current_file) as f_1:
-            current_text = f_1.read()
-            
-            for instrument in instruments_in_file.keys():
-                if instrument in current_text:
-                    instruments_in_file[instrument] = True
-                    
-    # If the instruments in instrument_list are not in the file, return without writing the file
-    if not any(instruments_in_file[instrument] for instrument in instrument_list):
-        return None
+    n_skipped = 0
     
     # Read the txt files in the folder
     for current_file in glob.glob(f"{path_to_read_folder}/*.txt"):
         with open(current_file) as f_1:
             current_text = f_1.read()
             
+            instruments_in_file ={
+                "distorted0": False,
+                "distorted1": False,
+                "distorted2": False,
+                "clean0": False,
+                "clean1": False,
+                "bass": False,
+                "leads": False,    
+                "pads": False,
+                "drums": False,
+            }
+            
+            for instrument in instruments_in_file.keys():
+                if instrument in current_text:
+                    instruments_in_file[instrument] = True
+            
+            if not any(instruments_in_file[instrument] for instrument in instrument_list):
+                n_skipped += 1
+                continue # Skip the file if it does not contain any of the instruments we want
+            
             # Generate file name by appending the instruments to the original file name
-            file_name = current_file.split("\\")[-1].split(".")[0]
-            file_name = "_".join([file_name, "_".join(instrument_list)])
-            file_path = f"{path_to_write_folder}/{file_name}.txt"
+            file_name = current_file.split("\\")[-1].split(".")[0] # Remove the .txt extension
+            file_name = "_".join([file_name, "_".join(instrument_list)]) # Append the instruments
+            file_path = f"{path_to_write_folder}/{file_name}.txt" # Add the .text and the path
             
             # Generate a txt file only containing the lines refering to the instrument
             with open(file_path, "w") as new_text:
@@ -128,10 +124,10 @@ def get_tokens_inst(instrument_dict, path_to_read_folder, path_to_write_folder):
             # Merge consecutive wait commands
             merge_consecutive_waits(file_path)
     
-    return None
+    return n_skipped
             
 
-def get_tokens_inst_iterate_over_files(instrument_to_keep, path_to_general_read_folder, path_to_general_write_folder):
+def get_tokens_inst_iter_folders(instrument_to_keep, path_to_general_read_folder, path_to_general_write_folder):
     """Iterate over the DadaGP dataset and apply get_tokens_inst to the files in the dataset.
     Write back the files to the write folder BGTG.
 
@@ -140,6 +136,8 @@ def get_tokens_inst_iterate_over_files(instrument_to_keep, path_to_general_read_
         path_to_general_read_folder (str): Path to the folder containing the DadaGP dataset.
         path_to_general_write_folder (str): Path to the folder BGTG where we write the files.
     """
+    
+    n_skipped = 0
     # Iterate twice over the folders in the general folder (alphabetical and group)
     with tqdm(total=4871, desc="Scores computed") as pbar:
             
@@ -166,7 +164,9 @@ def get_tokens_inst_iterate_over_files(instrument_to_keep, path_to_general_read_
                 write_group_folder = f"{write_alphabetical_folder}/{group_order}"
                 
                 #  Apply get_tokens_inst to the files in the group folder
-                get_tokens_inst(instrument_to_keep, read_group_folder, write_group_folder)
+                n_skipped += get_tokens_inst_iter_files(instrument_to_keep, read_group_folder, write_group_folder)
                 pbar.update(1)
+    
+    print(f"Skipped {n_skipped} files, because they did not contain any of the instruments we want.")
                     
                

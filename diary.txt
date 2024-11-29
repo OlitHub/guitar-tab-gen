@@ -88,4 +88,21 @@ This would allow us to condition the generation on the genre.
 Next step, look at the BiLSTM code from the CP Drums Generation article.
 
 
+29/11/2024
 
+The function now correctly checks if the track contains the instruments asked before processing it.
+However it adds time to the processing of the files instead of optimizing it.
+Should we just process all the files and then filter the ones that contain the instruments asked?
+The thing is that we don't want to have files full of wait tokens in the training data.
+
+Checked the csv file containing the rythmic instrument at each measure of each track of dadagp dataset.
+Added a column 'dadagp-name' to the csv file to match the name of the instruments to the ones used in dadagp.
+The thing is I have no idea if the order of the instruments in the csv file is the same as in the gp files...
+So I may be mapping wrong instruments together.
+How could I check that? (Maybe the only solution is going back through the gp files...)
+
+Now also remains the question of choosing the rythmic guitar in each track.
+How can we proceed?
+For each measure of each track, take the instrument that has the highest rg-estimation?
+First set a threshold on the rg-estimation to consider an instrument as rythmic?
+For the moment I took the threshold of the paper (0.5)
