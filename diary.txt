@@ -106,3 +106,29 @@ How can we proceed?
 For each measure of each track, take the instrument that has the highest rg-estimation?
 First set a threshold on the rg-estimation to consider an instrument as rythmic?
 For the moment I took the threshold of the paper (0.5)
+
+
+Track_name is not unique! Clean it using file name!
+To retrieve the real file name from the track name, perform a split on the dash (-)
+Also clean, file name by removing the extension and the beginning of the path.
+
+The idea:
+Iterate on the files in gp5, iterate on tracks names, find the csv rows that correspond to the instrument,
+look at the value in the Instrument column, add column Dadagp_name that is instrument name with number appended.
+The number is reset at each new track.
+
+Optimize the function that finds the rythmic guitar in the track.
+Try lineprofiler to find the lines that slow the loop.
+
+Issue with selecting only the best rythmic instrument in terms of proportion:
+A guitar can play much less measures but have a higher prop than
+another guitar that is rythmic almost everywhere but in certain measures.
+
+It would be better to put a threshold and accept the fact that there can be several rythmic guitars?
+For the moment keep it like this, and keep prop_rythmic column in the csv.
+Or find a better way to select the rythmic guitar.
+--> Instead of making proportion on the number of measures of the instrument,
+make it on the number of measures of the track.
+
+Once I have the correct column track_name, run notebook again.
+
