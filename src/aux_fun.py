@@ -160,9 +160,7 @@ def get_tokens_inst_iter_folders(instrument_to_keep, path_to_general_read_folder
                 
                 if not os.path.exists(write_group_folder):
                     os.makedirs(write_group_folder)
-                    
-                write_group_folder = f"{write_alphabetical_folder}/{group_order}"
-                
+                                    
                 #  Apply get_tokens_inst to the files in the group folder
                 n_skipped += get_tokens_inst_iter_files(instrument_to_keep, read_group_folder, write_group_folder)
                 pbar.update(1)

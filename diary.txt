@@ -109,8 +109,8 @@ For the moment I took the threshold of the paper (0.5)
 
 
 Track_name is not unique! Clean it using file name!
-To retrieve the real file name from the track name, perform a split on the dash (-)
-Also clean, file name by removing the extension and the beginning of the path.
+To retrieve the real track name from the file name, perform a split on the dash (-)
+Also clean file name by removing the extension and the beginning of the path.
 
 The idea:
 Iterate on the files in gp5, iterate on tracks names, find the csv rows that correspond to the instrument,
@@ -132,3 +132,17 @@ make it on the number of measures of the track.
 
 Once I have the correct column track_name, run notebook again.
 
+
+6/12/2024
+
+
+Trying to retrieve the correct track name. I have a first issue with the elements in 'Fichier'.
+We thought they were of the form path/author - track_name - part_name.gpif so we could split on the dash and the \ to retrieve only author - track_name.
+However, in some cases author is not present, or part_name is not present. For the moment I just remove the rows that don't have the correct format.
+I also have an issue with the extension, some are gp3, some are gp4.
+Another issue: artist name can be different in the csv file and in dadagp (ACDC and AC-DC for instance)
+
+Maybe I am not taking things the right way?
+--> It would be easier to iterate on dadagp and find back the csv rows that correspond instead of iterating on the csv.
+
+It doesn't work better at all...
