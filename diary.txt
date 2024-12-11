@@ -146,3 +146,15 @@ Maybe I am not taking things the right way?
 --> It would be easier to iterate on dadagp and find back the csv rows that correspond instead of iterating on the csv.
 
 It doesn't work better at all...
+
+
+11/12/2024
+
+
+The issue comes from the way I retrieve the Author and the track name.
+If there are dashes in the author or track name it causes errors.
+
+To get the correct dadagp file name, remove the beginning of the path and the extension.
+Then I am supposed to have filename - partname, but in some cases there are no partnames.
+I should try to split on the last dash, and if it doesn't work, keep the whole string as the filename.
+Other solution: look if there are several parts for the same track, if there are, do the split, else keep the whole string.
