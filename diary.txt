@@ -178,3 +178,16 @@ After observing those, these are files that would be tough to collect without do
 I couldn't look for the proportion of rythmic parts in those scores as I couldn't make the link with the CSV and therefore can't have the correct
 dadagp instruments name (distorted0 etc). However, I don't think 604 scores on 23728 files is a concern. 
 
+
+Meeting:
+
+get_filename_alexandre
+--> After the first iteration, make a second one to fix the one that were not found.
+Add the content after the dashes iteratively until we have a match between dadagp and the csv for the 604 (602) files not found.
+
+Fix the for loop that iterates on the dadagp files using rglob and pathlib to add dadagp filenames.
+This loop should also add the correct dadagp path in the csv.
+
+Fix the loop that adds the dadagp instrument name as it doesn't correctly loop on the files
+
+Check and fix prop_rythmic (sometimes value is over 1)
