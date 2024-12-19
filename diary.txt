@@ -158,3 +158,14 @@ To get the correct dadagp file name, remove the beginning of the path and the ex
 Then I am supposed to have filename - partname, but in some cases there are no partnames.
 I should try to split on the last dash, and if it doesn't work, keep the whole string as the filename.
 Other solution: look if there are several parts for the same track, if there are, do the split, else keep the whole string.
+
+17/12/2024
+
+I tried to implement a way to add a column Num_Parts that would contain the number of parts in the track of the row, for each row.
+However I had issue to find how to group the dataset to get this information: Track_Name is not always filled and Fichier is unique per track.
+For instance, track None\nNone had 308 parts...
+
+To avoid using Num_Parts I am now simply checking if there are two dashes or more in the filename to know if I should split on the dashes or not.
+With this method I still have some issues if there is a dash in the author or track name but no parts.
+In this case I slice in between the author or the track name.
+
