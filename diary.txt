@@ -169,3 +169,12 @@ To avoid using Num_Parts I am now simply checking if there are two dashes or mor
 With this method I still have some issues if there is a dash in the author or track name but no parts.
 In this case I slice in between the author or the track name.
 
+
+19/12/2024
+
+
+Alexandre built a function to retrieve the correct file name from the csv file. It correctly retrieves all but 604 files.
+After observing those, these are files that would be tough to collect without doing case by case analysis and retrieval.
+I couldn't look for the proportion of rythmic parts in those scores as I couldn't make the link with the CSV and therefore can't have the correct
+dadagp instruments name (distorted0 etc). However, I don't think 604 scores on 23728 files is a concern. 
+
