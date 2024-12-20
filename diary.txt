@@ -191,3 +191,25 @@ This loop should also add the correct dadagp path in the csv.
 Fix the loop that adds the dadagp instrument name as it doesn't correctly loop on the files
 
 Check and fix prop_rythmic (sometimes value is over 1)
+
+
+20/12/2024
+
+
+The ultimate function to retrieve make the mapping between the CSV and DadaGP is almost finished!
+I still have 21 files with an issue. The three first are bugged because Windows 11 (works on windows 10) removed the blank space at 
+the beginning of the file name in DadaGP so I can't make the link anymore (the blank space is still here in the CSV)
+For the rest, it is due to the fact that some files are present multiple times in DadaGP with different extensions:
+For instance, Beethoven - Moonlight Sonata (3) exists in gp3 and gp4. However when converting those to gpif they all
+have the same extension and have exactly the same file name so automatically a (1) and (2) is added at the end which is not in DadaGP originally.
+
+This leads to having in the CSV:    '../data/DadaGP8-gpif/Beethoven - Moonlight Sonata (3) (1).gpif',
+                                    '../data/DadaGP8-gpif/Beethoven - Moonlight Sonata (3) (2).gpif',
+                                    '../data/DadaGP8-gpif/Beethoven - Moonlight Sonata (3) (3).gpif'
+
+But in DadaGP we only have 'Beethoven - Moonlight Sonata (3)'
+
+As there is one file with the original name before the OS starts adding (1) (2) etc we can simply remove those duplicates.
+There could be different versions of the same track? Maybe there is a better solution.
+(But it is a very minor deletion)
+
