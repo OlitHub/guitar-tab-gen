@@ -213,3 +213,24 @@ As there is one file with the original name before the OS starts adding (1) (2) 
 There could be different versions of the same track? Maybe there is a better solution.
 (But it is a very minor deletion)
 
+
+05/01/2025
+
+
+New issue! We now successfully retrieve the filenames from df_rg! but filenames are not unique (paths are)
+Several songs are present in different versions or with different extensions but with the same name.
+Example: '311 - Homebrew (2).gp3' and '311 - Homebrew (2).gp4'.
+How could we find what version we are currently examining to assign the right path when doing the mapping
+of the rythmic guitar csv to the dadagp paths?
+We should perform everything at the same time... It gets more difficult.
+This way we could look at the filenames, find the paths for this filename, open the dadagp file,
+check if the parts in the dadagp file correspong to the parts in the csv, if not go the next path, if yes assign.
+As this method involves opening the gp file, we should perform the mapping to the dadagp part name at the same time.
+(distorted0, distorted1, clean0, clean1, bass etc.)
+
+I don't see how I can do it all at once as I need to have computed the paths of all the parts of a single song
+to make the dadagp instruments assignation.
+
+I think we will have to do it in two times, but both computations will take a very long time as both needs
+to open the gp files.
+
