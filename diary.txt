@@ -234,3 +234,19 @@ to make the dadagp instruments assignation.
 I think we will have to do it in two times, but both computations will take a very long time as both needs
 to open the gp files.
 
+08/01/2025
+
+In the end Alexandre and I chose to remove the duplicated songs even if the parts are different.
+To do so, after the second mapping we just remove the rows where we still have value 'not_filled_yet'.
+In the end we have 23123 songs instead of 24051 at the end of the notebook 1.
+
+09/01/2025
+
+Some dupicated songs have not been removed using this method because they have the same name 
+AND the same parts' names in the gp file.
+To remove them, we perform a drop_duplicates on the Dadagp_Name, Mesure and Dadagp_Path columns.
+
+This removes 11148 rows (but we still have 23123 songs as we only removed duplicates)
+
+This issue was leading to parts having a rythmic proportion over 1 because they had duplicated measures.
+
