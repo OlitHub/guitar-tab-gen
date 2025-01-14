@@ -261,3 +261,10 @@ Next steps:
 
 Look at CP Drums Generation model, try to run it with their data to understand how it works.
 Then try to run it with our data.
+Write the mid-term report.
+
+14/01/2025
+
+Starting the report. I have imported templates I used previously. 
+I will start with the structure.
+

@@ -1,0 +1,557 @@
+% -----------------------------------------------
+% Template for ISMIR Papers
+% 2023 version, based on previous ISMIR templates
+
+% Requirements :
+% * 6+n page length maximum
+% * 10MB maximum file size
+% * Copyright note must appear in the bottom left corner of first page
+% * Clearer statement about citing own work in anonymized submission
+% (see conference website for additional details)
+% -----------------------------------------------
+
+\documentclass{article}
+\usepackage[T1]{fontenc} % add special characters (e.g., umlaute)
+\usepackage[utf8]{inputenc} % set utf-8 as default input encoding
+\usepackage{ismir,amsmath,cite,url}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+
+\usepackage{rotating}
+
+\usepackage{lineno}
+\linenumbers
+
+% Macros for comments
+\newcommand{\todo}[1]{\textcolor{blue}{{\bf TODO}: #1}}
+\newcommand{\mg}[1]{\textcolor{brown}{MG: << #1 >>}}
+\newcommand{\oa}[1]{\textcolor{red}{OA: << #1 >>}}
+\newcommand{\fm}[1]{\textcolor{magenta}{FM: << #1 >>}}
+
+% Set path to figure folder
+\graphicspath{{./figs/}}
+
+% Title. Please use IEEE-compliant title case when specifying the title here,
+% as it has implications for the copyright notice
+% ------
+\title{Automatic detection of orchestral blends using Machine Learning models}
+
+% Note: Please do NOT use \thanks or a \footnote in any of the author markup
+
+% Single address
+% To use with only one author or several with the same address
+% ---------------
+%\oneauthor
+% {Names should be omitted for double-blind reviewing}
+% {Affiliations should be omitted for double-blind reviewing}
+
+% Two addresses
+% --------------
+\twoauthors
+  {Olivier Anoufa} {Master 1 Data Science \\ Ecole Centrale de Lille \\ University of Lille}
+  {Supervisors} {Francesco Maccarini \\ Mathieu Giraud \\ CRIStAL Laboratory, Algomus Team}
+
+% Three addresses
+% --------------\input{ISMIR2021_paper.tex}
+
+%\threeauthors
+  % {Olivier Anoufa} {Ecole Centrale de Lille \\ University of Lille}
+  % {Francesco Maccarini} {CRIStAL Laboratory \\ Algomus Team}
+  % {Mathieu Giraud} {CRIStAL Laboratory \\ Algomus Team}
+
+% Four or more addresses
+% OR alternative format for large number of co-authors
+% ------------
+%\multauthor
+%{First author$^1$ \hspace{1cm} Second author$^1$ \hspace{1cm} Third author$^2$} { \bfseries{Fourth author$^3$ \hspace{1cm} Fifth author$^2$ \hspace{1cm} Sixth author$^1$}\\
+%  $^1$ Department of Computer Science, University , Country\\
+%$^2$ International Laboratories, City, Country\\
+%$^3$  Company, Address\\
+%{\tt\small CorrespondenceAuthor@ismir.edu, PossibleOtherAuthor@ismir.edu}
+%}
+
+% For the author list in the Creative Common license, please enter author names. 
+% Please abbreviate the first names of authors and add 'and' between the second to last and last authors.
+\def\authorname{O. Anoufa, F. Maccarini and M. Giraud}
+
+% Optional: To use hyperref, uncomment the following.
+%\usepackage[bookmarks=false,pdfauthor={\authorname},pdfsubject={\papersubject},hidelinks]{hyperref}
+% Mind the bookmarks=false option; bookmarks are incompatible with ismir.sty.
+
+\sloppy % please retain sloppy command for improved formatting
+
+\begin{document}
+
+%
+\maketitle
+%
+\begin{abstract}
+
+Orchestral music composition involves intricate mixtures of diverse instrumental timbres, harmonies, and rhythms to create emotionally evocative landscapes.
+  This study addresses the detection of orchestral blends, a phenomenon where multiple voices merge to form new timbres.
+  Utilizing symbolic music computational analysis, we propose a machine learning model to detect blends in orchestral scores.
+  Our approach employs features that we generated, such as rhythmic synchronicity, harmonicity, pitch parallelism and timbre descriptors, 
+  extracted from musicXML files using the music21 python library.
+
+  We then train and evaluate several machine learning models on annotated scores extracted from the OrchARD database.
+  Their task is the following: for each pair of parts and each bar of the score, predict whether they are blending or not.
+  Achieving promising results on the binary classification tasks with the Random Forest Classifier and the K-nearest neighbors model,
+  those binary predictions are then processed using a Depth-first search algorithm to generate the groups of parts that are blending together at each bar of the score.
+
+  However, challenges in generalization to the entire dataset remain, likely due to feature variance limitations and non linear separability of the data.
+  Future work could explore deep learning method, feature improvements and model optimization to improve blend detection accuracy and generalization.
+
+\end{abstract}
+%
+\section{Introduction}\label{sec:introduction}
+
+% \fm{Start from something more wide. Like:}
+Orchestral music is a complex and fascinating art that intertwines diverse instrumental timbres, harmonies, and rhythms to evoke rich emotional landscapes and narratives.
+When writing a symphonic score, the composer has to take into account the usual parameters of composition, like harmony, melodic lines, voice leading, form, and structure, but also the combination of the timbres of the different instruments, to create a coherent/cohesive orchestral sound.
+Studies in music perception~\cite{mcadams_taxonomy_2022, spectral_centroid, spectral_envelope_Lembke} have focused on several auditory phenomena that are typical of orchestral music.
+In this study we claim that many perceptual phenomena are contained in the score, intentionally planned or not by the composer and we build a score-based model for one of them: the orchestral blend.
+A blend is a phenomenon that occurs in orchestral music when several voices fuse together to generate a new timbre~\cite{mcadams_taxonomy_2022,bernier-robert_blend_nodate}.
+More precisely, this happens when a listener cannot distinguish the different voices, that is to say the different instruments, that are playing at the same time.
+A blend can be intentional or not, the aim of this project is to detect such phenomena in orchestral music scores.
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{grouping_processes.png}}}
+  \caption{Grouping Processes from the Taxonomy of Orchestral Grouping Effects~\cite{mcadams_taxonomy_2022}.
+  The grouping processes are dealt with by the brain chronologically from the lowest level to the highest level.
+  Our focus is on Concurrent Grouping, the lowest level of the taxonomy, which is the first step in the process of auditory scene analysis.}
+  \label{fig:grouping_processes}
+ \end{figure}
+
+%However, 
+\subsection{Music Scores}
+
+Symbolic music computational analysis is a vast and complex topic that requires a study on the concept of music scores, voices and streams.
+To analyse symbolic music, and more precisely to compare parts within a score, we first need to define those terms.\\
+%
+Scores are the written representation of music. They are composed of parts, that is to say the different instruments or voices that are playing at the same time.
+Each part is composed of bars, which are decomposition of the score in time. In each bars are written the notes that the instrument has to play.
+Notes are defined by their pitch and their duration. The pitch is the frequency of the note, and the duration is the time the note has to be played.
+
+\subsection{Streams and Voices}
+
+The concept of voice is more complex, it was defined by Cambouropoulos in 2008 in three different ways.\cite{cambouropoulos}
+% \fm{Maybe one sentence to describe the three types, and then, see what we consider}
+Voices can be simply defined as the sound sequence produced by a single source, or it can be defined in a perceptual way, that is to say by the sound sequences the listeners perceive as distinct.
+Finally, voices can be separated based on harmonic theory relative to music composition.
+% \fm{No, it is ambiguous. Prefer: We will avoid the ambiguous term voice, and we will refer to parts to indicate the single staff in the score.}
+In this study, we will avoid the ambiguous term voice, and we will refer to parts to indicate the single staff in the score.
+%
+We will adopt the term stream or layer to refer to an assemble of parts played by different instruments grouped by perceptual principles.
+These definitions are extremely basic but are necessary approximations to be able to extract features for a machine learning model.
+Blends between the parts are the basics for perceptual event formation, and are building blocks of orchestral layering and structure (Fig.~\ref{fig:grouping_processes}).
+%Using these definitions,
+A blend can be defined as a phenomenon that occurs when the instruments playing the parts that compose a stream are not clearly distinguishable by the listener.
+
+\subsection{Blends in the Taxonomy of Orchestral Grouping Effects}
+% \fm{One or two sentences:}
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{conc_grouping.png}}}
+  \caption{Concurrent grouping, from the Taxonomy of Orchestral Grouping Effects~\cite{mcadams_taxonomy_2022}.}
+  \label{fig:conc_grouping}
+\end{figure}
+
+
+The Taxonomy of Orchestral Grouping Effects characterizes the perceptual phenomena that occur in orchestral music and in particular the blends.
+We focus on concurrent grouping, the lowest level of the taxonomy (Fig.~\ref{fig:conc_grouping}), classifying blends and non-blends.
+If we hear a blend, it can be a timbral augmentation (one instrument is amplified) or a timbral emergence (a new timbre emerges).
+Finally, this phenomemnon can be sustained or punctuated, depending on the rhythm of the parts, and if it is sustained, it can be stable or transforming.
+A stable blend is a blend within a specific group of instruments, whereas in a transforming blend, some parts can join or leave the blend.
+These grouping effects arise from the basic technique of combining instruments at the unison or at particular pitch intervals, usually implying rhythmic synchrony, parallelism in pitch and harmonicity.
+
+
+Specifically, several principles are at play in the formation of blends:\cite{cambouropoulos, mcadams_taxonomy_2022}
+\begin{itemize}
+  \item Principle of Temporal Continuity: \textit{Continuous or recurring rather than brief or intermittent sound sources} evoke strong auditory streams.
+  \item Principle of Tonal Fusion: \textit{The perceptual independence of concurrent tones is weakened when they are separated by intervals (in decreasing order: unisons, octaves, perfect fifths…) that promote tonal fusion.}
+  \item Pitch Proximity Principle: \textit{The coherence of an auditory stream is maintained by close pitch proximity in successive tones within the stream.}
+  \item Pitch Co-modulation Principle: \textit{The perceptual union of concurrent tones is encouraged when pitch motions are positively correlated.}
+  \item Onset Synchrony Principle: \textit{If a composer intends to write music in which the parts have a high degree of independence, then synchronous note onsets ought to be avoided. Onsets of nominally distinct sounds should be separated by 100ms or more.}
+\end{itemize}
+However, as we will see, not all couplings result in blending of the component instrument \cite{mcadams_taxonomy_2022}.
+
+
+%\paragraph*{Computational analysis of human experts' identification of orchestral blends in scores}
+%\paragraph*{State of the art}
+\section{Related Work}\label{sec:related_work}
+
+Our project is not the first to tackle the problem of identifying blends in orchestral scores, algorithms and experiments have already been developed with the same purpose.
+The algorithm by Antoine and colleagues~\cite{antoine_blends} used synchronicity, harmonicity and parallelism (Fig.~\ref{fig:algo}).
+It selects the blending parts using three successive filters, with an arbitrary threshold tweaked to maximize the accuracy of the model.
+First, onset synchrony filters the parts that are synchronous enough to be able to blend.
+Then, the harmonicity filter selects the parts that are harmonic enough, that is to say that play notes that are in consonant intervals.
+Finally, the parallelism filter selects the parts that are parallel in pitch.
+Afterwards, it outputs a score in the interval [0,1] that is an average of the three scores obtained by the filters.
+Those three features will be detailed in section~\ref{sec:features}.
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{algo.png}}}
+  \caption{Functioning of the algorithm by Antoine et al.~\cite{antoine_blends}.
+  We can observe the successive application of filters to select the blending parts,
+  and the final average score on which the decision is made.}
+  \label{fig:algo}
+\end{figure}
+
+
+This algorithm will serve as a point of comparison for our model. It reached a mean accuracy of 0.81 on the dataset we use. 
+The metric used to evaluate the model is the following: for each bar of the score, the model is asked to predict what are the parts that are blending.
+The final output is a list of blends with the starting and ending measures, and the parts that are blending.
+Then the algorithm is evaluated on the number of measures of blend it found.
+
+\section{Model}\label{sec:model}
+
+To adapt this problem to a machine learning model, we chose to use a binary classification approach.
+Our model, taking as input a score, generates several features and returns a prediction for each couple of parts and for each bar of the score, whether they are blending or not.
+After the classification, we use a depth-first search algorithm to generate the groups of parts that are blending together at each bar of the score \cite{even_2011}.
+Specifically, the algorithm generate a graph where the nodes are the parts and two parts are connected by an edge if they are blending.
+Then, the algorithm use a backtracking to visit each node and for each newly visited node, it searches its neighbors to form a group.
+% \fm{Describe more the algorithm and the analogy to the graph}.
+Those groups of instruments are then compared to the ground truth to evaluate the model.
+% \todo{If we have time, it would be nice to have a figure about our model, but leave it for last}.
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{model.png}}}
+  \caption{Functioning of our model.
+  In blue are the initial datasets, in orange are the features and data we generated from the datasets,
+  and in green is the predicting model.}
+  \label{fig:model}
+\end{figure}
+
+We compare several machine learning models for the classification in Section~\ref{sec:ml_model}.
+
+\section{Data}\label{sec:data}
+
+We extracted a dataset of blends from the OrchARD database\footnote[1]{\url{https://orchard.actor-project.org/about/}}, maintained by the ACTOR project. The OrchARD database contains expert annotations of orchestral effects, linked to scans of printed scores and recordings. The information is stored in a SQL database, and the access to the online querying interface can be requested by interested researchers. In our work, we only focus on the blends, but the database contains other effects such as segregation, stratification, contrasts, and gestures.
+For our work this dataset constitute a precious ground truth to train and evaluate our model.\\
+The subset of the database with which we worked is composed of 38 extracts of scores from various composers and various periods of music history (Mozart, Berlioz, Debussy, etc.). For those extracts, orchestral scores in MusicXML were also collected by Antoine et al.~\cite{antoine_blends} to test their algorithm. The scores were kindly provided to us by Stephen McAdams. Using the same scores allow us to make precise comparisons between the two models.
+
+%
+\section{Features}\label{sec:features}
+%
+
+
+Music can take an infinite number of shapes but an algorithm or machine learning model needs a finite number of inputs\cite{marsden2016}.
+The segmentation of the score is a crucial step in the process of generating features.
+In our model the features are all extracted by comparing two parts of the score on a single bar.
+
+
+Indeed, as explained by Antoine et al.~\cite{antoine_blends}, blends generally occur over the course of at least a measure.
+Reducing the frame of the calculations would result in a significant increase in the amount of data to process.
+On the other hand, a longer analysis frame could miss effects occurring in a single measure.
+Thus, a measure worth of information appears to be an appropriate analysis time window.
+We generated 5 different types of features. The first three are the ones used by Antoine et al.~\cite{antoine_blends} in their algorithm: rythmic synchronicity, harmonicity and parallelism in pitch.
+The extraction of the information from the scores is done using the music21 library~\cite{mit_users_2006} in Python.
+This library allows to extract the parts, measures, notes, etc. from the MusicXML files and convert them into Python objects.
+Moreover, this library also contains built-in methods that simplify the extraction of the features we are interested in.
+
+\subsection{Onset synchrony}
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{sync_symphoniefantastique_95-96_cl1_bsn1.png}}}
+  \caption{Synchronicity between Clarinet 1 and Bassoon 1, measures 95 - 96 of the Symphonie Fantastique by Berlioz.}
+  \label{fig:sync}
+\end{figure}
+
+
+Two parts are said to be synchronous if they play notes of the same duration at the same time.
+Our feature is an average of the number of notes that are synchronous between the two parts on the studied bar.
+In \figref{fig:sync}, we can see that the two parts are perfectly synchronous on the two bars shown: all the notes the two parts play start and end at the same time.
+Their synchronicity score would be 1 on both measures.
+
+\subsection{Harmonicity}
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{harmonicity_symphfantastique_70-72_fl1_ob1.png}}}
+  \caption{Perfect octave between Flute 1 and Oboe 1, measures 70 - 72 of the Symphonie Fantastique by Berlioz.}
+  \label{fig:harm}
+\end{figure}
+
+Then, two parts are said to be in harmony if they play notes that are in a consonant interval.
+There is no exact consensus on what are the consonant intervals in the literature \cite{consonance}.
+Therefore, we chose to use what is accepted currently in music theory.
+We separated perfect consonances (unison, octave, fifth and fourth), imperfect consonances (third and sixth) and dissonances (second, seventh and tritone).
+
+
+In \figref{fig:harm}, we can see that the two parts start with a B flat and a D which form a major third, an imperfect consonance.
+Then, during the rest of the bar, the two parts play the same notes, forming a perfect octave, that is a perfect consonance.
+To retranscribe this, we associated the imperfect consonance with a score of 0.5 and the perfect consonance with a score of 1.
+The feature is then an average of the consonance scores between the two parts on the studied bar.
+
+
+\subsection{Parallelism in pitch}
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{parallel_symphfantastique_124-125_fl1_ob1.png}}}
+  \caption{Parallelism in pitch between Flute 1 and Oboe 1, measures 124 - 125 of the Symphonie Fantastique by Berlioz.}
+  \label{fig:parallel}
+\end{figure}
+
+Finally, two parts are said to be parallel in pitch if the intervals between successive notes are going in the same direction.
+The function assesses whether the two instruments are playing in parallel the following way:
+it examines the note sequences of each part at the same time, comparing successive notes to determine if they are higher, lower, or equal in pitch relative to the previous note of the measure.
+Each time the two parts have the same movement, the function increments a counter.
+The resulting score is subsequently divided by the total number of comparison, yielding a proportion that serves as the parallelism score.
+\figref{fig:parallel} displays two parallel parts on the two bars shown: all the notes the two parts play are in the same direction.
+
+\hfill
+
+Those first three features are scores in the interval $[0,1]$ that are an average of the number of notes that are synchronous, harmonic or parallel between the two parts on the studied bar.
+Indeed, we expect those features to be proportional to the blending of the two parts.
+The more the two parts are synchronous, harmonic or parallel, the more they are likely to blend.
+
+
+\subsection{Cosine contour}
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{fig01-cosine-contours-1.png}}}
+  \caption{Melodic contour as a combination of cosine functions, taken from \cite{cornelissen_cosine_2021}.}
+  \label{fig:cosine_contour}
+\end{figure}
+
+
+The fourth feature also concerns the aspect of the part in terms of pitch. It is the cosine contour of the part on the bar. 
+The cosine contour is a representation for the melodic contours proposed by Cornelissen and al in 2021~\cite{cornelissen_cosine_2021}.
+They define melodic contours as \textit{a general description of a melody's shape that abstracts away from the particular pitches and precise rhythms}.
+A contour is usually represented by a sequence of pitches ordered in time alongside a sequence of durations corresponding to each pitch.
+The cosine contour is computed by taking the cosine transform of the function that follows the pitches of the notes in the part.
+Then, the function outputs coordinates that represent the shape of the contour. Those coordinates are the coefficients of the transform. 
+We only keep the two first coefficients to place the contour in a 2D space. The final feature is the distance between the two parts in this space.
+An example and comparison of two cosine contours is presented in ~\figref{fig:cosine_contour_comparison}.
+This feature takes value in the interval $[0, +\infty]$ and is a measure of the difference in the shape of the two parts on the studied bar.
+We expect this feature to be inversely proportional to the blending of the two parts.
+The more the two parts are different in shape, the larger the distance, the less they are likely to blend.
+This feature is decomposed in the distance on the first component and the distance on the second component of the cosine contour.
+% \fm{Didn't we try with Euclidean distance? Or $L1$/$L\infty$ distance?}
+
+
+\subsection{Timbre features}
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{spectral_envelope.png}}}
+  \caption{Spectral-envelope estimate of a bassoon at \textit{mf}.
+  Spectral envelope estimates provide pitch-invariant descriptions of instruments and can be used to predict the degree of blending between instruments
+  \cite{spectral_envelope_Lembke}.}
+  \label{fig:spectral}
+\end{figure}
+
+
+The final feature concerns the timbre of the instrument on the bar.
+Lembke et al~\cite{spectral_envelope_Lembke} showed in a 2013 article that timbre characteristics, and in particular the spectral envelope of the instrument (\figref{fig:spectral}), have an impact on orchestral blends, and can be used to predict them.
+The importance of timbre in the perception of blends was also highlighted by Gregory J. Sandell in 1995 \cite{spectral_centroid}.
+These article are our motivation and inspiration to decide to add features that would represent the timbre of the instrument to our model.
+To do so, we started from a dataset of timbre descriptors of different instruments that were computed by Kazasis~\cite{kazazis2021} using the Timbre Toolbox~\cite{timbre_toolbox} library and samples from the Vienna Symphonic Library\footnote{\url{https://www.vsl.co.at/}}.
+This dataset contains the spectral centroid, the spectral spread, the spectral skewness, the spectral kurtosis and the spectral flatness of the instrument.
+Peeters and al in 2011 \cite{timbre_toolbox} describe all those descriptors in the Timbre Toolbox paper: 
+
+%\fm{Next paragraph could be with bullet points for each feature. Do the definitions come from the Timbre Toolbox paper? Cite it}
+
+\begin{itemize}
+  \item The spectral centroid can be interpreted as \textit{the spectral center of gravity}.
+  \item The spectral spread is also called the spectral standard deviation and it \textit{represents the spread of the spectrum around its mean value.}
+  \item \textit{Spectral skewness gives a measure of the asymmetry of the spectrum around its mean value.}
+  \item \textit{Spectral kurtosis gives a measure of the peakedness or tailedness of the spectrum.}
+  \item The spectral flatness is a measure of the tonal quality of the sound. It is obtained by dividing the geometric mean of the spectrum by the arithmetic mean.
+\end{itemize}
+For each of these measures, we selected the median value and the interquartile range of the distribution of the measure on the instrument.
+
+
+For each instrument, those descriptors are computed on the whole playing range, for each note and each dynamic level.
+We chose to ignore the dynamic level and only keep an average of the descriptors for each note to simplify the computation.
+To get the timbre descriptors on each bar, we compute the median pitch of each part on the bar and retrieve the timbre descriptors of the instrument at this pitch.
+We then compute the absolute difference between the timbre descriptors of the two parts.
+The obtained features represent a sort of timbre distance between the two parts on the studied bar. This feature should be inversely proportional to the blending of the two parts.
+
+\begin{figure}[ht]
+	\centerline{\framebox{
+			\includegraphics[width=0.9\columnwidth]{last_column_correlation.png}}}
+	\caption{Correlation between the features and the target.}
+	\label{fig:correlation}
+\end{figure}
+
+We finally obtained a dataset of 7 features because we kept only the spectral centroid for the timbre features, due to a high correlation between the different timbre descriptors.
+Afterwards, we computed those features on all the scores of the dataset and concatenated to obtain the final dataset.
+
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{2D_scatter_plot_PCA.png}}}
+  \caption{Plot of a PCA of the features on two components, with a total explained variance of 91\%.}
+  \label{fig:pca}
+\end{figure}
+
+\figref{fig:correlation} shows the correlation between the features and the target. 
+We can see that the first three features are indeed proportional to the target, whereas the cosine contour and the timbre features are inversely proportional, as we expected.
+However, we also notice that the correlation scores are quite low, which could be an issue for the model.
+Consequently, we analysed the data separation using a PCA to see if the points are separable in a 2D space.
+As we can observe in \figref{fig:pca}, some points are separated, but a lot of points are mixed together so the data is not linearly separable.
+
+
+\section{Machine Learning models}\label{sec:ml_model}
+
+
+Once the features are extracted, the problem is a classic binary classification problem.
+We chose to test several machine learning models to see which one would be the most efficient for this problem.
+As explained previously, the model outputs a prediction for each couple of parts and for each bar of the score, whether they are blending or not.
+This result is then processed by a depth-first search algorithm to generate the groups of parts that are blending together at each bar of the score.
+The evaluation of the model is finally made using several metrics simultaneously on both tasks: accuracy, precision, recall and F1-score.
+
+
+\begin{figure}[ht]
+  \centerline{\framebox{
+  \includegraphics[width=0.9\columnwidth]{exp_prec_rec_acc.png}}}
+  \caption{Reminder of the different metrics, taken from \cite{acc_fig}}
+  \label{fig:metrics}
+\end{figure}
+
+
+Before entering the machine learning algorithm, the data is standardized using the StandardScaler from the scikit-learn library which scales each column to have a mean of 0 and a standard deviation of 1.
+This allows the model to equalize the importance of each feature in the prediction.
+Afterwards, the model is trained on a section of the dataset and tested on another section.
+We tried two different ways of testing the model.
+The first one is a test on a single score. We shuffle the features extracted from the score and split them so that half of it forms a training set and the other half a test set.
+This method allows us to verify the performance of the model on a small dataset.
+We then generalized the result by training the model with a leave-one-out approach, i.e. we test on each score of the dataset, by training on the whole dataset except for the tested score.
+This method was applied with four different models: a Random Forest Classifier, a Logistic Regression and two Nearest Neighbors models with respectively 1 and 2 neighbors.
+The models were tweaked prior to the evaluation, using a grid search to find the best hyperparameters.
+Finally, the models were compared to two dummy models that output respectively only blends or only non-blends.
+
+
+\section{Discussion and perspectives}\label{sec:discussion}
+
+\subsection{Discussion}
+
+The first results are presented in Table~\ref{tab:results_toht}. We kept only several metrics to simplify the comparison between the models.
+
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{l|llll}
+    model        & accu          & grp prec      & grp recall   & grp f1         \\ \hline
+    dummy\_0     & 0.713         & 0.0           & 0.0          & 0.0            \\ \hline
+    dummy\_1     & 0.292         & 0.555         & \textbf{1.0} & 0.672          \\ \hline
+    knn\_1       & 0.902         & \textbf{0.73} & 0.745        & \textbf{0.718} \\ \hline
+    knn\_2       & 0.888         & 0.71          & 0.628        & 0.643          \\ \hline
+    logreg       & 0.839         & 0.519         & 0.503        & 0.486          \\ \hline
+    rand\_forest & \textbf{0.91} & 0.664         & 0.612        & 0.615          \\ \hline
+    \end{tabular}
+  \end{center}
+  \caption{Average results of the models when training on half a score and testing on the other half.}
+  \label{tab:results_toht}
+\end{table}
+
+
+The results displayed in \ref{tab:results_toht} correspond to the first testing method, that is to say a test on a single score.
+We reach 91\% accuracy on the binary classification task with the Random Forest Classifier. The best model remains the K-nearest neighbors with 1 neighbor, with a F1-score of 0.718.
+However, the results get worse when trying to generalize the model to the whole dataset.
+
+
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{l|llll}
+    model        & accu           & grp prec      & grp recall   & grp f1         \\ \hline
+    dummy\_0     & \textbf{0.712} & 0.0           & 0.0          & 0.0            \\ \hline
+    dummy\_1     & 0.288          & 0.57          & \textbf{1.0} & \textbf{0.686} \\ \hline
+    knn\_1       & 0.617          & 0.579         & 0.942        & 0.674          \\ \hline
+    knn\_2       & 0.649          & 0.59          & 0.865        & 0.655          \\ \hline
+    logreg       & 0.618          & \textbf{0.61} & 0.784        & 0.638          \\ \hline
+    rand\_forest & 0.386          & 0.575         & 0.977        & 0.679          \\ \hline
+    \end{tabular}
+  \end{center}
+  \caption{Average results of the different models when training on the whole dataset except the tested score.}
+  \label{tab:results_toaet}
+\end{table}
+
+
+Indeed, when training on the whole dataset except the tested score, the best accuracy we reach is attained by the dummy classifier that outputs only non-blends.
+This is due to the imbalanced nature of the dataset, with a majority of non-blends (71\% of the dataset).
+We attempted to overcome this issue by using the SMOTE algorithm, which generates new samples of the minority class using linear combinations of the existing samples.
+However, this did not improve the results, and the machine learning models were still unable to generalize to the whole dataset.
+
+We can take a closer look at the group recall metric in \tabref{tab:comparison}, which is the most important for the evaluation of the model and the one used by Antoine et al~\cite{antoine_blends} in their algorithm.
+We generally reach a lower group recall than the model by Antoine and al~\cite{antoine_blends} et al, with an average of 0.733 compared to 0.794.
+
+
+\subsection{Perspectives}
+
+Several explanations can be given for the poor generalization of the model. The most important one is a lack of variance in the features.
+Indeed, the low correlation between the features and the target shown in \figref{fig:correlation} is a sign that the features are not discriminative enough.
+This is of course demonstrated by the PCA plot in \figref{fig:pca}, where the points are highly superposed.
+
+
+This may be due to a lack of features, or to the way we compute them. Indeed, several features we computed can be generated differently and maybe in a way better optimized for blend detection.
+For instance, we defined two notes to be synchronous if and only if they start and end at the same time.
+However, one could imagine a larger definition of synchronicity that would consider to be synchronous two notes that start at the same time but end at different times.
+Another definition could have been to consider the amount of time during the bar where the two parts are playing together.
+This applies to all the features we generated, but we unfortunately did not have the time to tweak all features to find the best definition in terms of blending detection.
+
+
+Another explanation could be the lack of data. We lacked data for the timbre descriptors, as some instruments that are present in the dataset are not present in the timbre dataset.
+We had to reattach the timbre descriptors of the closest instrument in the timbre dataset, which was of course not optimal.
+Since the dataset has a considerable size, it could be argued that the data is too diverse for the model to generalize well, since it contains scores from different music eras, and annotated by different research groups.
+As we noticed previously, we obtained significantly better results when training on a single score than when training on the whole dataset.
+Restricting the problem to a specific era of classical music or to a specific composer could have been a solution to this issue.
+
+
+Finally, one could try to use a more complex model, such as deep learning algorithms, to see if more parameters could help the model tackle the problem more efficiently.
+A deep learning model could learn the feature representations directly from the notes, but we would lose interpretability. A large pretrained model could be finetuned for the orchestral blend detection task.
+
+% For bibtex users:
+\bibliography{library.bib}
+
+
+\input{tables/table-comparison.tex}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{example_cc1.png}
+  \caption{Comparison of the cosine contour of two phrases.
+  The cosine contour demonstrates the difference in shape between the two parts.}
+  \label{fig:cosine_contour_comparison}
+\end{figure}
+
+
+% For non bibtex users:
+%\begin{thebibliography}{citations}
+% \bibitem{Author:17}
+% E.~Author and B.~Authour, ``The title of the conference paper,'' in {\em Proc.
+% of the Int. Society for Music Information Retrieval Conf.}, (Suzhou, China),
+% pp.~111--117, 2017.
+%
+% \bibitem{Someone:10}
+% A.~Someone, B.~Someone, and C.~Someone, ``The title of the journal paper,''
+%  {\em Journal of New Music Research}, vol.~A, pp.~111--222, September 2010.
+%
+% \bibitem{Person:20}
+% O.~Person, {\em Title of the Book}.
+% \newblock Montr\'{e}al, Canada: McGill-Queen's University Press, 2021.
+%
+% \bibitem{Person:09}
+% F.~Person and S.~Person, ``Title of a chapter this book,'' in {\em A Book
+% Containing Delightful Chapters} (A.~G. Editor, ed.), pp.~58--102, Tokyo,
+% Japan: The Publisher, 2009.
+%
+%
+%\end{thebibliography}
+
+\end{document}
+
