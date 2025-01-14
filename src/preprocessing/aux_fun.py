@@ -184,7 +184,7 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
         
         pathlib_path = pathlib.Path(str_path)
         # Replace extension with txt
-        txt_file_path = str(pathlib_path.with_suffix('.txt'))
+        txt_file_path = str_path.replace('.pygp.gp5', '.tokens.txt')
         
         df_track = df_rg[df_rg['Dadagp_Path'] == str_path]
         
@@ -192,9 +192,14 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
             "distorted0": False,
             "distorted1": False,
             "distorted2": False,
+            "distorted3": False,
+            "distorted4": False,
+            "distorted5": False,
             "clean0": False,
             "clean1": False,
             "clean2": False,
+            "clean3": False,
+            "clean4": False,
             "bass": False,
             "leads": False,    
             "pads": False,
@@ -204,10 +209,11 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
         # Create a folder with the same name in the write folder
         
         write_folder = str_path.replace(path_to_general_read_folder, path_to_general_write_folder)
-        write_folder = str(pathlib.Path(write_folder).parts[:-1])
-                
-        if not os.path.exists(write_folder):
-            os.makedirs(write_folder)
+        write_folder = write_folder.replace('.pygp.gp5', '')
+        write_folder = pathlib.Path(write_folder).with_suffix('')
+        # Remove the last part of the path
+        write_folder = write_folder.parent 
+        write_folder.mkdir(parents=True, exist_ok=True)
             
         rythmic_instruments = df_track[df_track['is_track_rythmic']]['Dadagp_Name'].unique()
         
@@ -219,7 +225,7 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
         file_name = df_track['File_Name'].iloc[0]
         instrument_list = [key for key, value in instruments_to_keep.items() if value]
         file_name = "_".join([file_name, "rythmic"]) # Append 'rythmic'
-        file_path = f"{write_folder}/{file_name}.txt" # Add the .text and the path
+        file_path = f"{write_folder}/{file_name}.tokens.txt" # Add the .text and the path
 
         with open(txt_file_path) as f_1:
             current_text = f_1.read()

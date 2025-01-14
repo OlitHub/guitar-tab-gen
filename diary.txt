@@ -245,8 +245,19 @@ In the end we have 23123 songs instead of 24051 at the end of the notebook 1.
 Some dupicated songs have not been removed using this method because they have the same name 
 AND the same parts' names in the gp file.
 To remove them, we perform a drop_duplicates on the Dadagp_Name, Mesure and Dadagp_Path columns.
-
 This removes 11148 rows (but we still have 23123 songs as we only removed duplicates)
-
 This issue was leading to parts having a rythmic proportion over 1 because they had duplicated measures.
 
+
+We now have finished the 3 first notebooks, I just have to finish the function that iterates over the paths in
+the dataframe we built to generate the token text files of the main rythmic instrument.
+
+
+All our paths ends up with .gp*.pygp.pg5, we have to remove the two last extensions and replace those by .tokens.txt
+
+It is done and has been ran, we have the first version of our dataset!
+
+Next steps:
+
+Look at CP Drums Generation model, try to run it with their data to understand how it works.
+Then try to run it with our data.
