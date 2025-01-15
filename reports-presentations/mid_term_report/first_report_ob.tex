@@ -16,6 +16,8 @@
 \geometry{hmargin=2cm,vmargin=3cm}
 \usepackage{titling}
 
+\usepackage{titlepage}
+
 % writing style
 \usepackage{lmodern}
 \usepackage{times}	 
@@ -59,7 +61,7 @@
     ]{biblatex}
 
 \usepackage{bookmark}
-\addbibresource{library.bib}
+\addbibresource{bgtg_lib.bib}
 
 % citation style: apa, ieee, authoryear, ...
 
@@ -89,6 +91,8 @@
 % *** MAIN DOCUMENT *** %
 \begin{document}
 
+% \input{titlepage.tex}
+
 \begin{figure}[t]% We use titling to put a figure on top of the title page
     \centering
     \includegraphics[width=.5\linewidth]{logos_empile}
@@ -105,7 +109,7 @@
 \section*{Introduction}
 
 Many perceptual phenomena are contained in the score, intentionally planned or not by the composer.
-A blend is a phenomenon that occurs in orchestral music when several voices fuse together to generate a new timbre\cite{mcadams_taxonomy_2022}.
+A blend is a phenomenon that occurs in orchestral music when several voices fuse together to generate a new timbre\cite{}.
 This happens when a listener cannot distinguish the different voices, that is to say the different instruments, that are playing at the same time.
 A blend can be intentional or not, the aim of this project is to detect such phenomena in orchestral music scores.
 
@@ -120,7 +124,7 @@ Voices in a score is not a concept as simple as it seems. Cambouropolos in 2008 
 Voices can be simply defined as the sound sequence produced by a single source (an instrument or an individual choral voice).
 However, voices can also be defined in a perceptual way, that is to say voices would be delimited by the sound sequences the listeners perceive as distinct.
 Finally, voices can be separated based on harmonic theory relative to music composition.
-With this definition, voices are delimited by the musical structure of the score\cite{10.1525/mp.2008.26.1.75}.
+With this definition, voices are delimited by the musical structure of the score\cite{vaswaniAttentionAllYou2023}.
 
 We chose to adopt the term stream, that is an assemble of parts is played by different instruments grouped by perceptual principles.
 These definitions are extremely basic but are necessary approximations to be able to extract features for a machine learning model.
@@ -130,17 +134,17 @@ Using these definitions, a blend can be defined as a phenomenon that occurs when
 In this work we focused on concurrent grouping, starting from the lowest level of the taxonomy, classifying blends and non-blends.
 This grouping effect arises from the basic technique of combining instruments at the unison or at particular pitch intervals, usually implying rhythmic synchrony and parallelism in pitch.
 However, as we will see, not all couplings result in blending of the component instrument.
-This first analysis oriented us in our choice of features and machine learning model\cite{mcadams_taxonomy_2022}.
+This first analysis oriented us in our choice of features and machine learning model\cite{}.
 
-Indeed, music can take an infinite number of shapes but an algorithm or machine learning model needs a finite number of inputs\cite{Marsden2016}.
+Indeed, music can take an infinite number of shapes but an algorithm or machine learning model needs a finite number of inputs\cite{}.
 We sorted features into four categories using two questions: is the feature related to a single part or the comparison of two parts?
 Is the feature computed on a single bar or is it a global characteristic of the instrument?
 All the features were computed on scores taken from the OrchARD dataset\footnote[1]{\url{https://orchard.actor-project.org/about/}}.
 
 
 Our project is not the first to tackle the problem of identifying blends in orchestral scores, algorithms and experiments have already been developed to detect blends in scores.
-The algorithm presented by Aurélien Antoine and al in 2021 used synchronicity, harmonicity and parallelism\cite{Antoine_blends}.
-However, we think many more features could be decisive for this problem such as timbre characteristics on instruments\cite{spectral_envelope_Lembke}.
+The algorithm presented by Aurélien Antoine and al in 2021 used synchronicity, harmonicity and parallelism\cite{}.
+However, we think many more features could be decisive for this problem such as timbre characteristics on instruments\cite{}.
 Moreover, machine learning models have not been used yet to detect blends in scores while we are convinced it is a promising approach.
 
 Therefore, we decided to build a machine learning model taking as input a score, computing several features and returning a prediction (0/1) for each couple of parts and for each bar of the score.

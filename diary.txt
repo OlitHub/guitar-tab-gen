@@ -268,3 +268,10 @@ Write the mid-term report.
 Starting the report. I have imported templates I used previously. 
 I will start with the structure.
 
+"An initial version of your written report covering:
+the context, the challenges, the objectives, the state of the art and the workplan for the next months."
+
+What is asked is sort of the introduction of the final report.
+
+For the moment I imported the latex documents from my previous reports and the bib library.
+
