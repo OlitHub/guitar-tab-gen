@@ -98,15 +98,27 @@
     \includegraphics[width=.5\linewidth]{logos_empile}
 \end{figure}
 
-\title{Automatic detection of orchestral blends from scores}
+\title{Bass guitar tablature conditional generation}
 
-\author{Olivier \textsc{Anoufa} \\  University of Lille, France \\ Master 1 Data Science: Research project}
+\author{Olivier \textsc{Anoufa} \\  University of Lille, France \\ Master 2 Data Science: Research project}
 
 {\let\newpage\relax\maketitle}
 
 \newpage
 
 \section*{Introduction}
+
+Natural language processing methods for the generation of symbolic music is a field of research that has seen great development in the last years.
+The transformer architecture, introduced by Vaswani and al. in 2017, has been used to generate scores for various instruments, in diverse styles and genres\cite{vaswaniAttentionAllYou2023, leNaturalLanguageProcessing2024}.
+However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
+Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
+
+
+In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
+More precisely, we aim to generate bass guitar tablatures given other instruments' scores. Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
+
+
+Tablatures are a way to represent music for string instruments. They contain information about the fingering to use to play the notes and the rhythm.
 
 Many perceptual phenomena are contained in the score, intentionally planned or not by the composer.
 A blend is a phenomenon that occurs in orchestral music when several voices fuse together to generate a new timbre\cite{}.
@@ -157,24 +169,6 @@ This model is composed of a classifier (add classifier type when chosen) and a h
 \newpage
 
 \section{Data retrieval, feature extraction and feature selection}
-
-As presented before, the data was extracted from the OrchARD dataset.
-It is composed of 67 movements' scores written by various composers such as Debussy, Berlioz, Beethoven and many others.
-They are accompanied by an annotation table describing every motive - among which blends - that occurs in the score. In total, 2796 blends were annotated.
-We have access to the bar where the blend starts and the bar where it ends, the strength of the blend, the instruments involved and other information.
-The annotations are such that we could retrieve for each bar and each couple of parts if the pair is blending or not on this bar; these are the labels our model will be trained on.
-We didn't take in account the annotated strength of the blends and left it for further studies.
-
-Now that we know what we wanted the model to predict, we needed to extract significant features.
-Features are sorted in 4 categories:
-\begin{enumerate}
-    \item Global Features computed on single parts
-    \item Global features computed on couples of parts
-    \item Features computed on single parts for each bar
-    \item Features computed on couples of parts for each bar
-\end{enumerate}
-
-(presentation beamer plan structuré + exemple musique au début récupérer de TOGE voir readme)
 
 \section{Model selection and first iterations}
 
