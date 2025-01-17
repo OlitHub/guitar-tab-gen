@@ -113,70 +113,20 @@ The transformer architecture, introduced by Vaswani and al. in 2017, has been us
 However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
 Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
 
-
+% Objectives
 In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
 More precisely, we aim to generate bass guitar tablatures given other instruments' scores. Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
 
-
+% Terms definition (tablature)
 Tablatures are a way to represent music for string instruments. They contain information about the fingering to use to play the notes and the rhythm.
 
-Many perceptual phenomena are contained in the score, intentionally planned or not by the composer.
-A blend is a phenomenon that occurs in orchestral music when several voices fuse together to generate a new timbre\cite{}.
-This happens when a listener cannot distinguish the different voices, that is to say the different instruments, that are playing at the same time.
-A blend can be intentional or not, the aim of this project is to detect such phenomena in orchestral music scores.
+% State of the art (survey, DadaGP, Compound Gen)
 
-% Blend example from TOGE with legend on part/bar and add references to the figure
+%Challenges (tokenization, conditional generation)
 
-However, symbolic music computational analysis is a vast and complex topic that requires a study on the concept of music scores, voices and streams.
-To analyse symbolic music, and more precisely to compare parts within a score, we first need to define those terms.
+% What we have done (data preprocessing, getting the rythlic instrument, retrieving the tokens)
 
-Scores are the written representation of music. They are a way to communicate music to musicians and to listeners.
-We will use MusicXML files as scores. MusicXML is a format that allows to represent music scores in a computer-readable format.
-Voices in a score is not a concept as simple as it seems. Cambouropolos in 2008 defined three different ways to define voices in a score.
-Voices can be simply defined as the sound sequence produced by a single source (an instrument or an individual choral voice).
-However, voices can also be defined in a perceptual way, that is to say voices would be delimited by the sound sequences the listeners perceive as distinct.
-Finally, voices can be separated based on harmonic theory relative to music composition.
-With this definition, voices are delimited by the musical structure of the score\cite{vaswaniAttentionAllYou2023}.
-
-We chose to adopt the term stream, that is an assemble of parts is played by different instruments grouped by perceptual principles.
-These definitions are extremely basic but are necessary approximations to be able to extract features for a machine learning model.
-Using these definitions, a blend can be defined as a phenomenon that occurs when a stream can not be broken down into parts by a listener.
-
-
-In this work we focused on concurrent grouping, starting from the lowest level of the taxonomy, classifying blends and non-blends.
-This grouping effect arises from the basic technique of combining instruments at the unison or at particular pitch intervals, usually implying rhythmic synchrony and parallelism in pitch.
-However, as we will see, not all couplings result in blending of the component instrument.
-This first analysis oriented us in our choice of features and machine learning model\cite{}.
-
-Indeed, music can take an infinite number of shapes but an algorithm or machine learning model needs a finite number of inputs\cite{}.
-We sorted features into four categories using two questions: is the feature related to a single part or the comparison of two parts?
-Is the feature computed on a single bar or is it a global characteristic of the instrument?
-All the features were computed on scores taken from the OrchARD dataset\footnote[1]{\url{https://orchard.actor-project.org/about/}}.
-
-
-Our project is not the first to tackle the problem of identifying blends in orchestral scores, algorithms and experiments have already been developed to detect blends in scores.
-The algorithm presented by Aurélien Antoine and al in 2021 used synchronicity, harmonicity and parallelism\cite{}.
-However, we think many more features could be decisive for this problem such as timbre characteristics on instruments\cite{}.
-Moreover, machine learning models have not been used yet to detect blends in scores while we are convinced it is a promising approach.
-
-Therefore, we decided to build a machine learning model taking as input a score, computing several features and returning a prediction (0/1) for each couple of parts and for each bar of the score.
-This model is composed of a classifier (add classifier type when chosen) and a hierarchical clustering algorithm to print out a dendrogram tree of the voices' proximity on each bar.
-
-\newpage
-
-\tableofcontents
-
-\newpage
-
-\section{Data retrieval, feature extraction and feature selection}
-
-\section{Model selection and first iterations}
-
-\section{Model improvement and further iterations}
-
-\section{Conclusion}
-
-ouverture sur le fait que certains facteurs importants ne peuvent pas être pris en compte (attack time, room acoustics, dynamics https://timbreandorchestration.org/writings/timbre-lingo/blend)
+% Workplan (what we are going to do)
 
 \newpage
 

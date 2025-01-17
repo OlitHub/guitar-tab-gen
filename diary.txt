@@ -242,7 +242,7 @@ In the end we have 23123 songs instead of 24051 at the end of the notebook 1.
 
 09/01/2025
 
-Some dupicated songs have not been removed using this method because they have the same name 
+Some duplicated songs have not been removed using this method because they have the same name 
 AND the same parts' names in the gp file.
 To remove them, we perform a drop_duplicates on the Dadagp_Name, Mesure and Dadagp_Path columns.
 This removes 11148 rows (but we still have 23123 songs as we only removed duplicates)
@@ -275,3 +275,6 @@ What is asked is sort of the introduction of the final report.
 
 For the moment I imported the latex documents from my previous reports and the bib library.
 
+16/01/2025
+
+Plan of the mid term report
