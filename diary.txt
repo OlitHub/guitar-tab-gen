@@ -278,3 +278,7 @@ For the moment I imported the latex documents from my previous reports and the b
 16/01/2025
 
 Plan of the mid term report
+
+17/01/2025
+
+Idea: Mini benchmark of trying to retokenize the instrument we wants instead of extracting them from the big txt token file.

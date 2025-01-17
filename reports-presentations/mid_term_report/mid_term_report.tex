@@ -16,7 +16,7 @@
 \geometry{hmargin=2cm,vmargin=3cm}
 \usepackage{titling}
 
-\usepackage{titlepage}
+\usepackage{titlesec}
 
 % writing style
 \usepackage{lmodern}
@@ -82,27 +82,27 @@
 
 %===============================================
 % *** TITLE, AUTHOR AND DATE *** %
-\pretitle{\begin{center}\fontsize{30bp}{30bp}\selectfont}
-\posttitle{\par\end{center}}
+% \pretitle{\begin{center}\fontsize{30bp}{30bp}\selectfont}
+% \posttitle{\par\end{center}}
 
-\preauthor{\begin{center}\fontsize{14bp}{14bp}\selectfont}
-\postauthor{\par\end{center}}
+% \preauthor{\begin{center}\fontsize{14bp}{14bp}\selectfont}
+% \postauthor{\par\end{center}}
 %===============================================
 % *** MAIN DOCUMENT *** %
 \begin{document}
 
-% \input{titlepage.tex}
+\input{titlepage}
 
-\begin{figure}[t]% We use titling to put a figure on top of the title page
-    \centering
-    \includegraphics[width=.5\linewidth]{logos_empile}
-\end{figure}
+% \begin{figure}[t]% We use titling to put a figure on top of the title page
+%     \centering
+%     \includegraphics[width=.5\linewidth]{logos_empile}
+% \end{figure}
 
-\title{Bass guitar tablature conditional generation}
+% \title{Bass guitar tablature conditional generation for guitar accompaniment in western popular music}
 
-\author{Olivier \textsc{Anoufa} \\  University of Lille, France \\ Master 2 Data Science: Research project}
+% \author{Olivier \textsc{Anoufa} \\  University of Lille, France \\ Master 2 Data Science: Research project}
 
-{\let\newpage\relax\maketitle}
+% {\let\newpage\relax\maketitle}
 
 \newpage
 
@@ -113,18 +113,34 @@ The transformer architecture, introduced by Vaswani and al. in 2017, has been us
 However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
 Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
 
+% Talk about the team
+% context about the type of music used
+
+
+% Interviews with guitarists led to this need: guitarists generally make basic bass chords to accompany them. (Article Baptiste)
+% This tool would help them build an accompaniment
+
+
+% Abstract challenges: (high-level such as: propose an informatic representation of music...)
 % Objectives
 In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
 More precisely, we aim to generate bass guitar tablatures given other instruments' scores. Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
 
-% Terms definition (tablature)
+% Terms definition (tablature, add the period when it was used)
 Tablatures are a way to represent music for string instruments. They contain information about the fingering to use to play the notes and the rhythm.
+% add a fig (Kryptonite - 3 Doors down - electric guitar introduction)
 
-% State of the art (survey, DadaGP, Compound Gen)
+% Difference between guitar and bass (role in the music)
 
-%Challenges (tokenization, conditional generation)
 
-% What we have done (data preprocessing, getting the rythlic instrument, retrieving the tokens)
+% State of the art (survey, DadaGP, Compound Gen, Structure-informed positional encoding, gen coherent drum accompaniment)
+% ResearchRabbit to find potential other articles
+
+% Challenges (tokenization, conditional generation, attention, data cleaning), training of the model)
+
+% What we have done (data preprocessing, getting the rythmic instrument, retrieving the tokens, baseline using dadagp (GuitarCTRL))
+% draw io fig of the model
+
 
 % Workplan (what we are going to do)
 
