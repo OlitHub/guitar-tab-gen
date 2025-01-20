@@ -108,23 +108,33 @@
 
 \section*{Introduction}
 
+% Context and motivation
 Natural language processing methods for the generation of symbolic music is a field of research that has seen great development in the last years.
 The transformer architecture, introduced by Vaswani and al. in 2017, has been used to generate scores for various instruments, in diverse styles and genres\cite{vaswaniAttentionAllYou2023, leNaturalLanguageProcessing2024}.
-However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
-Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
+An under publication user study led by Bacot and al. showed a potential need for accompaniment generation tools for guitarists.
+The questionnaire was answered by 31 guitarists composers, and 7 of them followed up with an interview.
+During the interviews, the focus was made on bass guitar lines and drum parts generation without necessarily having to be familiar with the instrument.
+Indeed, guitarists generally tend to write basic bass chords to accompany them, and an AI tool could perform this functional task for them\cite{bacot_tablature_2025}.
 
-% Talk about the team
-% context about the type of music used
 
-
-% Interviews with guitarists led to this need: guitarists generally make basic bass chords to accompany them. (Article Baptiste)
-% This tool would help them build an accompaniment
+% Objectives
+This need is the starting point of the project that I chose, proposed by the Algomus team which is part of the CRIStAL laboratory.
+In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
+More precisely, we aim to generate bass guitar tablatures given other instruments' scores, in the context of western popular music.
+Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
 
 
 % Abstract challenges: (high-level such as: propose an informatic representation of music...)
-% Objectives
-In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
-More precisely, we aim to generate bass guitar tablatures given other instruments' scores. Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
+This project presents many challenges. At a high level, we first have to scrap and preprocess large amounts of data in the form of music scores.
+Then we have to come up with an informatic representation of music that is adapted to the task of generating bass guitar tablatures.
+That is, a way to encode music scores in a way that is meaningful to the transformer architecture we will use.
+
+
+
+However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
+Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
+
+
 
 % Terms definition (tablature, add the period when it was used)
 Tablatures are a way to represent music for string instruments. They contain information about the fingering to use to play the notes and the rhythm.
