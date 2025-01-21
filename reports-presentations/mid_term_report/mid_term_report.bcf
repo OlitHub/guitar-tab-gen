@@ -2375,7 +2375,9 @@
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">vaswaniAttentionAllYou2023</bcf:citekey>
     <bcf:citekey order="1" intorder="2">leNaturalLanguageProcessing2024</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">leNaturalLanguageProcessing2024</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">bacot_tablature_2025</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">hoveSuperiorTimePerception2014</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">leNaturalLanguageProcessing2024</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

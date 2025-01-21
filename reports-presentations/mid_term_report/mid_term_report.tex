@@ -120,33 +120,62 @@ Indeed, guitarists generally tend to write basic bass chords to accompany them, 
 % Objectives
 This need is the starting point of the project that I chose, proposed by the Algomus team which is part of the CRIStAL laboratory.
 In this project, we focus on the conditional aspect of symbolic music generation, for an instrument that has not been thoroughly studied yet: the bass guitar.
-More precisely, we aim to generate bass guitar tablatures given other instruments' scores, in the context of western popular music.
-Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures.
-
-
-% Abstract challenges: (high-level such as: propose an informatic representation of music...)
-This project presents many challenges. At a high level, we first have to scrap and preprocess large amounts of data in the form of music scores.
-Then we have to come up with an informatic representation of music that is adapted to the task of generating bass guitar tablatures.
-That is, a way to encode music scores in a way that is meaningful to the transformer architecture we will use.
-
-
-
-However, adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
-Tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
-
+More precisely, we aim at generating bass guitar tablatures given other instruments' scores, in the context of western popular music.
+Our goal will be to try several combinations of instruments and to evaluate the quality of the generated tablatures both numerically and using the help of musicians.
 
 
 % Terms definition (tablature, add the period when it was used)
-Tablatures are a way to represent music for string instruments. They contain information about the fingering to use to play the notes and the rhythm.
-% add a fig (Kryptonite - 3 Doors down - electric guitar introduction)
-
 % Difference between guitar and bass (role in the music)
+To understand better what is at stake in this challenge, we will first define precisely the role of bass guitar in the context of western popular music.
+As human ear has a better perception of pulses in low frequencies,
+it is said that the bass guitar is part of the rythmic section of the band (together with the drums)\cite{hoveSuperiorTimePerception2014}.
+However, bass guitar also performs a harmonic - and sometimes melodic - role in the music, sustaining the lead instruments and adding depth to the music.
+% add a fig Time is running out, melodic and rythmic bass
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.5\linewidth]{figs/rythmic_tab_TIRO.png}
+        \caption{Rythmic extract}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.5\linewidth]{figs/melodic_tab_TIRO.png}
+        \caption{Melodic extract}
+    \end{minipage}
+    \label{fig:bass_tab_TIRO}
+    \caption{Rythmic and melodic extracts in Time is Running Out by Muse}
+\end{figure}
+
+\ref{fig:bass_tab_TIRO} shows a tablature and score extract of both a rythmic and a more melodic bass.
+Scores display the notes to play, while tablatures show the fingering to use on the instrument.
+More precisely, each line of the tablature represent a string of the instrument, and the numbers represent the fret to press on the string.
+For instance in the figure on the right, the bassist will start by playing the the fourth string with the first fret.
+Tablatures don't contain the rythmic information which is why they are generally combined with scores.
+Else, the musician has to know the song to play it correctly.
+
+
+% Abstract challenges: (high-level such as: propose an informatic representation of music...)
+Generating bass guitar tablatures presents several challenges.
+At a high level, we first have to scrap and preprocess large amounts of data in the form of music scores.
+Then we have to come up with an informatic representation of music that is adapted to the task of generating bass guitar tablatures.
+That is, a way to encode music scores in a meaningful way to the transformer architecture we will use.
+We will start by trying state of the art models but we will have to adapt and tune them to the task at hand.
+
+
+\section*{State of the art}
+
+% Challenges (tokenization, conditional generation, attention, data cleaning), training of the model)
+Adapting the transformer architecture - originally applied on text - to symbolic music presents many challenges.
+Especially, tokenization has to be adapted, data is much less available, and attention has to be tailored to the context\cite{leNaturalLanguageProcessing2024}.
+
+Tokenization in the context of deep learning music generation has been discussed by several previous works
+\cite{agarwalStructureinformedPositionalEncoding2024, makrisConditionalDrumsGeneration2022, sarmentoDadaGPDatasetTokenized2021, hsiaoCompoundWordTransformer2021, cournutEncodagesTablaturesPour2020}
 
 
 % State of the art (survey, DadaGP, Compound Gen, Structure-informed positional encoding, gen coherent drum accompaniment)
 % ResearchRabbit to find potential other articles
-
-% Challenges (tokenization, conditional generation, attention, data cleaning), training of the model)
 
 % What we have done (data preprocessing, getting the rythmic instrument, retrieving the tokens, baseline using dadagp (GuitarCTRL))
 % draw io fig of the model
