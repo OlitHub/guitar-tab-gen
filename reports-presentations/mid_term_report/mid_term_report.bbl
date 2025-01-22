@@ -1,0 +1,823 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{vaswani_attention_2023}{misc}{}{}
+      \name{author}{8}{}{%
+        {{hash=7f28e84700536646dd6620a0db07ad09}{%
+           family={Vaswani},
+           familyi={V\bibinitperiod},
+           given={Ashish},
+           giveni={A\bibinitperiod}}}%
+        {{hash=62efade83d70f0323fe248755e6c90c5}{%
+           family={Shazeer},
+           familyi={S\bibinitperiod},
+           given={Noam},
+           giveni={N\bibinitperiod}}}%
+        {{hash=06649ebab1ea5cac0250746a19764975}{%
+           family={Parmar},
+           familyi={P\bibinitperiod},
+           given={Niki},
+           giveni={N\bibinitperiod}}}%
+        {{hash=831027ee0ebf22375e2a86afc1881909}{%
+           family={Uszkoreit},
+           familyi={U\bibinitperiod},
+           given={Jakob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2fd2982e30ebcec93ec1cf76e0d797fd}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Llion},
+           giveni={L\bibinitperiod}}}%
+        {{hash=27b07e4eacbf4ef7a1438e3badb7dd8d}{%
+           family={Gomez},
+           familyi={G\bibinitperiod},
+           given={Aidan\bibnamedelima N.},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=f2bc899b1160163417da7bf510f15d33}{%
+           family={Kaiser},
+           familyi={K\bibinitperiod},
+           given={Lukasz},
+           giveni={L\bibinitperiod}}}%
+        {{hash=95595a0fefb86187cbc36e551017d332}{%
+           family={Polosukhin},
+           familyi={P\bibinitperiod},
+           given={Illia},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{ee273ab30cfb889666f8c4d806eb9ce7}
+      \strng{fullhash}{f82970bbd2bdd7a002d2af62b743d5cc}
+      \strng{fullhashraw}{f82970bbd2bdd7a002d2af62b743d5cc}
+      \strng{bibnamehash}{ee273ab30cfb889666f8c4d806eb9ce7}
+      \strng{authorbibnamehash}{ee273ab30cfb889666f8c4d806eb9ce7}
+      \strng{authornamehash}{ee273ab30cfb889666f8c4d806eb9ce7}
+      \strng{authorfullhash}{f82970bbd2bdd7a002d2af62b743d5cc}
+      \strng{authorfullhashraw}{f82970bbd2bdd7a002d2af62b743d5cc}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.}
+      \field{month}{8}
+      \field{note}{arXiv:1706.03762}
+      \field{title}{Attention {Is} {All} {You} {Need}}
+      \field{urlday}{15}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Preprint PDF:C\:\\Users\\oanou\\Zotero\\storage\\NB7KWWZB\\Vaswani et al. - 2023 - Attention Is All You Need.pdf:application/pdf;Snapshot:C\:\\Users\\oanou\\Zotero\\storage\\U325GBVN\\1706.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1706.03762
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1706.03762
+      \endverb
+      \keyw{Computer Science - Machine Learning,Computer Science - Computation and Language}
+    \endentry
+    \entry{le_natural_2024}{misc}{}{}
+      \name{author}{4}{}{%
+        {{hash=7976c4abff6da9f3988931419e318561}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Dinh-Viet-Toan},
+           giveni={D\bibinithyphendelim V\bibinithyphendelim T\bibinitperiod}}}%
+        {{hash=e686bdd8fdd2a400c824e6aa9dd01ffd}{%
+           family={Bigo},
+           familyi={B\bibinitperiod},
+           given={Louis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=08610c5a12e8fb596e42cdd0068cb449}{%
+           family={Keller},
+           familyi={K\bibinitperiod},
+           given={Mikaela},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fdae87cad6eeb39b72cfdb074d296c7b}{%
+           family={Herremans},
+           familyi={H\bibinitperiod},
+           given={Dorien},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{0104ae14344cea2ab4e025b86c7bf8e8}
+      \strng{fullhash}{678b0dee4f56058c604adcdeaef01a4a}
+      \strng{fullhashraw}{678b0dee4f56058c604adcdeaef01a4a}
+      \strng{bibnamehash}{678b0dee4f56058c604adcdeaef01a4a}
+      \strng{authorbibnamehash}{678b0dee4f56058c604adcdeaef01a4a}
+      \strng{authornamehash}{0104ae14344cea2ab4e025b86c7bf8e8}
+      \strng{authorfullhash}{678b0dee4f56058c604adcdeaef01a4a}
+      \strng{authorfullhashraw}{678b0dee4f56058c604adcdeaef01a4a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Several adaptations of Transformers models have been developed in various domains since its breakthrough in Natural Language Processing (NLP). This trend has spread into the field of Music Information Retrieval (MIR), including studies processing music data. However, the practice of leveraging NLP tools for symbolic music data is not novel in MIR. Music has been frequently compared to language, as they share several similarities, including sequential representations of text and music. These analogies are also reflected through similar tasks in MIR and NLP.}
+      \field{month}{2}
+      \field{note}{arXiv:2402.17467 [cs, eess]}
+      \field{shorttitle}{Natural {Language} {Processing} {Methods} for {Symbolic} {Music} {Generation} and {Information} {Retrieval}}
+      \field{title}{Natural {Language} {Processing} {Methods} for {Symbolic} {Music} {Generation} and {Information} {Retrieval}: a {Survey}}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\8MQPSZTE\\Le et al. - 2024 - Natural Language Processing Methods for Symbolic Music Generation and Information Retrieval a Surve.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2402.17467
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2402.17467
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Information Retrieval,Computer Science - Sound,Electrical Engineering and Systems Science - Audio and Speech Processing}
+    \endentry
+    \entry{bacot_tablature_2025}{unpublished}{}{}
+      \name{author}{3}{}{%
+        {{hash=ba95b2016803444a955389769db3227e}{%
+           family={Bacot},
+           familyi={B\bibinitperiod},
+           given={Baptiste},
+           giveni={B\bibinitperiod}}}%
+        {{hash=e686bdd8fdd2a400c824e6aa9dd01ffd}{%
+           family={Bigo},
+           familyi={B\bibinitperiod},
+           given={Louis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=3fdacc578798399e8cab0dd6dfdcfccd}{%
+           family={Navarret},
+           familyi={N\bibinitperiod},
+           given={Benoît},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e41f03d40dc8577aa93cd8f565d6980d}
+      \strng{fullhash}{d04725a75e07cbdcf662b9ae39987d84}
+      \strng{fullhashraw}{d04725a75e07cbdcf662b9ae39987d84}
+      \strng{bibnamehash}{d04725a75e07cbdcf662b9ae39987d84}
+      \strng{authorbibnamehash}{d04725a75e07cbdcf662b9ae39987d84}
+      \strng{authornamehash}{e41f03d40dc8577aa93cd8f565d6980d}
+      \strng{authorfullhash}{d04725a75e07cbdcf662b9ae39987d84}
+      \strng{authorfullhashraw}{d04725a75e07cbdcf662b9ae39987d84}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Tablature software and popular music composition: a user study and perspectives on creative algorithmic tools}
+      \field{year}{2025}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\4DYNZDRQ\\Bacot et al. - Tablature software and popular music composition a user study and perspectives on creative algorit.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{hove_superior_2014}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=ecfbfe494f3f0cdfe664dfd362790772}{%
+           family={Hove},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=851e7704e2296c8c3824396f3f6898cf}{%
+           family={Marie},
+           familyi={M\bibinitperiod},
+           given={Céline},
+           giveni={C\bibinitperiod}}}%
+        {{hash=bca146383feba67171e6fd1128a06f1c}{%
+           family={Bruce},
+           familyi={B\bibinitperiod},
+           given={Ian\bibnamedelima C.},
+           giveni={I\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=6e69b432ce9180408a31a7679f62d147}{%
+           family={Trainor},
+           familyi={T\bibinitperiod},
+           given={Laurel\bibnamedelima J.},
+           giveni={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{269dc36c901db3e46208b5dd84458b8e}
+      \strng{fullhash}{ea883c7107ce87729fe2da47ef86e560}
+      \strng{fullhashraw}{ea883c7107ce87729fe2da47ef86e560}
+      \strng{bibnamehash}{ea883c7107ce87729fe2da47ef86e560}
+      \strng{authorbibnamehash}{ea883c7107ce87729fe2da47ef86e560}
+      \strng{authornamehash}{269dc36c901db3e46208b5dd84458b8e}
+      \strng{authorfullhash}{ea883c7107ce87729fe2da47ef86e560}
+      \strng{authorfullhashraw}{ea883c7107ce87729fe2da47ef86e560}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The auditory environment typically contains several sound sources that overlap in time, and the auditory system parses the complex sound wave into streams or voices that represent the various sound sources. Music is also often polyphonic. Interestingly, the main melody (spectral/pitch information) is most often carried by the highest-pitched voice, and the rhythm (temporal foundation) is most often laid down by the lowest-pitched voice. Previous work using electroencephalography (EEG) demonstrated that the auditory cortex encodes pitch more robustly in the higher of two simultaneous tones or melodies, and modeling work indicated that this high-voice superiority for pitch originates in the sensory periphery. Here, we investigated the neural basis of carrying rhythmic timing information in lower-pitched voices. We presented simultaneous high-pitched and low-pitched tones in an isochronous stream and occasionally presented either the higher or the lower tone 50 ms earlier than expected, while leaving the other tone at the expected time. EEG recordings revealed that mismatch negativity responses were larger for timing deviants of the lower tones, indicating better timing encoding for lower-pitched compared with higher-pitch tones at the level of auditory cortex. A behavioral motor task revealed that tapping synchronization was more influenced by the lower-pitched stream. Results from a biologically plausible model of the auditory periphery suggest that nonlinear cochlear dynamics contribute to the observed effect. The low-voice superiority effect for encoding timing explains the widespread musical practice of carrying rhythm in bass-ranged instruments and complements previously established high-voice superiority effects for pitch and melody.}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{month}{7}
+      \field{note}{Publisher: Proceedings of the National Academy of Sciences}
+      \field{number}{28}
+      \field{title}{Superior time perception for lower musical pitch explains why bass-ranged instruments lay down musical rhythms}
+      \field{urlday}{21}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{volume}{111}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \field{pages}{10383\bibrangedash 10388}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1073/pnas.1402039111
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\C8LB4FST\\Hove et al. - 2014 - Superior time perception for lower musical pitch explains why bass-ranged instruments lay down music.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.pnas.org/doi/10.1073/pnas.1402039111
+      \endverb
+      \verb{url}
+      \verb https://www.pnas.org/doi/10.1073/pnas.1402039111
+      \endverb
+    \endentry
+    \entry{sarmento_dadagp_2021}{misc}{}{}
+      \name{author}{6}{}{%
+        {{hash=92b0f740116fd980c08930a1eaa0e802}{%
+           family={Sarmento},
+           familyi={S\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3bd7ae2c44e397de05de5ab18c5b9cfd}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Adarsh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cb903dfbc927197d691400664efa87c2}{%
+           family={Carr},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi J.},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=9ffab4bbffdcaebb4bb6d39b39ef88d3}{%
+           family={Zukowski},
+           familyi={Z\bibinitperiod},
+           given={Zack},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=018cf62bd03e53ac67d841ba16d42c85}{%
+           family={Barthet},
+           familyi={B\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dc4d44f6814797864181d8ee2756517f}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yi-Hsuan},
+           giveni={Y\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{7905da357777d423391c8ce1ce35994d}
+      \strng{fullhash}{21e879e8ce21b3d38e22df55df035e11}
+      \strng{fullhashraw}{21e879e8ce21b3d38e22df55df035e11}
+      \strng{bibnamehash}{21e879e8ce21b3d38e22df55df035e11}
+      \strng{authorbibnamehash}{21e879e8ce21b3d38e22df55df035e11}
+      \strng{authornamehash}{7905da357777d423391c8ce1ce35994d}
+      \strng{authorfullhash}{21e879e8ce21b3d38e22df55df035e11}
+      \strng{authorfullhashraw}{21e879e8ce21b3d38e22df55df035e11}
+      \field{extraname}{1}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Originating in the Renaissance and burgeoning in the digital era, tablatures are a commonly used music notation system which provides explicit representations of instrument ﬁngerings rather than pitches. GuitarPro has established itself as a widely used tablature format and software enabling musicians to edit and share songs for musical practice, learning, and composition. In this work, we present DadaGP, a new symbolic music dataset comprising 26,181 song scores in the GuitarPro format covering 739 musical genres, along with an accompanying tokenized format well-suited for generative sequence models such as the Transformer. The tokenized format is inspired by event-based MIDI encodings, often used in symbolic music generation models. The dataset is released with an encoder/decoder which converts GuitarPro ﬁles to tokens and back. We present results of a use case in which DadaGP is used to train a Transformer-based model to generate new songs in GuitarPro format. We discuss other relevant use cases for the dataset (guitar-bass transcription, music style transfer and artist/genre classiﬁcation) as well as ethical implications. DadaGP opens up the possibility to train GuitarPro score generators, ﬁne-tune models on custom data, create new styles of music, AI-powered songwriting apps, and human-AI improvisation.}
+      \field{month}{7}
+      \field{note}{arXiv:2107.14653 [cs, eess]}
+      \field{shorttitle}{{DadaGP}}
+      \field{title}{{DadaGP}: {A} {Dataset} of {Tokenized} {GuitarPro} {Songs} for {Sequence} {Models}}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\YUUP27WL\\Sarmento et al. - 2021 - DadaGP A Dataset of Tokenized GuitarPro Songs for Sequence Models.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2107.14653
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2107.14653
+      \endverb
+      \keyw{Computer Science - Sound,Electrical Engineering and Systems Science - Audio and Speech Processing,Computer Science - Machine Learning}
+    \endentry
+    \entry{makris_conditional_2022}{misc}{}{}
+      \name{author}{4}{}{%
+        {{hash=0dcecc7736753302481ab34658ae61eb}{%
+           family={Makris},
+           familyi={M\bibinitperiod},
+           given={Dimos},
+           giveni={D\bibinitperiod}}}%
+        {{hash=7a7d4c32b1ca2415bae5be7d6062c116}{%
+           family={Zixun},
+           familyi={Z\bibinitperiod},
+           given={Guo},
+           giveni={G\bibinitperiod}}}%
+        {{hash=cf60dc5af6b4085aafab2f4d0837dc89}{%
+           family={Kaliakatsos-Papakostas},
+           familyi={K\bibinithyphendelim P\bibinitperiod},
+           given={Maximos},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fdae87cad6eeb39b72cfdb074d296c7b}{%
+           family={Herremans},
+           familyi={H\bibinitperiod},
+           given={Dorien},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{03627e7b0dfba239d43a948347e7b39a}
+      \strng{fullhash}{bbeb6d591996232da3dfe65174d5a9c9}
+      \strng{fullhashraw}{bbeb6d591996232da3dfe65174d5a9c9}
+      \strng{bibnamehash}{bbeb6d591996232da3dfe65174d5a9c9}
+      \strng{authorbibnamehash}{bbeb6d591996232da3dfe65174d5a9c9}
+      \strng{authornamehash}{03627e7b0dfba239d43a948347e7b39a}
+      \strng{authorfullhash}{bbeb6d591996232da3dfe65174d5a9c9}
+      \strng{authorfullhashraw}{bbeb6d591996232da3dfe65174d5a9c9}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The ﬁeld of automatic music composition has seen great progress in recent years, speciﬁcally with the invention of transformerbased architectures. When using any deep learning model which considers music as a sequence of events with multiple complex dependencies, the selection of a proper data representation is crucial. In this paper, we tackle the task of conditional drums generation using a novel data encoding scheme inspired by the Compound Word representation, a tokenization process of sequential data. Therefore, we present a sequence-to-sequence architecture where a Bidirectional Long short-term memory (BiLSTM) Encoder receives information about the conditioning parameters (i.e., accompanying tracks and musical attributes), while a Transformer-based Decoder with relative global attention produces the generated drum sequences. We conducted experiments to thoroughly compare the eﬀectiveness of our method to several baselines. Quantitative evaluation shows that our model is able to generate drums sequences that have similar statistical distributions and characteristics to the training corpus. These features include syncopation, compression ratio, and symmetry among others. We also veriﬁed, through a listening test, that generated drum sequences sound pleasant, natural and coherent while they “groove” with the given accompaniment.}
+      \field{month}{2}
+      \field{note}{arXiv:2202.04464 [cs, eess]}
+      \field{title}{Conditional {Drums} {Generation} using {Compound} {Word} {Representations}}
+      \field{urlday}{9}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\DA6F97VR\\Makris et al. - 2022 - Conditional Drums Generation using Compound Word Representations.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2202.04464
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2202.04464
+      \endverb
+      \keyw{Computer Science - Sound,Electrical Engineering and Systems Science - Audio and Speech Processing,Computer Science - Machine Learning}
+    \endentry
+    \entry{agarwal_structure-informed_2024}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=8beae8a1b061b334b96cde68f968a111}{%
+           family={Agarwal},
+           familyi={A\bibinitperiod},
+           given={Manvi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=03478ba871580b32ae5fd2efb39834c6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Changhong},
+           giveni={C\bibinitperiod}}}%
+        {{hash=aec7d43f7c5ea1426c242ee4c14428fd}{%
+           family={Richard},
+           familyi={R\bibinitperiod},
+           given={Gaël},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{9b099da350afe87469f07eda6487c9ec}
+      \strng{fullhash}{1a763db84a268c0c684fc76f5ea9278b}
+      \strng{fullhashraw}{1a763db84a268c0c684fc76f5ea9278b}
+      \strng{bibnamehash}{1a763db84a268c0c684fc76f5ea9278b}
+      \strng{authorbibnamehash}{1a763db84a268c0c684fc76f5ea9278b}
+      \strng{authornamehash}{9b099da350afe87469f07eda6487c9ec}
+      \strng{authorfullhash}{1a763db84a268c0c684fc76f5ea9278b}
+      \strng{authorfullhashraw}{1a763db84a268c0c684fc76f5ea9278b}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Music generated by deep learning methods often suffers from a lack of coherence and long-term organization. Yet, multi-scale hierarchical structure is a distinctive feature of music signals. To leverage this information, we propose a structure-informed positional encoding framework for music generation with Transformers. We design three variants in terms of absolute, relative and non-stationary positional information. We comprehensively test them on two symbolic music generation tasks: next-timestep prediction and accompaniment generation. As a comparison, we choose multiple baselines from the literature and demonstrate the merits of our methods using several musically-motivated evaluation metrics. In particular, our methods improve the melodic and structural consistency of the generated pieces.}
+      \field{month}{2}
+      \field{note}{arXiv:2402.13301 [cs, eess]}
+      \field{title}{Structure-informed {Positional} {Encoding} for {Music} {Generation}}
+      \field{urlday}{9}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\4CWKYNBY\\Agarwal et al. - 2024 - Structure-informed Positional Encoding for Music Generation.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2402.13301
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2402.13301
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Sound,Electrical Engineering and Systems Science - Audio and Speech Processing}
+    \endentry
+    \entry{hsiao_compound_2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=f47bb192428e72b66eb056ce28de7dda}{%
+           family={Hsiao},
+           familyi={H\bibinitperiod},
+           given={Wen-Yi},
+           giveni={W\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=5ae179d9fb81470267f662a100c374a2}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jen-Yu},
+           giveni={J\bibinithyphendelim Y\bibinitperiod}}}%
+        {{hash=3c74b5330607cde44cbcfaec7ad290c0}{%
+           family={Yeh},
+           familyi={Y\bibinitperiod},
+           given={Yin-Cheng},
+           giveni={Y\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=dc4d44f6814797864181d8ee2756517f}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yi-Hsuan},
+           giveni={Y\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{ab7dc58b23ee37c4cdc4f1b7d8baf3c1}
+      \strng{fullhash}{304272da05fb2486682b208b04e4043d}
+      \strng{fullhashraw}{304272da05fb2486682b208b04e4043d}
+      \strng{bibnamehash}{304272da05fb2486682b208b04e4043d}
+      \strng{authorbibnamehash}{304272da05fb2486682b208b04e4043d}
+      \strng{authornamehash}{ab7dc58b23ee37c4cdc4f1b7d8baf3c1}
+      \strng{authorfullhash}{304272da05fb2486682b208b04e4043d}
+      \strng{authorfullhashraw}{304272da05fb2486682b208b04e4043d}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{To apply neural sequence models such as the Transformers to music generation tasks, one has to represent a piece of music by a sequence of tokens drawn from a finite set of pre-defined vocabulary. Such a vocabulary usually involves tokens of various types. For example, to describe a musical note, one needs separate tokens to indicate the note’s pitch, duration, velocity (dynamics), and placement (onset time) along the time grid. While different types of tokens may possess different properties, existing models usually treat them equally, in the same way as modeling words in natural languages. In this paper, we present a conceptually different approach that explicitly takes into account the type of the tokens, such as note types and metric types. And, we propose a new Transformer decoder architecture that uses different feed-forward heads to model tokens of different types. With an expansion-compression trick, we convert a piece of music to a sequence of compound words by grouping neighboring tokens, greatly reducing the length of the token sequences. We show that the resulting model can be viewed as a learner over dynamic directed hypergraphs. And, we employ it to learn to compose expressive Pop piano music of full-song length (involving up to 10K individual tokens per song), both conditionally and unconditionally. Our experiment shows that, compared to state-of-the-art models, the proposed model converges 5 to 10 times faster at training (i.e., within a day on a single GPU with 11 GB memory), and with comparable quality in the generated music}
+      \field{issn}{2374-3468}
+      \field{journaltitle}{Proceedings of the AAAI Conference on Artificial Intelligence}
+      \field{month}{5}
+      \field{note}{Number: 1}
+      \field{number}{1}
+      \field{shorttitle}{Compound {Word} {Transformer}}
+      \field{title}{Compound {Word} {Transformer}: {Learning} to {Compose} {Full}-{Song} {Music} over {Dynamic} {Directed} {Hypergraphs}}
+      \field{urlday}{21}
+      \field{urlmonth}{1}
+      \field{urlyear}{2025}
+      \field{volume}{35}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{178\bibrangedash 186}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1609/aaai.v35i1.16091
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\H5QMGZGY\\Hsiao et al. - 2021 - Compound Word Transformer Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://ojs.aaai.org/index.php/AAAI/article/view/16091
+      \endverb
+      \verb{url}
+      \verb https://ojs.aaai.org/index.php/AAAI/article/view/16091
+      \endverb
+      \keyw{Art/Music/Creativity}
+    \endentry
+    \entry{cournut_encodages_2020}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=cd9d78ef1e376597538e28076434c388}{%
+           family={Cournut},
+           familyi={C\bibinitperiod},
+           given={Jules},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e686bdd8fdd2a400c824e6aa9dd01ffd}{%
+           family={Bigo},
+           familyi={B\bibinitperiod},
+           given={Louis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=15c1382498ea9d34a03b78c94ec4b7d1}{%
+           family={Giraud},
+           familyi={G\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0e114fcb893c9e96e896bc25a778900a}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Strasbourg (en ligne), France}%
+      }
+      \strng{namehash}{f21f5cddc537e5eb08e0d36e25518fa1}
+      \strng{fullhash}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \strng{fullhashraw}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \strng{bibnamehash}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \strng{authorbibnamehash}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \strng{authornamehash}{f21f5cddc537e5eb08e0d36e25518fa1}
+      \strng{authorfullhash}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \strng{authorfullhashraw}{bdf6fe6a0d7df2e3b367b967afa075fb}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Journées d'{Informatique} {Musicale} ({JIM} 2020)}
+      \field{title}{Encodages de tablatures pour l'analyse de musique pour guitare}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb HAL PDF Full Text:C\:\\Users\\oanou\\Zotero\\storage\\845FRSUL\\Cournut et al. - 2020 - Encodages de tablatures pour l'analyse de musique pour guitare.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://hal.science/hal-02934382
+      \endverb
+      \verb{url}
+      \verb https://hal.science/hal-02934382
+      \endverb
+    \endentry
+    \entry{sarmento_gtr-ctrl_2023}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=92b0f740116fd980c08930a1eaa0e802}{%
+           family={Sarmento},
+           familyi={S\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3bd7ae2c44e397de05de5ab18c5b9cfd}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Adarsh},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4cbd9d2fc19a7e8acb2ed7f7dbb95156}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Yu-Hua},
+           giveni={Y\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=cb903dfbc927197d691400664efa87c2}{%
+           family={Carr},
+           familyi={C\bibinitperiod},
+           given={CJ},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9ffab4bbffdcaebb4bb6d39b39ef88d3}{%
+           family={Zukowski},
+           familyi={Z\bibinitperiod},
+           given={Zack},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=018cf62bd03e53ac67d841ba16d42c85}{%
+           family={Barthet},
+           familyi={B\bibinitperiod},
+           given={Mathieu},
+           giveni={M\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=9ef0cac2a11ccca1d0ea584013de07db}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Colin},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d4c92109cbe68b2384a9fc5ac45c2652}{%
+           family={Rodríguez-Fernández},
+           familyi={R\bibinithyphendelim F\bibinitperiod},
+           given={Nereida},
+           giveni={N\bibinitperiod}}}%
+        {{hash=47ab044477e2c86a341f89a9391e737e}{%
+           family={Rebelo},
+           familyi={R\bibinitperiod},
+           given={Sérgio\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature Switzerland}%
+      }
+      \strng{namehash}{7905da357777d423391c8ce1ce35994d}
+      \strng{fullhash}{638c7581c14983e74efab4a21c237341}
+      \strng{fullhashraw}{638c7581c14983e74efab4a21c237341}
+      \strng{bibnamehash}{638c7581c14983e74efab4a21c237341}
+      \strng{authorbibnamehash}{638c7581c14983e74efab4a21c237341}
+      \strng{authornamehash}{7905da357777d423391c8ce1ce35994d}
+      \strng{authorfullhash}{638c7581c14983e74efab4a21c237341}
+      \strng{authorfullhashraw}{638c7581c14983e74efab4a21c237341}
+      \strng{editorbibnamehash}{878bea7ebf973f0fb2b99a24f2e63e4a}
+      \strng{editornamehash}{14facb5937236dd024d6615be9f79d4d}
+      \strng{editorfullhash}{878bea7ebf973f0fb2b99a24f2e63e4a}
+      \strng{editorfullhashraw}{878bea7ebf973f0fb2b99a24f2e63e4a}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Recently, symbolic music generation with deep learning techniques has witnessed steady improvements. Most works on this topic focus on MIDI representations, but less attention has been paid to symbolic music generation using guitar tablatures (tabs) which can be used to encode multiple instruments. Tabs include information on expressive techniques and fingerings for fretted string instruments in addition to rhythm and pitch. In this work, we use the DadaGP dataset for guitar tab music generation, a corpus of over 26k songs in GuitarPro and token formats. We introduce methods to condition a Transformer-XL deep learning model to generate guitar tabs (GTR-CTRL) based on desired instrumentation (inst-CTRL) and genre (genre-CTRL). Special control tokens are appended at the beginning of each song in the training corpus. We assess the performance of the model with and without conditioning. We propose instrument presence metrics to assess the inst-CTRL model’s response to a given instrumentation prompt. We trained a BERT model for downstream genre classification and used it to assess the results obtained with the genre-CTRL model. Statistical analyses evidence significant differences between the conditioned and unconditioned models. Overall, results indicate that the GTR-CTRL methods provide more flexibility and control for guitar-focused symbolic music generation than an unconditioned model.}
+      \field{booktitle}{Artificial {Intelligence} in {Music}, {Sound}, {Art} and {Design}}
+      \field{isbn}{978-3-031-29956-8}
+      \field{shorttitle}{{GTR}-{CTRL}}
+      \field{title}{{GTR}-{CTRL}: {Instrument} and {Genre} {Conditioning} for {Guitar}-{Focused} {Music} {Generation} with {Transformers}}
+      \field{year}{2023}
+      \field{pages}{260\bibrangedash 275}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1007/978-3-031-29956-8_17
+      \endverb
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\9SDVXFNM\\Sarmento et al. - 2023 - GTR-CTRL Instrument and Genre Conditioning for Guitar-Focused Music Generation with Transformers.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{dai_transformer-xl_2019}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=74ae4c193de464cda59c8066619514fd}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Zihang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=6b1fa069ba3a41402c63a24209e47289}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Zhilin},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=be6dc43fe1771d8870237ce7a47c6f7f}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Yiming},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=4e523aba9ce388c6b542f2f6e52293c2}{%
+           family={Carbonell},
+           familyi={C\bibinitperiod},
+           given={Jaime},
+           giveni={J\bibinitperiod}}}%
+        {{hash=841a83a4bb5e622d6e1bde4818879016}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Quoc},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=bd2be300d445e9f6db7808f9533e66cb}{%
+           family={Salakhutdinov},
+           familyi={S\bibinitperiod},
+           given={Ruslan},
+           giveni={R\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=088f1cd997c8227387a06e1cb2dc1538}{%
+           family={Korhonen},
+           familyi={K\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod}}}%
+        {{hash=852889328d57da2df5bccea3165205d0}{%
+           family={Traum},
+           familyi={T\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=98a908240c23e42cd08857cd67e53cff}{%
+           family={Màrquez},
+           familyi={M\bibinitperiod},
+           given={Lluís},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Florence, Italy}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{64f332e195de5d241c9866cc6621f71f}
+      \strng{fullhash}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{fullhashraw}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{bibnamehash}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{authorbibnamehash}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{authornamehash}{64f332e195de5d241c9866cc6621f71f}
+      \strng{authorfullhash}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{authorfullhashraw}{e28267dd567ba8c114b09efa1fe06f1e}
+      \strng{editorbibnamehash}{5d0d019d65674f287aa73e6f7f5b6291}
+      \strng{editornamehash}{5c88cffc3efd571ed140bf0bd890dbe2}
+      \strng{editorfullhash}{5d0d019d65674f287aa73e6f7f5b6291}
+      \strng{editorfullhashraw}{5d0d019d65674f287aa73e6f7f5b6291}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Transformers have a potential of learning longer-term dependency, but are limited by a fixed-length context in the setting of language modeling. We propose a novel neural architecture Transformer-XL that enables learning dependency beyond a fixed length without disrupting temporal coherence. It consists of a segment-level recurrence mechanism and a novel positional encoding scheme. Our method not only enables capturing longer-term dependency, but also resolves the context fragmentation problem. As a result, Transformer-XL learns dependency that is 80\% longer than RNNs and 450\% longer than vanilla Transformers, achieves better performance on both short and long sequences, and is up to 1,800+ times faster than vanilla Transformers during evaluation. Notably, we improve the state-of-the-art results of bpc/perplexity to 0.99 on enwiki8, 1.08 on text8, 18.3 on WikiText-103, 21.8 on One Billion Word, and 54.5 on Penn Treebank (without finetuning). When trained only on WikiText-103, Transformer-XL manages to generate reasonably coherent, novel text articles with thousands of tokens. Our code, pretrained models, and hyperparameters are available in both Tensorflow and PyTorch.}
+      \field{booktitle}{Proceedings of the 57th {Annual} {Meeting} of the {Association} for {Computational} {Linguistics}}
+      \field{month}{7}
+      \field{shorttitle}{Transformer-{XL}}
+      \field{title}{Transformer-{XL}: {Attentive} {Language} {Models} beyond a {Fixed}-{Length} {Context}}
+      \field{urlday}{22}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{2978\bibrangedash 2988}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.18653/v1/P19-1285
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\BG9H8M2U\\Dai et al. - 2019 - Transformer-XL Attentive Language Models beyond a Fixed-Length Context.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://aclanthology.org/P19-1285
+      \endverb
+      \verb{url}
+      \verb https://aclanthology.org/P19-1285
+      \endverb
+    \endentry
+    \entry{graves_framewise_2005}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=e9bdfa299b60985e61d954d9c8981eaa}{%
+           family={Graves},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=07e9fb186fd9976e6be82e64365dc308}{%
+           family={Schmidhuber},
+           familyi={S\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Montreal, Que., Canada}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{fullhash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{fullhashraw}{7e975189adf40e111a86121ecb34b06d}
+      \strng{bibnamehash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{authorbibnamehash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{authornamehash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{authorfullhash}{7e975189adf40e111a86121ecb34b06d}
+      \strng{authorfullhashraw}{7e975189adf40e111a86121ecb34b06d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we apply bidirectional training to a Long Short Term Memory (LSTM) network for the ﬁrst time. We also present a modiﬁed, full gradient version of the LSTM learning algorithm. We discuss the signiﬁcance of framewise phoneme classiﬁcation to continuous speech recognition, and the validity of using bidirectional networks for online causal tasks. On the TIMIT speech database, we measure the framewise phoneme classiﬁcation scores of bidirectional and unidirectional variants of both LSTM and conventional Recurrent Neural Networks (RNNs). We ﬁnd that bidirectional LSTM outperforms both RNNs and unidirectional LSTM.}
+      \field{booktitle}{Proceedings. 2005 {IEEE} {International} {Joint} {Conference} on {Neural} {Networks}, 2005.}
+      \field{isbn}{978-0-7803-9048-5}
+      \field{title}{Framewise phoneme classification with bidirectional {LSTM} networks}
+      \field{urlday}{15}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{volume}{4}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \field{pages}{2047\bibrangedash 2052}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/IJCNN.2005.1556215
+      \endverb
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\KU43FU95\\Graves et Schmidhuber - 2005 - Framewise phoneme classification with bidirectional LSTM networks.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://ieeexplore.ieee.org/document/1556215/
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/document/1556215/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

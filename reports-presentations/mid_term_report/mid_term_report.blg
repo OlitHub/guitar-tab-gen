@@ -1,0 +1,15 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'mid_term_report.blg'
+[229] biber-MSWIN64:340> INFO - === 
+[312] Biber.pm:420> INFO - Reading 'mid_term_report.bcf'
+[407] Biber.pm:994> INFO - Found 12 citekeys in bib section 0
+[420] Biber.pm:4463> INFO - Processing section 0
+[455] Biber.pm:4654> INFO - Looking for bibtex file 'bgtg_lib.bib' for section 0
+[522] bibtex.pm:1713> INFO - LaTeX decoding ...
+[562] bibtex.pm:1519> INFO - Found BibTeX data source 'bgtg_lib.bib'
+[768] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[768] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[769] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[769] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[815] bbl.pm:676> INFO - Writing 'mid_term_report.bbl' with encoding 'UTF-8'
+[829] bbl.pm:779> INFO - Output to mid_term_report.bbl

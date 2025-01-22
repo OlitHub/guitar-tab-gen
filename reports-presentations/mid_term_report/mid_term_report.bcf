@@ -2373,11 +2373,34 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bgtg_lib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">vaswaniAttentionAllYou2023</bcf:citekey>
-    <bcf:citekey order="1" intorder="2">leNaturalLanguageProcessing2024</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">vaswani_attention_2023</bcf:citekey>
+    <bcf:citekey order="1" intorder="2">le_natural_2024</bcf:citekey>
     <bcf:citekey order="2" intorder="1">bacot_tablature_2025</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">hoveSuperiorTimePerception2014</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">leNaturalLanguageProcessing2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">hove_superior_2014</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="8" intorder="2">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">agarwal_structure-informed_2024</bcf:citekey>
+    <bcf:citekey order="9" intorder="2">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="9" intorder="3">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="9" intorder="4">hsiao_compound_2021</bcf:citekey>
+    <bcf:citekey order="9" intorder="5">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="10" intorder="2">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">hsiao_compound_2021</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">dai_transformer-xl_2019</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">graves_framewise_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
