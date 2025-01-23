@@ -817,6 +817,46 @@
       \verb http://ieeexplore.ieee.org/document/1556215/
       \endverb
     \endentry
+    \entry{regnier_identification_2021}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2ea6af6736c402f1285975e79b3cb974}{%
+           family={Régnier},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0e114fcb893c9e96e896bc25a778900a}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=e686bdd8fdd2a400c824e6aa9dd01ffd}{%
+           family={Bigo},
+           familyi={B\bibinitperiod},
+           given={Louis},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{c78054816c129d81c504c3f66e08538c}
+      \strng{fullhash}{ab01aa1771dbe9297fb4b44c632181b6}
+      \strng{fullhashraw}{ab01aa1771dbe9297fb4b44c632181b6}
+      \strng{bibnamehash}{ab01aa1771dbe9297fb4b44c632181b6}
+      \strng{authorbibnamehash}{ab01aa1771dbe9297fb4b44c632181b6}
+      \strng{authornamehash}{c78054816c129d81c504c3f66e08538c}
+      \strng{authorfullhash}{ab01aa1771dbe9297fb4b44c632181b6}
+      \strng{authorfullhashraw}{ab01aa1771dbe9297fb4b44c632181b6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Sections of guitar parts in pop/rock songs are commonly described by functional terms including for example rhythm guitar, lead guitar, solo or riff. At a low level, these terms generally involve textural properties, for example whether the guitar tends to play chords or single notes. At a higher level, they indicate the function the guitar is playing relative to other instruments of the ensemble, for example whether the guitar is accompanying in background, or if it is intended to play a part in the foreground. Automatic labelling of instrumental function has various potential applications including the creation of consistent datasets dedicated to the training of generative models that focus on a particular function. In this paper, we propose a computational method to identify rhythm guitar sections in symbolic tablatures. We deﬁne rhythm guitar as sections that aim at making the listener perceive the chord progression that characterizes the harmony part of the song. A set of 31 high level features is proposed to predict if a bar in a tablature should be labeled as rhythm guitar or not. These features are used by an LSTM classiﬁer which yields to a F1 score of 0.95 on a dataset of 102 guitar tablatures with manual function annotations. Manual annotations and computed feature vectors are publicly released.}
+      \field{title}{{IDENTIFICATION} {OF} {RHYTHM} {GUITAR} {SECTIONS} {IN} {SYMBOLIC} {TABLATURES}}
+      \field{year}{2021}
+      \verb{file}
+      \verb PDF:C\:\\Users\\oanou\\Zotero\\storage\\B4QVCY89\\Régnier et al. - 2021 - IDENTIFICATION OF RHYTHM GUITAR SECTIONS IN SYMBOLIC TABLATURES.pdf:application/pdf
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

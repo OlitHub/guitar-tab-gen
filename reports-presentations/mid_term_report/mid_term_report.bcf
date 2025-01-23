@@ -2401,6 +2401,9 @@
     <bcf:citekey order="19" intorder="1">dai_transformer-xl_2019</bcf:citekey>
     <bcf:citekey order="20" intorder="1">makris_conditional_2022</bcf:citekey>
     <bcf:citekey order="21" intorder="1">graves_framewise_2005</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">regnier_identification_2021</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">regnier_identification_2021</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">sarmento_dadagp_2021</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
