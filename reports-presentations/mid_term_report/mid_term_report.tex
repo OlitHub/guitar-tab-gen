@@ -120,9 +120,37 @@
 \section{Data preprocessing}
 % What we have done (data preprocessing, getting the rhythmic instrument, retrieving the tokens, baseline using dadagp (GuitarCTRL))
 % draw io fig of the model
+As seen previously, DadaGP token files contain the tokens of all the instruments of the score.
+However we want to try several combinations of conditioning instruments, so we first built a function that retrieves the tokens of a specific list of instruments.
+Among the possible combinations, we especially wanted to condition the tablature generation on the rhythmic guitar.
+The most common instrumentation of a rock band contains a lead guitar and a rhythmic guitar\cite{regnier_identification_2021}.
+Rhythmic has a role that is close to the one of the bass, but at a higher pitch.
+Generally, rhythmic guitar plays chords repetitively, giving both the harmonic and rhythmic information of the song.
+
+% --> Retrieving, cleaning, mapping DadaGP
+% Rhythmic guitar detection (cite paper)
+
+The method of identification proposed by Régnier et al. \cite{regnier_identification_2021} is based on several features describing the notes and chords played at bar-level, and their corresponding tablatures.
+We used their code to perform this identification on the DadaGP dataset.
+A lot of time was spent on the mapping between the identified rhythmic guitar and its name in the DadaGP files as DadaGP renames the instrument whereas the identifier uses the part names in GuitarPro.
+
+\section{Baseline predictions}
+Now that we have the data, we can start training a model.
+Before trying the model by Makris et al. we wanted to try a baseline model. We used a checkpoint of the model presented in the DadaGP paper \cite{sarmento_dadagp_2021} that we did not train ourselves.
+To have a correct baseline of bass generation we tried several prompts. 
+At first we gave the model a single note of bass guitar at the beginning of the tokens. 
+However after a few tokens the model start adding other instruments' tokens.
+We then tried setting the logits of the other instruments to $-\infty$ to force the model to only generate bass guitar tokens.
+It works but as the model was not trained on this task, it generates a poor bass line, with a lot of repeated phrases and harmonically incorrect notes.
+To have a better baseline, we will train a model only on bass guitar tokens.
 
 \section{Workplan}
 % Workplan (what we are going to do)
+
+Better baseline with a model trained only on bass guitar tokens.
+Then we will try the model by Makris et al. \cite{makris_guitarctrl_2021} on the same task.
+Evaluate results with a human evaluation and a quantitative evaluation.
+
 
 \newpage
 

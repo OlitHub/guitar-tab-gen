@@ -281,4 +281,4 @@ Plan of the mid term report
 
 17/01/2025
 
-Idea: Mini benchmark of trying to retokenize the instrument we wants instead of extracting them from the big txt token file.
+Idea: Mini benchmark of trying to retokenize the instrument we want instead of extracting them from the big txt token file.
