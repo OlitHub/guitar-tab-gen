@@ -2382,28 +2382,37 @@
     <bcf:citekey order="5" intorder="1">sarmento_dadagp_2021</bcf:citekey>
     <bcf:citekey order="6" intorder="1">green_how_2001</bcf:citekey>
     <bcf:citekey order="7" intorder="1">le_natural_2024</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="10" intorder="2">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">agarwal_structure-informed_2024</bcf:citekey>
-    <bcf:citekey order="11" intorder="2">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="11" intorder="3">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="11" intorder="4">hsiao_compound_2021</bcf:citekey>
-    <bcf:citekey order="11" intorder="5">cournut_encodages_2020</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">le_natural_2024</bcf:citekey>
-    <bcf:citekey order="12" intorder="2">cournut_encodages_2020</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">hsiao_compound_2021</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">dai_transformer-xl_2019</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">raffel_learning-based_2016</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">hawthorne_enabling_2018</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">xi_guitarset_2018</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="12" intorder="2">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">agarwal_structure-informed_2024</bcf:citekey>
+    <bcf:citekey order="13" intorder="2">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="13" intorder="3">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="13" intorder="4">hsiao_compound_2021</bcf:citekey>
+    <bcf:citekey order="13" intorder="5">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">huang_pop_2020</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="16" intorder="2">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">abakumov_pyguitarpro_2014</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">hsiao_compound_2021</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">makris_conditional_2022</bcf:citekey>
     <bcf:citekey order="22" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">graves_framewise_2005</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">dai_transformer-xl_2019</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">graves_framewise_2005</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">regnier_identification_2021</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">regnier_identification_2021</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

@@ -34,27 +34,6 @@
 @online{alammar_illustrated_2018,
 	title = {The Illustrated Transformer},
 	url = {https://jalammar.github.io/illustrated-transformer/},
-	abstract = {Discussions:
-Hacker News (65 points, 4 comments), Reddit r/{MachineLearning} (29 points, 3 comments)
-
-
-Translations: Arabic, Chinese (Simplified) 1, Chinese (Simplified) 2, French 1, French 2, Italian, Japanese, Korean, Persian, Russian, Spanish 1, Spanish 2, Vietnamese
-
-Watch: {MIT}’s Deep Learning State of the Art lecture referencing this post
-
-Featured in courses at Stanford, Harvard, {MIT}, Princeton, {CMU} and others
-
-In the previous post, we looked at Attention – a ubiquitous method in modern deep learning models. Attention is a concept that helped improve the performance of neural machine translation applications. In this post, we will look at The Transformer – a model that uses attention to boost the speed with which these models can be trained. The Transformer outperforms the Google Neural Machine Translation model in specific tasks. The biggest benefit, however, comes from how The Transformer lends itself to parallelization. It is in fact Google Cloud’s recommendation to use The Transformer as a reference model to use their Cloud {TPU} offering. So let’s try to break the model apart and look at how it functions.
-
-The Transformer was proposed in the paper Attention is All You Need. A {TensorFlow} implementation of it is available as a part of the Tensor2Tensor package. Harvard’s {NLP} group created a guide annotating the paper with {PyTorch} implementation. In this post, we will attempt to oversimplify things a bit and introduce the concepts one by one to hopefully make it easier to understand to people without in-depth knowledge of the subject matter.
-
-2020 Update: I’ve created a “Narrated Transformer” video which is a gentler approach to the topic:
-
-
-
-
-A High-Level Look
-Let’s begin by looking at the model as a single black box. In a machine translation application, it would take a sentence in one language, and output its translation in another.},
 	author = {Alammar, Jay},
 	date = {2018},
 	file = {Snapshot:C\:\\Users\\oanou\\Zotero\\storage\\RZHPSBIJ\\illustrated-transformer.html:text/html},
@@ -250,4 +229,25 @@ Let’s begin by looking at the model as a single black box. In a machine transl
 	author = {Hawthorne, Curtis and Stasyuk, Andriy and Roberts, Adam and Simon, Ian and Huang, Cheng-Zhi Anna and Dieleman, Sander and Elsen, Erich and Engel, Jesse and Eck, Douglas},
 	date = {2018},
 	file = {Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\3TVR5IC5\\Hawthorne et al. - 2018 - Enabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset.pdf:application/pdf},
+}
+
+@article{xi_guitarset_2018,
+	title = {​Guitarset: A Dataset for Guitar Transcription},
+	abstract = {The guitar is a popular instrument for a variety of reasons, including its ability to produce polyphonic sound and its musical versatility. The resulting variability of sounds, however, poses signiﬁcant challenges to automated methods for analyzing guitar recordings. As data driven methods become increasingly popular for difﬁcult problems like guitar transcription, sets of labeled audio data are highly valuable resources. In this paper we present {GuitarSet}, a dataset that provides high quality guitar recordings alongside rich annotations and metadata. In particular, by recording guitars using a hexaphonic pickup, we are able to not only provide recordings of the individual strings but also to largely automate the expensive annotation process. The dataset contains recordings of a variety of musical excerpts played on an acoustic guitar, along with time-aligned annotations of string and fret positions, chords, beats, downbeats, and playing style. We conclude with an analysis of new challenges presented by this data, and see that it is interesting for a wide variety of tasks in addition to guitar transcription, including performance analysis, beat/downbeat tracking, and chord estimation.},
+	author = {Xi, Qingyang and Bittner, Rachel M and Pauwels, Johan and Ye, Xuzhou and Bello, Juan P},
+	date = {2018},
+	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\9HSHHK65\\Xi et al. - GUITARSET A DATASET FOR GUITAR TRANSCRIPTION.pdf:application/pdf},
+}
+
+@inproceedings{huang_pop_2020,
+	location = {New York, {NY}, {USA}},
+	title = {Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions},
+	series = {{MM} '20},
+	abstract = {A great number of deep learning based models have been recently proposed for automatic music composition. Among these models, the Transformer stands out as a prominent approach for generating expressive classical piano performance with a coherent structure of up to one minute. The model is powerful in that it learns abstractions of data on its own, without much human-imposed domain knowledge or constraints. In contrast with this general approach, this paper shows that Transformers can do even better for music modeling, when we improve the way a musical score is converted into the data fed to a Transformer model. In particular, we seek to impose a metrical structure in the input data, so that Transformers can be more easily aware of the beat-bar-phrase hierarchical structure in music. The new data representation maintains the flexibility of local tempo changes, and provides hurdles to control the rhythmic and harmonic structure of music. With this approach, we build a Pop Music Transformer that composes Pop piano music with better rhythmic structure than existing Transformer models.},
+	pages = {1180--1188},
+	booktitle = {Proceedings of the 28th {ACM} International Conference on Multimedia},
+	publisher = {Association for Computing Machinery},
+	author = {Huang, Yu-Siang and Yang, Yi-Hsuan},
+	date = {2020},
+	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\W8NBBAZU\\Huang et Yang - 2020 - Pop Music Transformer Beat-based Modeling and Generation of Expressive Pop Piano Compositions.pdf:application/pdf},
 }
