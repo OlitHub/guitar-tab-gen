@@ -1,15 +1,15 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'mid_term_report.blg'
-[227] biber-MSWIN64:340> INFO - === 
-[315] Biber.pm:420> INFO - Reading 'mid_term_report.bcf'
-[412] Biber.pm:994> INFO - Found 13 citekeys in bib section 0
-[426] Biber.pm:4463> INFO - Processing section 0
-[460] Biber.pm:4654> INFO - Looking for bibtex file 'bgtg_lib.bib' for section 0
-[525] bibtex.pm:1713> INFO - LaTeX decoding ...
-[566] bibtex.pm:1519> INFO - Found BibTeX data source 'bgtg_lib.bib'
-[778] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[778] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[779] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[779] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[832] bbl.pm:676> INFO - Writing 'mid_term_report.bbl' with encoding 'UTF-8'
-[847] bbl.pm:779> INFO - Output to mid_term_report.bbl
+[100] biber-MSWIN64:340> INFO - === 
+[131] Biber.pm:420> INFO - Reading 'mid_term_report.bcf'
+[223] Biber.pm:994> INFO - Found 13 citekeys in bib section 0
+[237] Biber.pm:4463> INFO - Processing section 0
+[250] Biber.pm:4654> INFO - Looking for bibtex file 'bgtg_lib.bib' for section 0
+[306] bibtex.pm:1713> INFO - LaTeX decoding ...
+[352] bibtex.pm:1519> INFO - Found BibTeX data source 'bgtg_lib.bib'
+[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[471] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[471] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[483] bbl.pm:676> INFO - Writing 'mid_term_report.bbl' with encoding 'UTF-8'
+[497] bbl.pm:779> INFO - Output to mid_term_report.bbl

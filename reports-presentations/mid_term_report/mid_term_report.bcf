@@ -96,15 +96,15 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>6</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
-      <bcf:value>2</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>6</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -172,7 +172,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
-      <bcf:value>none</bcf:value>
+      <bcf:value>nty</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortsets</bcf:key>
@@ -331,15 +331,15 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>6</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
-      <bcf:value>2</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>6</bcf:value>
+      <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -643,7 +643,7 @@
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
-    <bcf:option datatype="boolean">dashed</bcf:option>
+    <bcf:option datatype="boolean">subentrycomp</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
     <bcf:option datatype="integer">minxrefs</bcf:option>
@@ -726,6 +726,7 @@
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
     <bcf:option datatype="boolean">subentry</bcf:option>
+    <bcf:option datatype="boolean">subentrycomp</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="xml">labelalphatemplate</bcf:option>
     <bcf:option datatype="xml">translit</bcf:option>
@@ -815,6 +816,7 @@
     <bcf:option datatype="boolean" backendout="1">eprint</bcf:option>
     <bcf:option datatype="boolean" backendout="1">related</bcf:option>
     <bcf:option datatype="boolean" backendout="1">subentry</bcf:option>
+    <bcf:option datatype="boolean" backendout="1">subentrycomp</bcf:option>
     <bcf:option datatype="boolean" backendout="1">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer" backendin="maxcitenames,maxbibnames,maxsortnames">maxnames</bcf:option>
     <bcf:option datatype="integer" backendin="mincitenames,minbibnames,minsortnames">minnames</bcf:option>
@@ -2373,52 +2375,70 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bgtg_lib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">vaswani_attention_2023</bcf:citekey>
-    <bcf:citekey order="1" intorder="2">le_natural_2024</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">bacot_tablature_2025</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">hove_superior_2014</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">le_natural_2024</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="8" intorder="2">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">agarwal_structure-informed_2024</bcf:citekey>
-    <bcf:citekey order="9" intorder="2">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="9" intorder="3">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="9" intorder="4">hsiao_compound_2021</bcf:citekey>
-    <bcf:citekey order="9" intorder="5">cournut_encodages_2020</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">le_natural_2024</bcf:citekey>
-    <bcf:citekey order="10" intorder="2">cournut_encodages_2020</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">sarmento_dadagp_2021</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">hsiao_compound_2021</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">vaswani_attention_2017</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">bacot_tablature_2025</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">hove_superior_2014</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">green_how_2001</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="10" intorder="2">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">agarwal_structure-informed_2024</bcf:citekey>
+    <bcf:citekey order="11" intorder="2">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="11" intorder="3">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="11" intorder="4">hsiao_compound_2021</bcf:citekey>
+    <bcf:citekey order="11" intorder="5">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">le_natural_2024</bcf:citekey>
+    <bcf:citekey order="12" intorder="2">cournut_encodages_2020</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">hsiao_compound_2021</bcf:citekey>
     <bcf:citekey order="16" intorder="1">makris_conditional_2022</bcf:citekey>
     <bcf:citekey order="17" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">dai_transformer-xl_2019</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">makris_conditional_2022</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">graves_framewise_2005</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">regnier_identification_2021</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">regnier_identification_2021</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">sarmento_dadagp_2021</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">sarmento_gtr-ctrl_2023</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">dai_transformer-xl_2019</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">makris_conditional_2022</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">graves_framewise_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="none">
+  <bcf:sortingtemplate name="nty">
     <bcf:sort order="1">
-      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+      <bcf:sortitem order="1">presort</bcf:sortitem>
     </bcf:sort>
-    <bcf:sort order="2">
-      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
   <bcf:datalist section="0"
-                name="none/global//global/global/global"
+                name="nty/global//global/global/global"
                 type="entry"
-                sortingtemplatename="none"
+                sortingtemplatename="nty"
                 sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"

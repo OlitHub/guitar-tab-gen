@@ -10,12 +10,12 @@ Finally, data cleaning and preprocessing steps are critical to standardize music
 \subsection{Data availability}
 
 
-Symbolic music datasets are a cornerstone for training deep learning models, yet their availability and quality significantly vary across domains.
-In music composition and generation, datasets are often limited in size and diversity, especially when compared to text or image datasets.
+Symbolic music datasets are the first necessary resource for training deep learning models, yet their availability and quality significantly vary across domains.
+In music composition and generation, datasets are often limited in diversity, especially when compared to text or image datasets.
 For bass guitar tablatures, the challenge is even more pronounced due to the niche nature of the instrument and the focus on other instruments in existing datasets.
+% EXAMPLE OF PIANO, POP MUSIC, CLASSICAL music datasets 
 
-
-The MIDI standard has dominated symbolic music datasets for decades, allowing the development of resources like the Lakh MIDI dataset and MAESTRO dataset.
+The MIDI standard was predominant among symbolic music datasets for decades, allowing the development of resources like the Lakh MIDI dataset and MAESTRO dataset.
 However, while these datasets offer general-purpose symbolic music, they lack the specificity required for tasks involving tablatures or instrument-specific representation.
 The GuitarSet dataset, for example, focuses on acoustic guitar transcription but does not provide sufficient symbolic information for bass guitar.
 Similarly, the DadaGP dataset addresses the need for multi-instrument symbolic music data in tablature format, but its emphasis is on rock and metal genres, which limits the diversity of bass guitar styles\cite{sarmento_dadagp_2021}.
@@ -38,6 +38,7 @@ Tokenization in the context of deep learning music generation has been discussed
 
 % General overview of the possible startegies (NLP survey)
 Tokenization in music involves converting complex musical content into a sequence of elements that can be processed computationally.
+% START WITH TEXT TOKENIZATION: ON TEXT IT LOOKS LIKE THIS --> ON MUSIC IT LOOKS LIKE THAT
 Much like tokenization in natural language processing (NLP), it breaks down music into manageable units, though in music, the focus is on musical features like pitch, duration, and velocity.
 In symbolic music information retrieval (MIR), tokenization strategies are generally classified into two categories: time-slice-based and event-based. 
 Time-slice-based tokenization divides music into fixed-time intervals, such as 16th notes, which can be represented in formats like piano rolls or multi-hot vectors, capturing simultaneous notes at each time slice.
@@ -50,7 +51,7 @@ Notably, tokenization strategies like REMI (Revamped MIDI-derived events) and MI
 The DadaGP tokenization format adopts an event-based approach, similar to other music generation models, by representing musical events as discrete tokens.
 It uses a Python script with PyGuitarPro to convert GuitarPro files into a tokenized sequence, beginning with metadata tokens such as artist, downtune, tempo, and start.
 Pitched instrument notes are encoded with a combination of tokens representing instrument, note, string, and fret, while rests are denoted with a separate token structure.
-For drumset sounds, a specific tokenization scheme using MIDI percussion maps is employed, where each drum sound is represented by a unique token (e.g., drums:note:36 for a kick drum).
+For drumset sounds, a specific tokenization scheme using MIDI percussion maps is employed, where each drum sound is represented by a unique token (e.g., \texttt{drums:note:36} for a kick drum).
 The system also uses wait tokens to separate notes and rests, enabling the model to infer note durations without the need for explicit note-off tokens.
 This approach ensures that new notes automatically silence previous ones, except in cases where ghost notes or let-ring effects are involved.
 Additionally, the tokenization format records changes in musical structure, such as new measures, tempo shifts, and note effects, with each change being represented as a distinct token.
