@@ -3,7 +3,7 @@
 """
 """
 
-import pickle #for older python versions you may need pickle5
+import pickle5 as pickle #for older python versions you may need pickle5
 import numpy as np
 from random import shuffle
 from aux_files import create_onehot_dict

@@ -3,7 +3,7 @@
 """
 """
 
-import pickle #for older python versions you may need pickle5
+import pickle5 as pickle #for older python versions you may need pickle5
 import pretty_midi as pm
 from glob import glob
 from copy import deepcopy
