@@ -8,9 +8,12 @@ data
 data/
 DadaGP
 
-# models
+# models checkpoints and data
 models/dadaGP-model-checkpoints/fulldataset-song-artist-train_data_XL.npz
 models/dadaGP-model-checkpoints/model-weights
+models/CP_Drums_Generation-main/1.Pre-processing/preprocessed_dataset.pickle
+models/CP_Drums_Generation-main/1.Pre-processing/test_set_streams.pickle
+models/CP_Drums_Generation-main/1.Pre-processing/train_set_streams.pickle
 
 # C extensions
 *.so

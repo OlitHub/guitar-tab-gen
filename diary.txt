@@ -282,3 +282,15 @@ Plan of the mid term report
 17/01/2025
 
 Idea: Mini benchmark of trying to retokenize the instrument we want instead of extracting them from the big txt token file.
+
+27/01/2025
+
+Mid term report is finished!
+
+31/01/2025
+
+Trying to make Makris et al. model work. 
+I have to change the python version of the poetry to 3.10 to use tensorflow.
+I successfully installed the correct version of tensorflow!
+I have ran the post processing on Makris et al. data.
+I have made a notebook file of the training python file so that I can do the training on kaggle.
