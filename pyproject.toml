@@ -6,16 +6,15 @@ authors = ["Olit <93828847+OlitHub@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "==3.10"
-tensorflow-io-gcs-filesystem = "0.27.0"
-tensorflow = "==2.11"
-numpy = "==1.21"
-pandas = "^2.2.3"
-scikit-learn = "^1.6.1"
-pyguitarpro = "^0.9.3"
-music21 = "==6.*"
-pretty-midi = "^0.2.10"
-pypianoroll = "^1.0.4"
+python = ">=3.7,<3.8.dev0"
+tensorflow-io-gcs-filesystem = "0.34.0"
+tensorflow = "2.11.0"
+numpy = "1.21.6"
+grpcio = "1.62.3"
+
+
+
+
 
 [build-system]
 requires = ["poetry-core"]

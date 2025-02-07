@@ -306,3 +306,10 @@ It works! (with python 3.7.16, we made a requirements.txt)
 Next step is to adapt our dadaGP tokens to the Makris et al. model.
 To do so, analyze the evolution of the tokens in pre_process and post_process.
 Change the concatenated embeddings by a single big embedding of each token.
+
+07/02/2025
+
+Tried Makris et al. on their data. The result is good.
+Started looking at the way their model works to adapt it to our data.
+
+The data after post processing arrives as a Bag of Words representation.

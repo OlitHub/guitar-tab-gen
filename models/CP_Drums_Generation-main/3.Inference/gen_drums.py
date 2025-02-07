@@ -6,7 +6,7 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0" #for GPU inference
 from glob import glob
-import pickle
+import pickle5 as pickle
 import pretty_midi as pm
 from drums_utils import drums_trans_ev_model_tf, generate_drums_ev_trans_tf,\
     create_pp_instance, get_pianorolls, get_event_based_rep, merge_bars_fes,\
@@ -38,7 +38,7 @@ temperature = 0.9
 #input folder
 inp_path = glob('./midi_in/*.mid')
 #output folder
-midi_out = './'
+midi_out = './midi_out_test/'
 
 for trk in inp_path:
     #open with PrettyMIDI
