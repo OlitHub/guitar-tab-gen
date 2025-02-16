@@ -321,3 +321,8 @@ We want to have dict with keys 'Decoder_RG' and 'Encoder_Bass' with the sequence
 dict['Decoder_RG'][i] = sequence of ids of tokens of the rythmic guitar of the i-th track.
 The maximum length of the sequences of tokens is 597 (545 for the encoder), however songs can have around 2000 tokens.
 For the moment we will truncate the songs to 597 tokens but this value can also be adapted in model_train.py
+
+
+16/02/2025
+
+Changed from poetry to conda. Generated an environment.yml file to run DadaGP.

@@ -182,7 +182,6 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
     # Iterate twice over the folders in the general folder (alphabetical and group)
     for str_path in tqdm(df_rg['Dadagp_Path'].unique()):
         
-        pathlib_path = pathlib.Path(str_path)
         # Replace extension with txt
         txt_file_path = str_path.replace('.pygp.gp5', '.tokens.txt')
         
