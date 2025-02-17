@@ -2,6 +2,8 @@ import glob
 import os
 from tqdm import tqdm
 import pathlib
+import guitarpro as pygp
+
 
 def write_tokens_from_file(instrument_list, current_text, new_text):
     """Write the lines of the current_text that concern the instruments in instrument_list to new_text.
@@ -224,7 +226,7 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
         file_name = df_track['File_Name'].iloc[0]
         instrument_list = [key for key, value in instruments_to_keep.items() if value]
         file_name = "_".join([file_name, "rythmic"]) # Append 'rythmic'
-        file_path = f"{write_folder}/{file_name}.tokens.txt" # Add the .text and the path
+        file_path = f"{write_folder}/{file_name}.txt" # Add the .text and the path
 
         with open(txt_file_path) as f_1:
             current_text = f_1.read()
@@ -235,4 +237,69 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
                 
             # Merge consecutive wait commands
             merge_consecutive_waits(file_path)
-               
+
+
+
+# def ultimate_get_filename(row, list_filenames, list_paths):
+#     name = row['Fichier']
+#     name = name.split('/')[-1]
+#     name = name.split('.')[0]
+#     splits = name.split('-')
+#     current_name = splits[0]
+#     i = 1
+#     while current_name not in list_filenames:
+#         # print(current_name)
+#         try:
+#             current_name += '-' + splits[i]
+#             i += 1
+#         except:
+#             row['Dadagp_Path'] = 'error'
+#             row['File_Name'] = 'error'
+#             return row
+    
+#     path_index = list_filenames.index(current_name)
+#     path = list_paths[path_index]
+#     row['Dadagp_Path'] = path
+#     row['File_Name'] = current_name
+#     return row
+
+   
+def ultimate_get_filename_2(row, series_filenames, series_paths):
+    """Get the filename of the file in the series_filenames that matches the row.
+
+    Args:
+        row (pandas.Series): Row of the DataFrame.
+        series_filenames (pandas.Series): Series with the filenames.
+        series_paths (pandas.Series): Series with the paths.
+
+    Returns:
+        pandas.Series: Row with the 'Dadagp_Path' and 'File_Name' filled.
+    """
+    name = row['Fichier']
+    name = name.split('/')[-1]
+    name = name.split('.')[0]
+    splits = name.split('-')
+    current_name = splits[0]
+    i = 1
+    while current_name not in series_filenames.values:
+        # print(current_name)
+        try:
+            current_name += '-' + splits[i]
+            i += 1
+        except:
+            row['Dadagp_Path'] = 'error'
+            row['File_Name'] = 'error'
+            return row
+    
+    row['File_Name'] = current_name
+    indexes = series_filenames[series_filenames == current_name].index
+    paths = series_paths[indexes].values
+    for path in paths:
+        row_part = row['Partie']
+        gp_file = pygp.parse(str(path))
+        file_parts = [track.name for track in gp_file.tracks]
+        if row_part in file_parts:
+            row['Dadagp_Path'] = path
+            break
+
+    return row

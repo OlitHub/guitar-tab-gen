@@ -317,8 +317,8 @@ The data after post processing arrives as a sequence of ids of tokens.
 
 Adapt post processing and clean it.
 Arrange DadaGP to have the sequence of rythmic guitar and the one of the bass guitar.
-We want to have dict with keys 'Decoder_RG' and 'Encoder_Bass' with the sequences of ids of tokens.
-dict['Decoder_RG'][i] = sequence of ids of tokens of the rythmic guitar of the i-th track.
+We want to have dict with keys 'Encoder_RG' and 'Decoder_Bass' with the sequences of ids of tokens.
+dict['Encoder_RG'][i] = sequence of ids of tokens of the rythmic guitar of the i-th track.
 The maximum length of the sequences of tokens is 597 (545 for the encoder), however songs can have around 2000 tokens.
 For the moment we will truncate the songs to 597 tokens but this value can also be adapted in model_train.py
 
@@ -326,3 +326,23 @@ For the moment we will truncate the songs to 597 tokens but this value can also 
 16/02/2025
 
 Changed from poetry to conda. Generated an environment.yml file to run DadaGP.
+Made a code to generate the sequences of tokens for the rythmic guitar and the bass guitar.
+For the moment they are stored in a list of 3 tuples: (track_name, sequence of bass token ids, sequence of rg token ids).
+There is an issue with wait tokens. 168 have been generated because new wait tokens appeared due to the sum of consecutive waits.
+
+Should we not sum consecutive wait tokens? Should we decompose these tokens? Or should we simply add those to the vocabulary?
+For the moment I will add them to the vocabulary.
+
+I also have errors with some paths but I think it is just due to the fact that some songs do not contain rhythmic guitar.
+
+I output a pkl file containing a dataframe with columns: 'Song_Name', 'Decoder_Bass', 'Encoder_RG'.
+Those columns have type str, list(int), list(int).
+
+We need to have constant sequence length for the model to work.
+We truncate the sequences to 597 tokens for the decoder and 545 for the encoder.
+
+Tried adapting CP Drums Generation model to our data.
+I don't get what tar_inp and tar_real represent.
+These are built during post processingwhere the decoder input is the target sequence with a start token at the beginning and
+the decoder output is the target sequence with an end token at the end. (SOS and EOS tokens)
+But I don't get why we need to do this.
