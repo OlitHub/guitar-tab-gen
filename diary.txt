@@ -346,3 +346,19 @@ I don't get what tar_inp and tar_real represent.
 These are built during post processingwhere the decoder input is the target sequence with a start token at the beginning and
 the decoder output is the target sequence with an end token at the end. (SOS and EOS tokens)
 But I don't get why we need to do this.
+
+
+24/02/2025
+
+I am building the data just like in the CP Drums Generation model.
+I have some issues:
+- My sequences are way too long (up to 22000 tokens for the RG and 12000 for the bass)
+- I want to truncate the sequences. I have tried truncating at 16 measures but I still have sequences of around 4000 tokens.
+If I truncate at a very low number of measures I will have poor sequences.
+
+Maybe I could split the sequence in several data chunks of 4 - 8 measures, adding everytime the start tokens at the beginning of the sequence.
+For the moment I will try to train the model on sequences of 8 measures.
+Even with 8 measures I have a sequence of 22311 tokens... I need to fix a threshold on the number of tokens that removes the whole song if it is too long.
+I put a maximum of 1000 tokens for sequence length.
+I get max length of 738 for the bass and 975 for the rg.
+I tried training but I'm locked at the first step of the first epoch (it may be because I have no GPU).

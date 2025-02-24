@@ -171,7 +171,7 @@ def get_tokens_inst_iter_folders(instrument_to_keep, path_to_general_read_folder
     print(f"Skipped {n_skipped} files, because they did not contain any of the instruments we want.")
 
 
-def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_general_write_folder):
+def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_general_write_folder, original_instruments_to_keep = None):
     """Iterate over the DadaGP dataset and apply get_tokens_inst to the files in the dataset.
     Write back the files to the write folder BGTG.
 
@@ -189,23 +189,29 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
         
         df_track = df_rg[df_rg['Dadagp_Path'] == str_path]
         
-        instruments_to_keep = {
-            "distorted0": False,
-            "distorted1": False,
-            "distorted2": False,
-            "distorted3": False,
-            "distorted4": False,
-            "distorted5": False,
-            "clean0": False,
-            "clean1": False,
-            "clean2": False,
-            "clean3": False,
-            "clean4": False,
-            "bass": False,
-            "leads": False,    
-            "pads": False,
-            "drums": False,
-        }
+        if original_instruments_to_keep is None:
+            # Only print the rythmic instruments
+            instruments_to_keep = {
+                "distorted0": False,
+                "distorted1": False,
+                "distorted2": False,
+                "distorted3": False,
+                "distorted4": False,
+                "distorted5": False,
+                "clean0": False,
+                "clean1": False,
+                "clean2": False,
+                "clean3": False,
+                "clean4": False,
+                "bass": False,
+                "leads": False,    
+                "pads": False,
+                "drums": False,
+            }
+        
+        else:
+            instruments_to_keep = original_instruments_to_keep.copy()
+        
         
         # Create a folder with the same name in the write folder
         
@@ -218,9 +224,10 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
             
         rythmic_instruments = df_track[df_track['is_track_rythmic']]['Dadagp_Name'].unique()
         
-        for instrument in rythmic_instruments:
-            instruments_to_keep[instrument] = True
-            instruments_to_keep['bass'] = False
+        rg = rythmic_instruments[0]
+        if rg == 'bass':
+            continue
+        instruments_to_keep[rg] = True
         
         # Generate file name by appending the instruments to the original file name
         file_name = df_track['File_Name'].iloc[0]
@@ -232,7 +239,6 @@ def get_tokens_inst_iter_df_rg(df_rg, path_to_general_read_folder, path_to_gener
             current_text = f_1.read()
         # Generate a txt file only containing the lines refering to the instrument
             with open(file_path, "w") as new_text:
-                
                 write_tokens_from_file(instrument_list, current_text, new_text)
                 
             # Merge consecutive wait commands
