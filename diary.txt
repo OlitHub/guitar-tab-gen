@@ -362,3 +362,19 @@ Even with 8 measures I have a sequence of 22311 tokens... I need to fix a thresh
 I put a maximum of 1000 tokens for sequence length.
 I get max length of 738 for the bass and 975 for the rg.
 I tried training but I'm locked at the first step of the first epoch (it may be because I have no GPU).
+
+
+28/02/2025
+
+I should make a small analysis of the sequences (average length, max length, min length).
+I'm going to set a minimum length of 20~30 tokens to avoid empty sequences.
+
+Next step is to gather the sequences 8 measures by 8 instead of only taking the first 8 measures (this would greatly augment the dataset).
+
+I made a plot of the distribution of the lengths of the sequences of the encoder and the decoder.
+This led to the conclusion that the min threshold should be at 50 and the max at 800, with sequences of 16 measures.
+(Next step is now to gather sequences 16 by 16).
+
+We are going to start the training on the servers now.
+We successfully made a step of one epoch on CPU, but couldn't manage to launch the code on GPU.
+I will try to train the model on Kaggle.
