@@ -378,3 +378,10 @@ This led to the conclusion that the min threshold should be at 50 and the max at
 We are going to start the training on the servers now.
 We successfully made a step of one epoch on CPU, but couldn't manage to launch the code on GPU.
 I will try to train the model on Kaggle.
+
+03/03/2025
+
+Issue with the keras.metrics.Mean, we replaced those by simple lists.
+
+While debugging the training on the cluster, I have started the adaptation of the inference part of the model to our data.
+It should be adapted, now I just need the checkpoints to be able to test it!

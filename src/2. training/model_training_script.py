@@ -105,11 +105,12 @@ def accuracy_function(real, pred):
   return tf.reduce_sum(accuracies)/tf.reduce_sum(mask)
 
 #Set TF Metrics
-train_loss = tf.keras.metrics.Mean(name='train_loss')
-train_accuracy = tf.keras.metrics.Mean(name='train_accuracy')
 
-val_loss = tf.keras.metrics.Mean(name='val_loss')
-val_accuracy = tf.keras.metrics.Mean(name='val_accuracy')
+train_loss_list = []
+train_accuracy_list = []
+val_loss_list = []
+val_accuracy_list = []
+
 
 #Set Checkpoints
 checkpoint_path = './checkpoints/'
@@ -158,8 +159,9 @@ def train_step(inp, tar_inp, tar_real):
   
   acc = accuracy_function(tar_real, preds)
 
-  train_loss(loss)
-  train_accuracy(acc)
+  train_loss_list.append(loss.numpy())
+  train_accuracy_list.append(acc.numpy())
+
   
   
   
@@ -179,8 +181,9 @@ def val_step(inp, tar_inp, tar_real):
   
   acc = accuracy_function(tar_real, preds)
 
-  val_loss(loss)
-  val_accuracy(acc)
+  val_loss_list.append(loss.numpy())
+  val_accuracy_list.append(acc.numpy())
+
   
 """START TRAINING"""
 epochs = 2
@@ -189,8 +192,9 @@ curr_loss = 99.99
 for epoch in range(epochs):
   start = time.time()
 
-  train_loss.reset_states()
-  train_accuracy.reset_states()
+  train_loss_list = []
+  train_accuracy_list = []
+
   
   print(f'Epoch {epoch + 1}')
   print('----')
@@ -200,22 +204,26 @@ for epoch in range(epochs):
 
     if batch % 50 == 0:
       print(f'Batch {batch}')
-      print(f'Onset Loss {train_loss.result():.4f} -- Onset Accuracy {train_accuracy.result():.4f}')
+      print(f'Onset Loss {np.mean(train_loss_list):.4f} -- Onset Accuracy {np.mean(train_accuracy_list):.4f}')
+
 
   print('----')
-  print(f'Onset Loss {train_loss.result():.4f} -- Onset Accuracy {train_accuracy.result():.4f}')
+  print(f'Onset Loss {np.mean(train_loss_list):.4f} -- Onset Accuracy {np.mean(train_accuracy_list):.4f}')
+
   
   
   print('Evaluating...')
 
-  val_loss.reset_states()
-  val_accuracy.reset_states()  
+  val_loss_list = []
+  val_accuracy_list = []
+
   
   for (batch, (inp, tar_inp, tar_real)) in enumerate(dataset_eval.take(steps_per_epoch_eval)):
     val_step(inp, tar_inp, tar_real)
   
   print('----')
-  print(f'Validation Onset Loss {val_loss.result():.4f} -- Onset Accuracy {val_accuracy.result():.4f}')  
+  print(f'Validation Onset Loss {np.mean(val_loss_list):.4f} -- Onset Accuracy {np.mean(val_accuracy_list):.4f}')
+  
   
   val_loss = np.round(val_loss.result().numpy(), decimals = 5) #change weights
   print('Overall weighted Validation Loss: ', val_loss)
