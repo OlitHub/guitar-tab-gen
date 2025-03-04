@@ -3,10 +3,11 @@
 """
 
 """
-
-
 import numpy as np
 import tensorflow as tf
+
+
+tf.config.run_functions_eagerly(False)
 
 
 def get_angles(pos, i, d_model):
@@ -302,8 +303,7 @@ class DecoderLayer(tf.keras.layers.Layer):
         self.dropout2 = tf.keras.layers.Dropout(rate)
         self.dropout3 = tf.keras.layers.Dropout(rate)
 
-    def call(self, x, enc_output, training,
-            look_ahead_mask, padding_mask):
+    def call(self, x, enc_output, look_ahead_mask, padding_mask, training=False):
 
         # enc_output.shape == (batch_size, input_seq_len, d_model)
         attn1, attn_weights_block1 = self.attn1(x, x, x, look_ahead_mask)  # (batch_size, target_seq_len, d_model)
@@ -337,8 +337,8 @@ class WordDecoder(tf.keras.layers.Layer):
                        for _ in range(num_layers)]
     self.dropout = tf.keras.layers.Dropout(rate)
 
-  def call(self, x, enc_output, training,
-           look_ahead_mask, padding_mask):
+  def call(self, x, enc_output,
+           look_ahead_mask, padding_mask, training=False):
 
     seq_len = tf.shape(x)[1] #same for both inputs
     attention_weights = {}
@@ -353,8 +353,9 @@ class WordDecoder(tf.keras.layers.Layer):
     x = self.dropout(x, training=training)
 
     for i in range(self.num_layers):
-      x, block1, block2 = self.dec_layers[i](x, enc_output, training,
-                                             look_ahead_mask, padding_mask)
+      x, block1, block2 = self.dec_layers[i](x, enc_output, look_ahead_mask=look_ahead_mask,
+                                             padding_mask=padding_mask, training=training)
+
 
       attention_weights[f'decoder_layer{i+1}_block1'] = block1
       attention_weights[f'decoder_layer{i+1}_block2'] = block2
@@ -403,7 +404,7 @@ class BLSTMEncoder(tf.keras.layers.Layer):
     self.BLSTM3 = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(self.units,return_sequences=True))
     self.dropout3 = tf.keras.layers.Dropout(rate)
 
-  def call(self, x, training):
+  def call(self, x, training=False):
 
     # adding embedding and position encoding.
     x = self.embedding(x)  # (batch_size, input_seq_len, d_model)
@@ -443,9 +444,8 @@ class HybridTransformer(tf.keras.Model):
 
     # dec_output.shape == (batch_size, tar_seq_len, d_model)
     dec_output, attention_weights = self.decoder(
-        tar, enc_output, training, look_ahead_mask, dec_padding_mask)
+        tar, enc_output, look_ahead_mask, dec_padding_mask, training=training)
 
     final_output = self.final_layer_tar(dec_output)  # (batch_size, tar_seq_len, target_vocab1)
 
     return final_output, attention_weights
-

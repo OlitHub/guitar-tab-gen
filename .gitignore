@@ -14,7 +14,8 @@ models/dadaGP-model-checkpoints/model-weights
 models/CP_Drums_Generation-main/1.Pre-processing/*.pickle
 models/CP_Drums_Generation-main/2.Training/*.pickle
 models/CP_Drums_Generation-main/3.Inference/aux_files/checkpoints/*
-src/preprocessing/*.pickle
+src/1. preprocessing/*.pickle
+src/3. inference/aux_files/checkpoints/*
 
 # C extensions
 *.so

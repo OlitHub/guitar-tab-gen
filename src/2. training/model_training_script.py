@@ -9,6 +9,8 @@ from aux_train_tf import HybridTransformer, create_masks
 
 physical_devices = tf.config.list_physical_devices('GPU')
 
+tf.config.run_functions_eagerly(False)
+
 train_path = "train_set_streams.pickle"
 test_path = "test_set_streams.pickle"
 
@@ -105,11 +107,11 @@ def accuracy_function(real, pred):
   return tf.reduce_sum(accuracies)/tf.reduce_sum(mask)
 
 #Set TF Metrics
+train_loss = tf.keras.metrics.Mean(name='train_loss')
+train_accuracy = tf.keras.metrics.Mean(name='train_accuracy')
 
-train_loss_list = []
-train_accuracy_list = []
-val_loss_list = []
-val_accuracy_list = []
+val_loss = tf.keras.metrics.Mean(name='val_loss')
+val_accuracy = tf.keras.metrics.Mean(name='val_accuracy')
 
 
 #Set Checkpoints
@@ -143,46 +145,40 @@ val_step_signature = [
 @tf.function(input_signature=train_step_signature)
 def train_step(inp, tar_inp, tar_real):
 
-  _, combined_mask, dec_padding_mask = create_masks(inp, tar_inp)
-
-  with tf.GradientTape() as tape:
-    preds, _ = model(	inp,
-						tar_inp,
-						True,
-						combined_mask,
-						dec_padding_mask)
+    _, combined_mask, dec_padding_mask = create_masks(inp, tar_inp)
     
-    loss = loss_function(tar_real, preds)
+    with tf.GradientTape() as tape:
+        preds, _ = model(
+        inp=inp,
+        tar=tar_inp,
+        look_ahead_mask=combined_mask,
+        dec_padding_mask=dec_padding_mask,
+        training=True
+        )
+    
+        loss = loss_function(tar_real, preds)
+    
+    gradients = tape.gradient(loss, model.trainable_variables)
+    optimizer.apply_gradients(zip(gradients, model.trainable_variables))
+    
+    acc = accuracy_function(tar_real, preds)
 
-  gradients = tape.gradient(loss, model.trainable_variables)
-  optimizer.apply_gradients(zip(gradients, model.trainable_variables))
-  
-  acc = accuracy_function(tar_real, preds)
-
-  train_loss_list.append(loss.numpy())
-  train_accuracy_list.append(acc.numpy())
-
-  
+    train_loss(loss)
+    train_accuracy(acc)
   
   
 @tf.function(input_signature=val_step_signature)
 def val_step(inp, tar_inp, tar_real):
+    _, combined_mask, dec_padding_mask = create_masks(inp, tar_inp)
+    
+    preds, _ = model(inp, tar_inp, combined_mask, dec_padding_mask, training=False)
+    
+    loss = loss_function(tar_real, preds)
+    
+    acc = accuracy_function(tar_real, preds)
 
-
-  _, combined_mask, dec_padding_mask = create_masks(inp, tar_inp)
-
-  preds, _ = model(	inp,
-					tar_inp,
-					False, #change?
-					combined_mask,
-					dec_padding_mask)
-  
-  loss = loss_function(tar_real, preds)
-  
-  acc = accuracy_function(tar_real, preds)
-
-  val_loss_list.append(loss.numpy())
-  val_accuracy_list.append(acc.numpy())
+    val_loss(loss)
+    val_accuracy(acc)
 
   
 """START TRAINING"""
@@ -190,60 +186,55 @@ epochs = 2
 patience = 0
 curr_loss = 99.99    
 for epoch in range(epochs):
-  start = time.time()
-
-  train_loss_list = []
-  train_accuracy_list = []
-
-  
-  print(f'Epoch {epoch + 1}')
-  print('----')
-  for (batch, (inp, tar_inp, tar_real)) in enumerate(dataset.take(steps_per_epoch)):
-    train_step(inp, tar_inp, tar_real)
-
-
-    if batch % 50 == 0:
-      print(f'Batch {batch}')
-      print(f'Onset Loss {np.mean(train_loss_list):.4f} -- Onset Accuracy {np.mean(train_accuracy_list):.4f}')
-
-
-  print('----')
-  print(f'Onset Loss {np.mean(train_loss_list):.4f} -- Onset Accuracy {np.mean(train_accuracy_list):.4f}')
-
-  
-  
-  print('Evaluating...')
-
-  val_loss_list = []
-  val_accuracy_list = []
-
-  
-  for (batch, (inp, tar_inp, tar_real)) in enumerate(dataset_eval.take(steps_per_epoch_eval)):
-    val_step(inp, tar_inp, tar_real)
-  
-  print('----')
-  print(f'Validation Onset Loss {np.mean(val_loss_list):.4f} -- Onset Accuracy {np.mean(val_accuracy_list):.4f}')
-  
-  
-  val_loss = np.round(val_loss.result().numpy(), decimals = 5) #change weights
-  print('Overall weighted Validation Loss: ', val_loss)
-  
-  '''EARLY STOP MECHANISM'''
-  if curr_loss > val_loss:
-    #save checkpoint
-    print('Checkpoint saved.')
-    patience = 0
-    save_path = ckpt_manager.save()
-    curr_loss = val_loss
+    start = time.time()
     
-  else:
-      print('No validation loss improvement.')
-      patience += 1
-      
-  print(f'Time taken for this epoch: {time.time() - start:.2f} secs\n')    
-  print('*******************************')
-      
-  if patience > 5:
-      print('Terminating the training.')
-      break
+    train_loss.reset_states()
+    train_accuracy.reset_states()
+    
+    print(f'Epoch {epoch + 1}')
+    print('----')
+    for (batch, (inp, tar_inp, tar_real)) in enumerate(dataset.take(steps_per_epoch)):
+        train_step(inp, tar_inp, tar_real)
+    
+    # Print the values
+    if batch % 50 == 0:
+        print(f'Batch {batch}')
+        print(f'Loss {train_loss.result():.4f} -- Accuracy {train_accuracy.result():.4f}')
+        print('----')
+    
+    print(f'Loss {train_loss.result():.4f} -- Accuracy {train_accuracy.result():.4f}')
+  
+    
+    print('Evaluating...')
 
+    val_loss.reset_states()
+    val_accuracy.reset_states()
+    
+    for (batch, (inp, tar_inp, tar_real)) in enumerate(dataset_eval.take(steps_per_epoch_eval)):
+        val_step(inp, tar_inp, tar_real)
+        
+    print('----')
+    print(f'Validation Loss {val_loss.result():.4f} -- Accuracy {val_accuracy.result():.4f}')  
+    
+    
+    val_loss_np = np.round((val_loss.result().numpy()), decimals = 5) #change weights
+    print('Overall weighted Validation Loss: ', val_loss_np)
+    
+    '''EARLY STOP MECHANISM'''
+    if curr_loss > val_loss_np:
+        #save checkpoint
+        print('Checkpoint saved.')
+        patience = 0
+        save_path = ckpt_manager.save()
+        curr_loss = val_loss_np
+    
+    else:
+        print('No validation loss improvement.')
+        patience += 1
+      
+    print(f'Time taken for this epoch: {time.time() - start:.2f} secs\n')    
+    print('*******************************')
+      
+    if patience > 5:
+        print('Terminating the training.')
+        break

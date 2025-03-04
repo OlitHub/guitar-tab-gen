@@ -101,7 +101,6 @@ def sample(preds, temperature=1.0):
 def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG, dec_seq_length):
          
     #convert Encoder Inps to tensors
-    
     Encoder_RG = tf.convert_to_tensor([Encoder_RG])
     
     #Prepare Decoder Inps 
@@ -116,10 +115,10 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
     dec_out_onset = tf.convert_to_tensor(dec_out_onset)
     dec_out_onset = tf.expand_dims(dec_out_onset, 0)
     
-    dec_drums_out = []
-    dec_out_drums = [Bass_sos_idx]
-    dec_out_drums = tf.convert_to_tensor(dec_out_drums)
-    dec_out_drums = tf.expand_dims(dec_out_drums, 0)
+    dec_bass_out = []
+    dec_out_bass = [Bass_sos_idx]
+    dec_out_bass = tf.convert_to_tensor(dec_out_bass)
+    dec_out_bass = tf.expand_dims(dec_out_bass, 0)
     
     #start generating autoregressively WORD TRANSFORMER
     for _ in range(dec_seq_length):
@@ -127,8 +126,8 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
        
        _, combined_mask, dec_padding_mask = create_masks(Encoder_RG, dec_out_onset)
            
-       preds_onsets, preds_drums, _ = trans_bass(Encoder_RG, dec_out_onset, dec_out_drums, False, 
-                                                   combined_mask, dec_padding_mask)
+       preds_onsets, preds_bass, _ = trans_bass(Encoder_RG, dec_out_bass, 
+                                                   combined_mask, dec_padding_mask, training=False)
        
        #Onset out
        preds_onsets = preds_onsets[:, -1:, :].numpy() # (batch_size, 1, vocab_size) select the last word
@@ -137,12 +136,12 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
        token_pred_on = sample(token_preds_onset, temperature)
        dec_onset_out.append(token_pred_on) #for numpy
        
-       #Drums Out
-       preds_drums = preds_drums[:, -1:, :].numpy() # (batch_size, 1, vocab_size) select the last word
-       token_preds_drums = preds_drums[-1,:].reshape(preds_drums.shape[-1],)
+       #bass Out
+       preds_bass = preds_bass[:, -1:, :].numpy() # (batch_size, 1, vocab_size) select the last word
+       token_preds_bass = preds_bass[-1,:].reshape(preds_bass.shape[-1],)
        #apply diversity
-       token_pred_dr = sample(token_preds_drums, temperature)
-       dec_drums_out.append(token_pred_dr) #for numpy
+       token_pred_dr = sample(token_preds_bass, temperature)
+       dec_bass_out.append(token_pred_dr) #for numpy
 
        
        if token_pred_on == RG_eos_idx or token_pred_dr == Bass_eos_idx:
@@ -155,11 +154,11 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
            dec_out_onset.extend(dec_onset_out)
            dec_out_onset = tf.convert_to_tensor(dec_out_onset)
            dec_out_onset = tf.expand_dims(dec_out_onset, 0)
-           #Drums
-           dec_out_drums = [RG_eos_idx]
-           dec_out_drums.extend(dec_drums_out)
-           dec_out_drums = tf.convert_to_tensor(dec_out_drums)
-           dec_out_drums = tf.expand_dims(dec_out_drums, 0)
+           #bass
+           dec_out_bass = [RG_eos_idx]
+           dec_out_bass.extend(dec_bass_out)
+           dec_out_bass = tf.convert_to_tensor(dec_out_bass)
+           dec_out_bass = tf.expand_dims(dec_out_bass, 0)
 
            
     #convert outs to event based rep
@@ -168,13 +167,13 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
     for i in range(0,len(dec_onset_out)-1): #exclude eos
         onsetsEV.append(str(TransEncoders[5].categories_[0][dec_onset_out[i]]))
         
-    dec_drums_out = [x-1 for x in dec_drums_out] #shift by -1 to get the original
+    dec_bass_out = [x-1 for x in dec_bass_out] #shift by -1 to get the original
     bassEV = []
-    for i in range(0,len(dec_drums_out)-1): #exclude eos
-        bassEV.append(str(TransEncoders[6].categories_[0][dec_drums_out[i]]))
+    for i in range(0,len(dec_bass_out)-1): #exclude eos
+        bassEV.append(str(TransEncoders[6].categories_[0][dec_bass_out[i]]))
 
     
-    return onsetsEV, bassEV
+    return bassEV
 
 
 
@@ -200,19 +199,19 @@ def get_tempoID(tempo):
 
                     
 
-def rm_drum_ev(drumsEV):
+def rm_drum_ev(bassEV):
 
-    if 'Snare' in drumsEV and 'Snare_Stick' in drumsEV:
-        drumsEV.remove('Snare_Stick')    
+    if 'Snare' in bassEV and 'Snare_Stick' in bassEV:
+        bassEV.remove('Snare_Stick')    
 
-    if 'Closed_HH' in drumsEV and 'Open_HH' in drumsEV:
-        drumsEV.remove('Closed_HH')
+    if 'Closed_HH' in bassEV and 'Open_HH' in bassEV:
+        bassEV.remove('Closed_HH')
 
-    if 'Ride_Bell' in drumsEV and 'Ride' in drumsEV:
-        drumsEV.remove('Ride_Bell')      
+    if 'Ride_Bell' in bassEV and 'Ride' in bassEV:
+        bassEV.remove('Ride_Bell')      
 
-    #return only 1(onset)+3 elements of drums
-    return drumsEV[:4]         
+    #return only 1(onset)+3 elements of bass
+    return bassEV[:4]         
 
 
 def get_drum_element(k):
@@ -291,7 +290,7 @@ def merge_bars_fes(allBars_info, allIns_ev, allBars_pRs):
     return allBars_info    
 
 def get_event_based_rep(ps, allBars_info):
-    #get pseudo event-based representation on non-drum tracks and event-based on drums
+    #get pseudo event-based representation on non-drum tracks and event-based on bass
     s = m21.converter.parse(ps)
  
     allIns_ev = [] #Guitar, Bass
@@ -716,18 +715,18 @@ def get_drum_pitch(k):
 
  
                 
-def create_pp_instance(allEvs, onsets_ev, drums_ev):
+def create_pp_instance(allEvs, onsets_ev, bass_ev):
     
     '''PYPIANOROLL EXPORT FUNCTION'''
     
     guitarPR = []
     bassPR = []
-    drumsPR = []
+    bassPR = []
     tempo_ids = []
     downbeats_ids = []
     
-    drums_idxs = [index for index, value in enumerate(onsets_ev) if value == 'bar']
-    drums_idxs.append(len(onsets_ev))
+    bass_idxs = [index for index, value in enumerate(onsets_ev) if value == 'bar']
+    bass_idxs.append(len(onsets_ev))
 
     
     for e in range(0, len(allEvs)):
@@ -741,40 +740,40 @@ def create_pp_instance(allEvs, onsets_ev, drums_ev):
         tempo_np = np.zeros((num_steps,), dtype=float)
         tempo_np[:] = tempo_v 
         tempo_ids.append(tempo_np)
-        drums_np = np.zeros((num_steps,128), dtype=bool)
-        #for drums
+        bass_np = np.zeros((num_steps,128), dtype=bool)
+        #for bass
         try:
-            bar_prev =  drums_idxs[e]+1
-            bar_new =  drums_idxs[e+1]
+            bar_prev =  bass_idxs[e]+1
+            bar_new =  bass_idxs[e+1]
             onset_bar = onsets_ev[bar_prev:bar_new]
-            drums_bar = drums_ev[bar_prev:bar_new]
+            bass_bar = bass_ev[bar_prev:bar_new]
             for o in range(0,len(onset_bar)):
                 on_ts = round(float(onset_bar[o])*beat_res)
-                dr_ts = drums_bar[o]
+                dr_ts = bass_bar[o]
                 if dr_ts != 'bar':
                     dr_pc = get_drum_pitch(dr_ts)
-                    drums_np[on_ts,dr_pc] = True
+                    bass_np[on_ts,dr_pc] = True
              
-            drumsPR.append(drums_np)
+            bassPR.append(bass_np)
             
         except IndexError:
          
-            drumsPR.append(drums_np)
+            bassPR.append(bass_np)
                 
             
         
     guitarPR = np.vstack(guitarPR)
     bassPR = np.vstack(bassPR)
-    drumsPR = np.vstack(drumsPR)
+    bassPR = np.vstack(bassPR)
     tempo_ids = np.concatenate(tempo_ids)
     downbeats_ids = np.concatenate(downbeats_ids)
     
     #create tracks
     guitarPP = pp.BinaryTrack(name='Guitar', program=26, is_drum=False, pianoroll = guitarPR)
     bassPP = pp.BinaryTrack(name='Bass', program=33, is_drum=False, pianoroll = bassPR)
-    drumsPP = pp.BinaryTrack(name='Drums', program=0, is_drum=True, pianoroll = drumsPR)
+    bassPP = pp.BinaryTrack(name='bass', program=0, is_drum=True, pianoroll = bassPR)
     
-    full_pp = pp.Multitrack(resolution = 12, tempo=tempo_ids, downbeat = downbeats_ids, tracks =[guitarPP, bassPP, drumsPP])
+    full_pp = pp.Multitrack(resolution = 12, tempo=tempo_ids, downbeat = downbeats_ids, tracks =[guitarPP, bassPP, bassPP])
     
     
     return full_pp

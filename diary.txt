@@ -385,3 +385,8 @@ Issue with the keras.metrics.Mean, we replaced those by simple lists.
 
 While debugging the training on the cluster, I have started the adaptation of the inference part of the model to our data.
 It should be adapted, now I just need the checkpoints to be able to test it!
+
+04/03/2025
+
+Small debugging of the training on server.
+Received the checkpoint from the server! (The training stopped at 21 epochs which is weird but we'll see the first results)
