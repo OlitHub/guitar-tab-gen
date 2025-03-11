@@ -3,6 +3,8 @@ import os
 from tqdm import tqdm
 import pathlib
 import guitarpro as pygp
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
 
 
 def write_tokens_from_file(instrument_list, current_text, new_text):
@@ -309,3 +311,16 @@ def ultimate_get_filename_2(row, series_filenames, series_paths):
             break
 
     return row
+
+
+def create_onehot_dict(all_occs):
+    """
+    Created on Fri Apr 16 16:29:23 2021
+    @author: bougatsas
+    Taken from CP Drums generation, Makris et al.
+    """
+    
+    onehotEnc = OneHotEncoder(handle_unknown='ignore')
+    onehotEnc.fit(np.array(all_occs).reshape(-1,1))
+    
+    return onehotEnc     

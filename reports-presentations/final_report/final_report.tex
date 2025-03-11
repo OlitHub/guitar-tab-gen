@@ -1,0 +1,140 @@
+% define document class and set class options
+\documentclass[11pt, a4paper]{article}
+
+%===============================================
+% *** LIST OF GENERAL PACKAGES *** %
+% language package (french option available as well)
+\usepackage[english]{babel}
+
+% input fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+
+
+% customize default page geometry (size of margins, ...)
+\usepackage{geometry}
+\geometry{hmargin=2cm,vmargin=3cm}
+\usepackage{titling}
+
+\usepackage{titlesec}
+
+% writing style
+\usepackage{lmodern}
+\usepackage{times}	 
+
+% include images (image extensions & paths)
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png,.eps}
+\graphicspath{{figs/}}
+
+\usepackage{wrapfig}
+
+% display hyperlinks in the text
+\usepackage{hyperref}  %
+\hypersetup{colorlinks,%
+            citecolor=red,%
+            filecolor=black,%
+            linkcolor=blue,%
+            urlcolor=blue,%
+            breaklinks=true}
+            
+% customize enumerated lists
+\usepackage{enumitem}
+
+% for \justify command
+\usepackage{ragged2e}
+
+% lipsum command to fill in the document (for visualisation purposes)
+\usepackage{lipsum}
+
+%===============================================
+% *** CAPTIONS AND SUBFIGURES *** %
+\usepackage{subcaption}
+
+%===============================================
+% *** TABLES *** %
+\usepackage{booktabs}
+\usepackage{multirow}
+
+%=============================================== 
+% *** BIBLIOGRAPHY (FOR BIBLATEX) *** %
+\usepackage[
+    backend=biber,
+    style=numeric-comp
+    ]{biblatex}
+
+
+\usepackage{bookmark}
+\addbibresource{bgtg_lib.bib}
+
+% citation style: apa, ieee, authoryear, ...
+
+%===============================================
+% *** MATHS / PHYSICS PACKAGES *** %
+\usepackage{amsfonts,amssymb,amsmath,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}  % for DeclarePairedDelimiter
+\usepackage{siunitx}    % notation physical units
+
+% notations (shortcuts)
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\nbpix}{N}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+%===============================================
+% *** TITLE, AUTHOR AND DATE *** %
+% \pretitle{\begin{center}\fontsize{30bp}{30bp}\selectfont}
+% \posttitle{\par\end{center}}
+
+% \preauthor{\begin{center}\fontsize{14bp}{14bp}\selectfont}
+% \postauthor{\par\end{center}}
+%===============================================
+% *** MAIN DOCUMENT *** %
+\begin{document}
+
+\input{aux_tex/titlepage}
+
+% \begin{figure}[t]% We use titling to put a figure on top of the title page
+%     \centering
+%     \includegraphics[width=.5\linewidth]{logos_empile}
+% \end{figure}
+
+% \title{Bass guitar tablature conditional generation for guitar accompaniment in western popular music}
+
+% \author{Olivier \textsc{Anoufa} \\  University of Lille, France \\ Master 2 Data Science: Research project}
+
+% {\let\newpage\relax\maketitle}
+
+\newpage
+
+\section{Introduction}
+
+\input{aux_tex/introduction}
+
+\section{State of the art}
+
+\input{aux_tex/sota}
+
+\section{Data preprocessing}
+
+\input{aux_tex/data_processing}
+
+\section{Models}
+
+\input{aux_tex/models}
+
+\section{Results, discussion and user study}
+
+\input{aux_tex/results}
+
+
+
+\newpage
+
+\printbibliography% references: print bibliography (with bibtex file)
+
+\end{document}

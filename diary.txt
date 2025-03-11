@@ -379,6 +379,7 @@ We are going to start the training on the servers now.
 We successfully made a step of one epoch on CPU, but couldn't manage to launch the code on GPU.
 I will try to train the model on Kaggle.
 
+
 03/03/2025
 
 Issue with the keras.metrics.Mean, we replaced those by simple lists.
@@ -386,7 +387,29 @@ Issue with the keras.metrics.Mean, we replaced those by simple lists.
 While debugging the training on the cluster, I have started the adaptation of the inference part of the model to our data.
 It should be adapted, now I just need the checkpoints to be able to test it!
 
+
 04/03/2025
 
 Small debugging of the training on server.
 Received the checkpoint from the server! (The training stopped at 21 epochs which is weird but we'll see the first results)
+
+
+07/03/2025
+
+Once we have the results, what can we present as results? Opinions of people listening to the generated excerpts? Metrics?
+Update Readme!
+Possibility of publishing in AIMC 2025, we'll see for the adaptation of the paper to the template of the conference after the oral.
+
+
+08/03/2025
+
+Started to make some inference! I had an issue with the masks that led to the model not correctly generating the introductive tokens but now it works.
+Trying inference with several values of temperature (0.7, 0.9, 1.1).
+
+Wanted to try inference on Kaggle to speed up the process but I used tensorflow 2.10.0 to save the model and Kaggle is working on newer versions.
+If I downgrade the version of tensorflow on Kaggle, I can't use the GPU anymore (it is not compatible with the version of tensorflow).
+I made it work using tensorflow 2.15.0.
+
+11/03/2025
+
+Worked on readme and final report.
