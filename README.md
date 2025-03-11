@@ -30,8 +30,8 @@ The generated tablatures will then be evaluated both numerically and qualitative
 
 **diary.txt** Contains the daily progress of the project.
 
+**requirements_dadagp.txt** Contains the necessary libraries to run the data processing notebooks.
 
 **requirements_cp.txt** Contains the necessary libraries to run the training and inference scripts.
-
 
 
