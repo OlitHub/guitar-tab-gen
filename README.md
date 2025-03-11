@@ -12,16 +12,22 @@ The generated tablatures will then be evaluated both numerically and qualitative
 
 ## Repository Structure
 
-models/. Contains the transformer-based models which we took inspiration from and modified for our task. The models and code in this folder are untouched and all credit goes to the authors of the respective repositories.
+**models/.** Contains the transformer-based models which we took inspiration from and modified for our task. The models and code in this folder are untouched and all credit goes to the authors of the respective repositories.
 
 -------------------------------------
 
-reports-presentations/. Contains the final report, mid-term report, final presentation slides, all the figures and tables used and bibliography.    
+**reports-presentations/.** Contains the final report, mid-term report, final presentation slides, all the figures and tables used and bibliography.    
 
 -------------------------------------
 
-src/. Root folder for all the code. Contains the following subfolders:
-- 1. preprocessing: Contains the code to generate the dataset from DadaGP dataset and the code to process the dataset to generate the input and target sequences for the model. Necessary notebooks are numbered in the order they should be run.
-- 2. training: Adapted from Makris et al. model_training script, training can be performed using notebook 1.model_training.ipynb or the script model_training_script.py.
-- 3. inference: Adapted from Makris et al. gen_drums script, inference is performed using notebook 1.gen_bass_tokens.ipynb. The code imports checkpoints generated during the training phase and outputs generated tokens in tokens_out folder.
-- 4. tokens2gp5: Contains the code to convert the generated tokens to Guitar Pro 5 files. Conversion is done in notebook 1.gen_gp5_from_tokens.ipynb using an algorithm built by Sarmento et al. The code imports tokens from tokens_out folder and outputs Guitar Pro 5 files in generated_gp5 folder.
+**src/.** Root folder for all the code. Necessary notebooks are numbered in the order they should be run. Contains the following subfolders:
+- **1. preprocessing:** Contains the code to generate the dataset from DadaGP dataset and the code to process the dataset to generate the input and target sequences for the model.
+- **2. training:** Adapted from Makris et al. model_training script, training can be performed using notebook 1.model_training.ipynb or the script model_training_script.py.
+- **3. inference:** Adapted from Makris et al. gen_drums script, inference is performed using notebook 1.gen_bass_tokens.ipynb. The code imports checkpoints generated during the training phase and outputs generated tokens in tokens_out folder.
+- **4. tokens2gp5:** Contains the code to convert the generated tokens to Guitar Pro 5 files. Conversion is done in notebook 1.gen_gp5_from_tokens.ipynb using an algorithm built by Sarmento et al. The code imports tokens from tokens_out folder and outputs Guitar Pro 5 files in generated_gp5 folder.
+
+**diary.txt** Contains the daily progress of the project.
+**requirements_cp.txt** Contains the necessary libraries to run the training and inference scripts.
+
+
+

@@ -413,3 +413,4 @@ I made it work using tensorflow 2.15.0.
 11/03/2025
 
 Worked on readme and final report.
+User study: how to do it? I can extract MP3 of the generated bass parts 
