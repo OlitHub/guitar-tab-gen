@@ -27,6 +27,8 @@ The generated tablatures will then be evaluated both numerically and qualitative
 - **4. tokens2gp5:** Contains the code to convert the generated tokens to Guitar Pro 5 files. Conversion is done in notebook 1.gen_gp5_from_tokens.ipynb using an algorithm built by Sarmento et al. The code imports tokens from tokens_out folder and outputs Guitar Pro 5 files in generated_gp5 folder.
 
 **diary.txt** Contains the daily progress of the project.
+
+
 **requirements_cp.txt** Contains the necessary libraries to run the training and inference scripts.
 
 
