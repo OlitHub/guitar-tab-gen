@@ -26,6 +26,8 @@ The generated tablatures will then be evaluated both numerically and qualitative
 - **3. inference:** Adapted from Makris et al. gen_drums script, inference is performed using notebook 1.gen_bass_tokens.ipynb. The code imports checkpoints generated during the training phase and outputs generated tokens in tokens_out folder.
 - **4. tokens2gp5:** Contains the code to convert the generated tokens to Guitar Pro 5 files. Conversion is done in notebook 1.gen_gp5_from_tokens.ipynb using an algorithm built by Sarmento et al. The code imports tokens from tokens_out folder and outputs Guitar Pro 5 files in generated_gp5 folder.
 
+-------------------------------------
+
 **diary.txt** Contains the daily progress of the project.
 
 
