@@ -7,7 +7,7 @@
 import tensorflow as tf
 import numpy as np
 from tqdm import tqdm
-from aux_files.aux_train_tf import HybridTransformer,  create_masks
+from aux_files.aux_train_tf import HybridTransformer, create_masks
 
 
 
@@ -78,21 +78,11 @@ def generate_bass_ev_trans_tf(trans_bass, TransEncoders, temperature, Encoder_RG
        
        dec_out_bass = tf.concat([dec_out_bass, tf.convert_to_tensor([[token_pred_dr]])], axis=1)
 
-    #    else:
-    #        #prepare for the next cycle
-    #        #bass
-    #        dec_out_bass = [Bass_eos_idx]
-    #        dec_out_bass.extend(dec_bass_out)
-    #        dec_out_bass = tf.convert_to_tensor(dec_out_bass)
-    #        dec_out_bass = tf.expand_dims(dec_out_bass, 0)
-
-           
     #convert outs to event based rep
     dec_bass_out = [x-1 for x in dec_bass_out] #shift by -1 to get the original
     bassEV = []
     for i in range(0,len(dec_bass_out)-1): #exclude eos
         bassEV.append(str(TransEncoders[1].categories_[0][dec_bass_out[i]]))
-
     
     return bassEV
 

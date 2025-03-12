@@ -1,16 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-
-"""
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="0" #for GPU inference
 from glob import glob
-import pickle5 as pickle
-import pretty_midi as pm
-from gen_utils import bass_trans_ev_model_tf, generate_bass_ev_trans_tf,\
-    create_pp_instance, get_pianorolls, get_event_based_rep, merge_bars_fes,\
-    create_enc, create_onehot_enc
+import pickle as pickle
+from gen_utils import bass_trans_ev_model_tf, generate_bass_ev_trans_tf, create_onehot_enc
+import numpy as np
+
+thr_measures = 16
+thr_max_tokens = 800
+thr_min_tokens = 50
+dec_seq_length = 797
 
 
 '''load Encoders pickle for onehotencoders'''
@@ -21,13 +19,11 @@ encoders_trans = './aux_files/bass_encoders_cp.pickle'
     
 with open(encoders_trans, 'rb') as handle:
     TransEncoders = pickle.load(handle)
-#[EncOnset, EncGroup, EncType, EncDur, EncValue,
-# DecOnset, DecDrums]
-
+#[Encoder_RG, Decoder_Bass]
 
 '''Load Inference Transformer. You may download pre-trained model based 
 on the paper. See instructions in ReadME.md'''
-trans_drums_hb = bass_trans_ev_model_tf(TransEncoders) 
+trans_bass_hb = bass_trans_ev_model_tf(TransEncoders, dec_seq_length)
 
 
 '''Set Temperature'''
@@ -35,41 +31,28 @@ temperature = 0.9
 
 '''Load MIDI files with Guitar (1st) and Bass (2nd). See examples in midi_in folder'''
 '''max 16 bars'''
-#input folder
-inp_path = glob('./midi_in/*.mid')
+#input folder (put txt token files of rg only here)
+inp_path = glob('./tokens_in/*.txt')
 #output folder
-midi_out = './midi_out_test/'
+out_path = './tokens_out/'
 
-for trk in inp_path:
-    #open with PrettyMIDI
-    pm_data = pm.PrettyMIDI(trk)
-    #get name
-    trk_name = trk.split('\\')[-1][:-4] #you may change it depending your OS
-    try:
-        print('Generating..', trk_name)
-        #get midi info and pianorolls
-        allBars_info, allBars_pRs = get_pianorolls(pm_data)   
-        #get event-based representation
-        allIns_ev = get_event_based_rep(trk, allBars_info)
-        #merge allBars info with EVs
-        allBars_info = merge_bars_fes(allBars_info, allIns_ev, allBars_pRs)
-        #create the Encoder
-        Enc_Onset, Enc_Group, Enc_Type, Enc_Duration, Enc_Value = create_enc(allBars_info)
-        #convert the CP streams to one-hot. It may raise exceptions if an event has not be
-        #found during the training (e.g. rare Time Signature, duration etc)
-        Enc_InputO, Enc_InputG, Enc_InputT, Enc_InputD, Enc_InputV = create_onehot_enc(Enc_Onset, 
-                          Enc_Group, Enc_Type, Enc_Duration, Enc_Value, TransEncoders)
-        #call generation functions
-        onsets_HB, drums_HB = generate_bass_ev_trans_tf(trans_drums_hb, TransEncoders, temperature, 
-                            Enc_InputO, Enc_InputG, Enc_InputT, Enc_InputD, Enc_InputV)      
-        #create pypianoroll instance
-        pp_ins = create_pp_instance(allBars_info, onsets_HB, drums_HB)
-        #save midi files
-        pp_ins.write(midi_out+trk_name+'_with_Drums.mid')
+# Inference on the test set
 
+test_path = r"..\..\data\processed\test_set_streams_16_8_800_50.pickle"
 
-    except Exception as e:         
-       print('Aborted due to', e)
+with open(test_path, 'rb') as handle:
+    testSet = pickle.load(handle)
+
+enc_input_test = np.int64(np.stack(testSet['Encoder_Input'])) #encoder input
+output_test = []
+
+for Enc_Input in enc_input_test:
+    # call generation functions
+    bass_HB = generate_bass_ev_trans_tf(trans_bass_hb, TransEncoders, temperature, Enc_Input, dec_seq_length=dec_seq_length)      
+    # save token files to be passed to the tokens2gp5 algorithm
+    output_test.append(bass_HB)
+    
+# output_test is a list of lists of tokens for the 11 817 test set sequences
             
   
 

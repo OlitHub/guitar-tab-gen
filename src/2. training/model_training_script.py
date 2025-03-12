@@ -11,8 +11,8 @@ physical_devices = tf.config.list_physical_devices('GPU')
 
 tf.config.run_functions_eagerly(False)
 
-train_path = "train_set_streams.pickle"
-test_path = "test_set_streams.pickle"
+train_path = "train_set_streams_16_8_800_50.pickle"
+test_path = "val_set_streams_16_8_800_50.pickle"
 
 with open(train_path, 'rb') as handle:
     trainSet = pickle.load(handle)
@@ -59,12 +59,12 @@ num_heads = 8 #
 dropout_rate = 0.3
 
 #vocab sizes
-enc_vocab = 1754
-dec_vocab = 1083
+enc_vocab = 1929
+dec_vocab = 1177
 
 #sequence lengths
-enc_seq_length = 800
-dec_seq_length = 793
+enc_seq_length = 797
+dec_seq_length = 773
 
 #for relative attention half or full window
 rel_dec_seq = dec_seq_length
@@ -182,7 +182,7 @@ def val_step(inp, tar_inp, tar_real):
 
   
 """START TRAINING"""
-epochs = 2
+epochs = 200
 patience = 0
 curr_loss = 99.99    
 for epoch in range(epochs):
@@ -214,7 +214,7 @@ for epoch in range(epochs):
         val_step(inp, tar_inp, tar_real)
         
     print('----')
-    print(f'Validation Loss {val_loss.result():.4f} -- Accuracy {val_accuracy.result():.4f}')  
+    print(f'Validation Loss {val_loss.result():.4f} -- Validation Accuracy {val_accuracy.result():.4f}')  
     
     
     val_loss_np = np.round((val_loss.result().numpy()), decimals = 5) #change weights

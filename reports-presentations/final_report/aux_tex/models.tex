@@ -41,7 +41,7 @@ This representation concatenates all the parameters necessary to describe a note
 % FIGURE MAKRIS ET AL. MODEL ADAPTED TO OUR TASK
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=.75\linewidth]{../images-figures/model_adapted.png}
+    \includegraphics[width=.9\linewidth]{../images-figures/model_adapted.png}
     \caption{Makris et al. model adapted to our task}
     \label{fig:makris_model_adapted}
 \end{figure}
@@ -49,32 +49,40 @@ This representation concatenates all the parameters necessary to describe a note
 Figure \ref{fig:makris_model_adapted} shows the model adapted to our task.
 In our case, we have chosen to use DadaGP tokenization which is a different representation.
 On the encoder side, the five embeddings concatenated in Makris et al. are replaced by a single embedding in our case.
-On the decoder side, their input had a special shape because drums notes need much less parameters than other instruments.
+On the decoder side, the compound word is only made of two inputs because drums notes need much less parameters than other instruments.
 They are fully described by their onset and a value indicating the drum type.
 This compound representation is also replaced by a single embedding in our case.
 
-The embeddings are then passed through a dense layer. The encoder input (rythmic guitar) is passed through a BiLSTM layer.
+The embeddings are then passed through a dense layer. The encoder input (rhythmic guitar) is passed through a BiLSTM layer.
 Positional encodings are added to the decoder input and the output of the BiLSTM layer.
 All these elements are then passed through a transformer layer with self-attention mechanism
-that outputs an array of vocabulary size with the probability of each token.
+that outputs an array of vocabulary size with the logits of the next token.
+These logits are then passed through a softmax layer to get the probabilities of the next token.
 
-\subsection{Training and inference}
 
-The model was trained on 11 020 extract from songs in the DadaGP dataset.
-These extracts are the first 16 measures of the song, and contain sequences of at most 800 tokens and at least 50 tokens.
-Thresholds were set to avoid training on sequences that are either too long or that does not contain rythmic guitar or bass.
+To evaluate our model's performance, we use a loss function based on categorical cross-entropy and an accuracy metric designed for sequence modeling.
+The loss function measures how well the predicted probability distribution aligns with the true tokens and is defined as:  
 
-% FIGURE DISTRIBUTION OF SEQUENCE LENGTHS
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=.75\linewidth]{../images-figures/sequence_lengths_16_800_50.png}
-    \caption{Distribution of sequence lengths in the training dataset}
-    \label{fig:sequence_length_distribution}
-\end{figure}
+\[
+\mathcal{L} = - \sum_{t=1}^{T} \sum_{k=1}^{K} y_{t,k} \log \hat{y}_{t,k}
+\]
 
-Figure \ref{fig:sequence_length_distribution} shows the distribution of sequence lengths in the training dataset.
-The majority of the sequences are between 200 and 400 tokens long for the rythmic guitar and between 100 and 300 tokens long for the bass.
+where \( T \) is the sequence length, \( K \) is the vocabulary size, \( y_{t,k} \) is a one-hot encoded ground-truth token at time step \( t \), and \( \hat{y}_{t,k} \) is the predicted probability for token \( k \).  
+
+Our accuracy metric computes the proportion of correctly predicted tokens in a sequence.
+Both functions incorporate a masking mechanism to handle padding tokens and remove their contribution to the calculations.
+
+
+\subsection{Training}
 
 Training was done on GPU with 200 epochs and a batch size of 32.
 However the training stopped at epoch 29 because the validation loss did not decrease anymore for 5 epochs.
 We reached 0.90 accuracy on the validation set with 0.42 loss.
+
+% FIGURE EVOLUTION OF ACCURACY AND LOSS DURING TRAINING
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=.8\linewidth]{../images-figures/validation_acc_loss.png}
+    \caption{Evolution of accuracy and loss during training}
+    \label{fig:validation_acc_loss}
+\end{figure}
