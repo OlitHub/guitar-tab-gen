@@ -2118,6 +2118,3 @@ Instrument changes are not supported. Banjos are not supported.
         print("done.")
     else:
         print(usage)
-    
-if __name__ == "__main__":
-    main()

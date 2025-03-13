@@ -21,6 +21,8 @@ While this forced the model to generate only bass tokens, the output quality was
 This was expected, as the model was not trained explicitly for bass only generation. 
 Unfortunately, we cannot provide a quantitative evaluation of the generated tablatures, as we have not yet defined an evaluation metric.
 
+\newpage
+
 \subsection{BiLSTM - Transformer model}
 
 This section present the results we get using a model adapted from the work of Makris et al. \cite{makris_conditional_2022}.
@@ -58,6 +60,7 @@ Positional encodings are added to the decoder input and the output of the BiLSTM
 All these elements are then passed through a transformer layer with self-attention mechanism
 that outputs an array of vocabulary size with the logits of the next token.
 These logits are then passed through a softmax layer to get the probabilities of the next token.
+All these layers lead to a model of 20 881 514 parameters.
 
 
 To evaluate our model's performance, we use a loss function based on categorical cross-entropy and an accuracy metric designed for sequence modeling.
@@ -75,14 +78,19 @@ Both functions incorporate a masking mechanism to handle padding tokens and remo
 
 \subsection{Training}
 
-Training was done on GPU with 200 epochs and a batch size of 32.
-However the training stopped at epoch 29 because the validation loss did not decrease anymore for 5 epochs.
-We reached 0.90 accuracy on the validation set with 0.42 loss.
+Training was done on GPU with 200 epochs, an early-stopping criterion of 5 epochs without improvement on the validation loss,
+Adam optimizer with the following hyperparameters: $\alpha=5e^{-4}$, $\beta_1=0.9$, $\beta_2=0.98$, $epsilon=1e^{-9}$, and a batch size of 32.
+
+The training stopped at epoch 37 because the validation loss did not decrease anymore for 5 epochs.
+We reached 0.97 accuracy on the validation set with 0.14 loss.
 
 % FIGURE EVOLUTION OF ACCURACY AND LOSS DURING TRAINING
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=.8\linewidth]{../images-figures/validation_acc_loss.png}
-    \caption{Evolution of accuracy and loss during training}
+    \caption{Evolution of accuracy and loss during the training}
     \label{fig:validation_acc_loss}
 \end{figure}
+
+Figure \ref{fig:validation_acc_loss} shows the evolution of accuracy and loss during training.
+The accuracy increases rapidly during the first epochs, then stabilizes around 0.90.

@@ -1,25 +1,25 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-
-"""
-
 import tensorflow as tf
 import numpy as np
 from tqdm import tqdm
 from aux_files.aux_train_tf import HybridTransformer, create_masks
 
 
-
-"""GLOBAL VARIABLES"""
-beat_res = 12 #beat resolution for pianoroll 1/16 triplet
-
-
 def create_onehot_enc(Encoder_RG, TransEncoders):
+    vocab = TransEncoders[0].categories_[0]  # Get the vocabulary from the encoder
     
-    Enc_Input = TransEncoders[0].transform(np.array(['sos']+Encoder_RG+['eos']).reshape(-1, 1)).toarray()
-    Enc_Input = [np.where(r==1)[0][0] for r in Enc_Input] #for embeddings
-    Enc_Input = [x+1 for x in Enc_Input] #shift by one in order to have 0 as pad
+    # Check for out-of-vocabulary tokens
+    oov_tokens = [token for token in Encoder_RG if token not in vocab]
+    if oov_tokens:
+        print("Warning: The following tokens are not in the vocabulary:", oov_tokens)
+
+    # Transform sequence with 'sos' and 'eos'
+    Enc_Input = TransEncoders[0].transform(np.array(['sos'] + Encoder_RG + ['eos']).reshape(-1, 1)).toarray()
+    
+    # Convert one-hot vectors to indices
+    Enc_Input = [np.where(r == 1)[0][0] for r in Enc_Input]  # for embeddings
+    
+    # Shift by one to use 0 as padding
+    Enc_Input = [x + 1 for x in Enc_Input]  
     
     return Enc_Input
 
@@ -94,6 +94,7 @@ def bass_trans_ev_model_tf(TransEncoders, dec_seq_length):
     
     dec_vocab = len(TransEncoders[1].categories_[0])
     
+    print(enc_vocab, dec_vocab)
     #create the architecture first  
     num_layers = 4  #4
     d_model_enc = 240 #Encoder Embedding

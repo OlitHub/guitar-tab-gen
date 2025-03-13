@@ -1,0 +1,218 @@
+2025-03-12 11:20:03.982566: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-12 11:20:04.007442: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-03-12 11:20:04.008648: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-03-12 11:20:04.010492: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-03-12 11:20:04.015453: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-12 11:20:04.667757: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2025-03-12 11:20:23.531164: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 43417 MB memory:  -> device: 0, name: NVIDIA L40S, pci bus id: 0000:e1:00.0, compute capability: 8.9
+2025-03-12 11:20:44.109339: W tensorflow/core/common_runtime/type_inference.cc:339] Type inference failed. This indicates an invalid graph that escaped type checking. Error message: INVALID_ARGUMENT: expected compatible input types, but input 1:
+type_id: TFT_OPTIONAL
+args {
+  type_id: TFT_PRODUCT
+  args {
+    type_id: TFT_TENSOR
+    args {
+      type_id: TFT_BOOL
+    }
+  }
+}
+ is neither a subtype nor a supertype of the combined inputs preceding it:
+type_id: TFT_OPTIONAL
+args {
+  type_id: TFT_PRODUCT
+  args {
+    type_id: TFT_TENSOR
+    args {
+      type_id: TFT_INT32
+    }
+  }
+}
+
+	for Tuple type infernce function 0
+	while inferring type of node 'hybrid_transformer/word_decoder/decoder_layer/relative_global_attention/cond/output/_9'
+2025-03-12 11:20:47.436423: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2025-03-12 11:20:50.397346: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8904
+2025-03-12 11:20:52.046507: I external/local_xla/xla/service/service.cc:168] XLA service 0x152acd3c6000 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2025-03-12 11:20:52.068442: I external/local_xla/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA L40S, Compute Capability 8.9
+2025-03-12 11:20:52.127563: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1741774852.217230 1537843 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+Latest checkpoint restored!!
+Epoch 1
+----
+Loss 0.1282 -- Accuracy 0.9621
+Evaluating...
+----
+Validation Loss 0.1440 -- Accuracy 0.9627
+Overall weighted Validation Loss:  0.14398
+Checkpoint saved.
+Time taken for this epoch: 1736.67 secs
+
+*******************************
+Epoch 2
+----
+Loss 0.1268 -- Accuracy 0.9625
+Evaluating...
+----
+Validation Loss 0.1422 -- Accuracy 0.9630
+Overall weighted Validation Loss:  0.14215
+Checkpoint saved.
+Time taken for this epoch: 1688.34 secs
+
+*******************************
+Epoch 3
+----
+Loss 0.1251 -- Accuracy 0.9630
+Evaluating...
+----
+Validation Loss 0.1420 -- Accuracy 0.9632
+Overall weighted Validation Loss:  0.14197
+Checkpoint saved.
+Time taken for this epoch: 1687.47 secs
+
+*******************************
+Epoch 4
+----
+Loss 0.1237 -- Accuracy 0.9633
+Evaluating...
+----
+Validation Loss 0.1413 -- Accuracy 0.9633
+Overall weighted Validation Loss:  0.14133
+Checkpoint saved.
+Time taken for this epoch: 1687.48 secs
+
+*******************************
+Epoch 5
+----
+Loss 0.1224 -- Accuracy 0.9637
+Evaluating...
+----
+Validation Loss 0.1403 -- Accuracy 0.9636
+Overall weighted Validation Loss:  0.14031
+Checkpoint saved.
+Time taken for this epoch: 1690.24 secs
+
+*******************************
+Epoch 6
+----
+Loss 0.1210 -- Accuracy 0.9640
+Evaluating...
+----
+Validation Loss 0.1374 -- Accuracy 0.9639
+Overall weighted Validation Loss:  0.13735
+Checkpoint saved.
+Time taken for this epoch: 1688.55 secs
+
+*******************************
+Epoch 7
+----
+Loss 0.1197 -- Accuracy 0.9644
+Evaluating...
+----
+Validation Loss 0.1396 -- Accuracy 0.9635
+Overall weighted Validation Loss:  0.13957
+No validation loss improvement.
+Time taken for this epoch: 1686.50 secs
+
+*******************************
+Epoch 8
+----
+Loss 0.1185 -- Accuracy 0.9647
+Evaluating...
+----
+Validation Loss 0.1407 -- Accuracy 0.9640
+Overall weighted Validation Loss:  0.1407
+No validation loss improvement.
+Time taken for this epoch: 1686.91 secs
+
+*******************************
+Epoch 9
+----
+Loss 0.1173 -- Accuracy 0.9650
+Evaluating...
+----
+Validation Loss 0.1372 -- Accuracy 0.9645
+Overall weighted Validation Loss:  0.1372
+Checkpoint saved.
+Time taken for this epoch: 1687.91 secs
+
+*******************************
+Epoch 10
+----
+Loss 0.1160 -- Accuracy 0.9653
+Evaluating...
+----
+Validation Loss 0.1354 -- Accuracy 0.9648
+Overall weighted Validation Loss:  0.13543
+Checkpoint saved.
+Time taken for this epoch: 1687.82 secs
+
+*******************************
+Epoch 11
+----
+Loss 0.1148 -- Accuracy 0.9656
+Evaluating...
+----
+Validation Loss 0.1397 -- Accuracy 0.9645
+Overall weighted Validation Loss:  0.1397
+No validation loss improvement.
+Time taken for this epoch: 1686.79 secs
+
+*******************************
+Epoch 12
+----
+Loss 0.1137 -- Accuracy 0.9659
+Evaluating...
+----
+Validation Loss 0.1366 -- Accuracy 0.9650
+Overall weighted Validation Loss:  0.13662
+No validation loss improvement.
+Time taken for this epoch: 1686.43 secs
+
+*******************************
+Epoch 13
+----
+Loss 0.1126 -- Accuracy 0.9662
+Evaluating...
+----
+Validation Loss 0.1376 -- Accuracy 0.9652
+Overall weighted Validation Loss:  0.1376
+No validation loss improvement.
+Time taken for this epoch: 1686.15 secs
+
+*******************************
+Epoch 14
+----
+Loss 0.1116 -- Accuracy 0.9665
+Evaluating...
+----
+Validation Loss 0.1392 -- Accuracy 0.9648
+Overall weighted Validation Loss:  0.13922
+No validation loss improvement.
+Time taken for this epoch: 1685.52 secs
+
+*******************************
+Epoch 15
+----
+Loss 0.1106 -- Accuracy 0.9668
+Evaluating...
+----
+Validation Loss 0.1364 -- Accuracy 0.9651
+Overall weighted Validation Loss:  0.13643
+No validation loss improvement.
+Time taken for this epoch: 1685.43 secs
+
+*******************************
+Epoch 16
+----
+Loss 0.1097 -- Accuracy 0.9670
+Evaluating...
+----
+Validation Loss 0.1356 -- Accuracy 0.9654
+Overall weighted Validation Loss:  0.13564
+No validation loss improvement.
+Time taken for this epoch: 1685.05 secs
+
+*******************************
+Terminating the training.

@@ -437,15 +437,16 @@ Perspectives:
 * Remove one of the dense networks (embedding - dense)
 * Try compound words tokenization instead of DADAGP
 * User study to evaluate the quality of the generated bass lines
+* Green AI environmental metric (evalutation of the number of floating point operations)
 
 I implemented stride on the gathering of sequences and with a stride of 8 we now have 118 167 sequences (11 020 before).
 
+12/03/2025
+
+Worked on the report.
 
 TO DO LIST:
 
 Focus on report for thursday evening, slides for friday at noon.
 Find metrics in one of Pedro's paper (GTR CTRL).
-Download tuxguitar to open the gp5 files and display tablatures.
-Plot evolution of validation loss and validation accuracy over training.
-Then write qualitative analysis over some examples selected.
 
