@@ -3,10 +3,7 @@
 	title = {Framewise phoneme classification with bidirectional {LSTM} networks},
 	volume = {4},
 	abstract = {In this paper, we apply bidirectional training to a Long Short Term Memory ({LSTM}) network for the ﬁrst time. We also present a modiﬁed, full gradient version of the {LSTM} learning algorithm. We discuss the signiﬁcance of framewise phoneme classiﬁcation to continuous speech recognition, and the validity of using bidirectional networks for online causal tasks. On the {TIMIT} speech database, we measure the framewise phoneme classiﬁcation scores of bidirectional and unidirectional variants of both {LSTM} and conventional Recurrent Neural Networks ({RNNs}). We ﬁnd that bidirectional {LSTM} outperforms both {RNNs} and unidirectional {LSTM}.},
-	eventtitle = {International Joint Conference on Neural Networks 2005},
-	pages = {2047--2052},
-	booktitle = {Proceedings. 2005 {IEEE} International Joint Conference on Neural Networks, 2005.},
-	publisher = {{IEEE}},
+	eventtitle = {International Joint Conference on Neural Networks},
 	author = {Graves, A. and Schmidhuber, J.},
 	date = {2005},
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\KU43FU95\\Graves et Schmidhuber - 2005 - Framewise phoneme classification with bidirectional LSTM networks.pdf:application/pdf},
@@ -21,14 +18,14 @@
 	keywords = {citational justice, data visualisation, open science, reading, writing},
 }
 
-@misc{le_natural_2024,
-	title = {Natural Language Processing Methods for Symbolic Music Generation and Information Retrieval: a Survey},
-	abstract = {Several adaptations of Transformers models have been developed in various domains since its breakthrough in Natural Language Processing ({NLP}). This trend has spread into the field of Music Information Retrieval ({MIR}), including studies processing music data. However, the practice of leveraging {NLP} tools for symbolic music data is not novel in {MIR}. Music has been frequently compared to language, as they share several similarities, including sequential representations of text and music. These analogies are also reflected through similar tasks in {MIR} and {NLP}.},
-	publisher = {{arXiv}},
-	author = {Le, Dinh-Viet-Toan and Bigo, Louis and Keller, Mikaela and Herremans, Dorien},
-	date = {2024},
-	keywords = {Computer Science - Artificial Intelligence, Computer Science - Information Retrieval, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
-	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\8MQPSZTE\\Le et al. - 2024 - Natural Language Processing Methods for Symbolic Music Generation and Information Retrieval a Surve.pdf:application/pdf},
+@article{le_natural_2024,
+	author = {Le, Dinh-Viet-Toan and Bigo, Louis and Herremans, Dorien and Keller, Mikaela},
+	title = {Natural Language Processing Methods for Symbolic Music Generation and Information Retrieval: A Survey},
+	year = {2025},
+	volume = {57},
+	abstract = {Music is frequently associated with the notion of language, as both domains share several similarities, including the ability for their content to be represented as sequences of symbols. In computer science, the fields of Natural Language Processing (NLP) and Music Information Retrieval (MIR) reflect this analogy through a variety of similar tasks, such as author detection or content generation. This similarity has long encouraged the adaptation of NLP methods to process musical data, particularly symbolic music data, and the rise of Transformer neural networks has considerably strengthened this practice. This survey reviews NLP methods applied to symbolic music generation and information retrieval following two axes. We first propose an overview of representations of symbolic music inspired by text sequential representations. We then review a large set of computational models, particularly deep learning models, which have been adapted from NLP to process these musical representations for various MIR tasks. These models are described and categorized through different prisms with a highlight on their music-specialized mechanisms. We finally present a discussion surrounding the adequate use of NLP tools to process symbolic music data. This includes technical issues regarding NLP methods which may open several doors for further research into more effectively adapting NLP tools to symbolic MIR.},
+	journal = {ACM Comput. Surv.},
+	keywords = {Music information retrieval, natural language processing, symbolic music, music generation, music analysis, deep learning}
 }
 
 @online{alammar_illustrated_2018,
@@ -41,7 +38,7 @@
 
 @inproceedings{cournut_encodages_2020,
 	title = {Encodages de tablatures pour l'analyse de musique pour guitare},
-	booktitle = {Journées d'Informatique Musicale ({JIM} 2020)},
+	booktitle = {Journées d'Informatique Musicale},
 	author = {Cournut, Jules and Bigo, Louis and Giraud, Mathieu and Martin, Nicolas},
 	date = {2020},
 	file = {HAL PDF Full Text:C\:\\Users\\oanou\\Zotero\\storage\\845FRSUL\\Cournut et al. - 2020 - Encodages de tablatures pour l'analyse de musique pour guitare.pdf:application/pdf},
@@ -50,10 +47,8 @@
 @misc{sarmento_shredgp_2023,
 	title = {{ShredGP}: Guitarist Style-Conditioned Tablature Generation},
 	abstract = {{GuitarPro} format tablatures are a type of digital music notation that encapsulates information about guitar playing techniques and fingerings. We introduce {ShredGP}, a {GuitarPro} tablature generative Transformer-based model conditioned to imitate the style of four distinct iconic electric guitarists. In order to assess the idiosyncrasies of each guitar player, we adopt a computational musicology methodology by analysing features computed from the tokens yielded by the {DadaGP} encoding scheme. Statistical analyses of the features evidence significant differences between the four guitarists. We trained two variants of the {ShredGP} model, one using a multi-instrument corpus, the other using solo guitar data. We present a {BERT}-based model for guitar player classification and use it to evaluate the generated examples. Overall, results from the classifier show that {ShredGP} is able to generate content congruent with the style of the targeted guitar player. Finally, we reflect on prospective applications for {ShredGP} for human-{AI} music interaction.},
-	publisher = {{arXiv}},
 	author = {Sarmento, Pedro and Kumar, Adarsh and Xie, Dekun and Carr, C. J. and Zukowski, Zack and Barthet, Mathieu},
 	date = {2023},
-	keywords = {Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\SEUQ9EDK\\Sarmento et al. - 2023 - ShredGP Guitarist Style-Conditioned Tablature Generation.pdf:application/pdf},
 }
 
@@ -78,11 +73,8 @@
 	title = {{GTR}-{CTRL}: Instrument and Genre Conditioning for Guitar-Focused Music Generation with Transformers},
 	shorttitle = {{GTR}-{CTRL}},
 	abstract = {Recently, symbolic music generation with deep learning techniques has witnessed steady improvements. Most works on this topic focus on {MIDI} representations, but less attention has been paid to symbolic music generation using guitar tablatures (tabs) which can be used to encode multiple instruments. Tabs include information on expressive techniques and fingerings for fretted string instruments in addition to rhythm and pitch. In this work, we use the {DadaGP} dataset for guitar tab music generation, a corpus of over 26k songs in {GuitarPro} and token formats. We introduce methods to condition a Transformer-{XL} deep learning model to generate guitar tabs ({GTR}-{CTRL}) based on desired instrumentation (inst-{CTRL}) and genre (genre-{CTRL}). Special control tokens are appended at the beginning of each song in the training corpus. We assess the performance of the model with and without conditioning. We propose instrument presence metrics to assess the inst-{CTRL} model’s response to a given instrumentation prompt. We trained a {BERT} model for downstream genre classification and used it to assess the results obtained with the genre-{CTRL} model. Statistical analyses evidence significant differences between the conditioned and unconditioned models. Overall, results indicate that the {GTR}-{CTRL} methods provide more flexibility and control for guitar-focused symbolic music generation than an unconditioned model.},
-	pages = {260--275},
 	booktitle = {Artificial Intelligence in Music, Sound, Art and Design},
-	publisher = {Springer Nature Switzerland},
 	author = {Sarmento, Pedro and Kumar, Adarsh and Chen, Yu-Hua and Carr, {CJ} and Zukowski, Zack and Barthet, Mathieu},
-	editor = {Johnson, Colin and Rodríguez-Fernández, Nereida and Rebelo, Sérgio M.},
 	date = {2023},
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\9SDVXFNM\\Sarmento et al. - 2023 - GTR-CTRL Instrument and Genre Conditioning for Guitar-Focused Music Generation with Transformers.pdf:application/pdf},
 }
@@ -90,22 +82,18 @@
 @inproceedings{dai_transformer-xl_2019,
 	title = {Transformer-{XL}: Attentive Language Models beyond a Fixed-Length Context},
 	abstract = {Transformers have a potential of learning longer-term dependency, but are limited by a fixed-length context in the setting of language modeling. We propose a novel neural architecture Transformer-{XL} that enables learning dependency beyond a fixed length without disrupting temporal coherence. It consists of a segment-level recurrence mechanism and a novel positional encoding scheme. Our method not only enables capturing longer-term dependency, but also resolves the context fragmentation problem. As a result, Transformer-{XL} learns dependency that is 80\% longer than {RNNs} and 450\% longer than vanilla Transformers, achieves better performance on both short and long sequences, and is up to 1,800+ times faster than vanilla Transformers during evaluation. Notably, we improve the state-of-the-art results of bpc/perplexity to 0.99 on enwiki8, 1.08 on text8, 18.3 on {WikiText}-103, 21.8 on One Billion Word, and 54.5 on Penn Treebank (without finetuning). When trained only on {WikiText}-103, Transformer-{XL} manages to generate reasonably coherent, novel text articles with thousands of tokens. Our code, pretrained models, and hyperparameters are available in both Tensorflow and {PyTorch}.},
-	eventtitle = {{ACL} 2019},
-	pages = {2978--2988},
 	booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics},
-	publisher = {Association for Computational Linguistics},
 	author = {Dai, Zihang and Yang, Zhilin and Yang, Yiming and Carbonell, Jaime and Le, Quoc and Salakhutdinov, Ruslan},
-	editor = {Korhonen, Anna and Traum, David and Màrquez, Lluís},
 	date = {2019},
 	file = {Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\BG9H8M2U\\Dai et al. - 2019 - Transformer-XL Attentive Language Models beyond a Fixed-Length Context.pdf:application/pdf},
 }
 
-@article{regnier_identification_2021,
-	title = {Identification of rhythm guitar sections in symbolic  tablatures},
-	abstract = {Sections of guitar parts in pop/rock songs are commonly described by functional terms including for example rhythm guitar, lead guitar, solo or riff. At a low level, these terms generally involve textural properties, for example whether the guitar tends to play chords or single notes. At a higher level, they indicate the function the guitar is playing relative to other instruments of the ensemble, for example whether the guitar is accompanying in background, or if it is intended to play a part in the foreground. Automatic labelling of instrumental function has various potential applications including the creation of consistent datasets dedicated to the training of generative models that focus on a particular function. In this paper, we propose a computational method to identify rhythm guitar sections in symbolic tablatures. We deﬁne rhythm guitar as sections that aim at making the listener perceive the chord progression that characterizes the harmony part of the song. A set of 31 high level features is proposed to predict if a bar in a tablature should be labeled as rhythm guitar or not. These features are used by an {LSTM} classiﬁer which yields to a F1 score of 0.95 on a dataset of 102 guitar tablatures with manual function annotations. Manual annotations and computed feature vectors are publicly released.},
-	author = {Régnier, David and Martin, Nicolas and Bigo, Louis},
-	date = {2021},
-	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\B4QVCY89\\Régnier et al. - 2021 - IDENTIFICATION OF RHYTHM GUITAR SECTIONS IN SYMBOLIC TABLATURES.pdf:application/pdf},
+@inproceedings{regnier_identification_2021,
+	TITLE = {{Identification of rhythm guitar sections in symbolic tablatures}},
+	AUTHOR = {R{\'e}gnier, David and Martin, Nicolas and Bigo, Louis},
+	BOOKTITLE = {{International Society for Music Information Retrieval Conference (ISMIR 2021)}},
+	YEAR = {2021},
+	PDF = {https://hal.science/hal-03335822v1/file/regnier-rhythm-guitar.pdf},
 }
 
 @unpublished{bacot_tablature_2025,
@@ -118,15 +106,10 @@
 @article{hsiao_compound_2021,
 	title = {Compound Word Transformer: Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs},
 	volume = {35},
-	rights = {Copyright (c) 2021 Association for the Advancement of Artificial Intelligence},
 	abstract = {To apply neural sequence models such as the Transformers to music generation tasks, one has to represent a piece of music by a sequence of tokens drawn from a finite set of pre-defined vocabulary. Such a vocabulary usually involves tokens of various types. For example, to describe a musical note, one needs separate tokens to indicate the note’s pitch, duration, velocity (dynamics), and placement (onset time) along the time grid. While different types of tokens may possess different properties, existing models usually treat them equally, in the same way as modeling words in natural languages. In this paper, we present a conceptually different approach that explicitly takes into account the type of the tokens, such as note types and metric types. And, we propose a new Transformer decoder architecture that uses different feed-forward heads to model tokens of different types. With an expansion-compression trick, we convert a piece of music to a sequence of compound words by grouping neighboring tokens, greatly reducing the length of the token sequences. We show that the resulting model can be viewed as a learner over dynamic directed hypergraphs. And, we employ it to learn to compose expressive Pop piano music of full-song length (involving up to 10K individual tokens per song), both conditionally and unconditionally. Our experiment shows that, compared to state-of-the-art models, the proposed model converges 5 to 10 times faster at training (i.e., within a day on a single {GPU} with 11 {GB} memory), and with comparable quality in the generated music},
-	pages = {178--186},
-	number = {1},
 	journaltitle = {Proceedings of the {AAAI} Conference on Artificial Intelligence},
 	author = {Hsiao, Wen-Yi and Liu, Jen-Yu and Yeh, Yin-Cheng and Yang, Yi-Hsuan},
 	date = {2021},
-	note = {Number: 1},
-	keywords = {Art/Music/Creativity},
 	file = {Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\H5QMGZGY\\Hsiao et al. - 2021 - Compound Word Transformer Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs.pdf:application/pdf},
 }
 
@@ -134,8 +117,6 @@
 	title = {Superior time perception for lower musical pitch explains why bass-ranged instruments lay down musical rhythms},
 	volume = {111},
 	abstract = {The auditory environment typically contains several sound sources that overlap in time, and the auditory system parses the complex sound wave into streams or voices that represent the various sound sources. Music is also often polyphonic. Interestingly, the main melody (spectral/pitch information) is most often carried by the highest-pitched voice, and the rhythm (temporal foundation) is most often laid down by the lowest-pitched voice. Previous work using electroencephalography ({EEG}) demonstrated that the auditory cortex encodes pitch more robustly in the higher of two simultaneous tones or melodies, and modeling work indicated that this high-voice superiority for pitch originates in the sensory periphery. Here, we investigated the neural basis of carrying rhythmic timing information in lower-pitched voices. We presented simultaneous high-pitched and low-pitched tones in an isochronous stream and occasionally presented either the higher or the lower tone 50 ms earlier than expected, while leaving the other tone at the expected time. {EEG} recordings revealed that mismatch negativity responses were larger for timing deviants of the lower tones, indicating better timing encoding for lower-pitched compared with higher-pitch tones at the level of auditory cortex. A behavioral motor task revealed that tapping synchronization was more influenced by the lower-pitched stream. Results from a biologically plausible model of the auditory periphery suggest that nonlinear cochlear dynamics contribute to the observed effect. The low-voice superiority effect for encoding timing explains the widespread musical practice of carrying rhythm in bass-ranged instruments and complements previously established high-voice superiority effects for pitch and melody.},
-	pages = {10383--10388},
-	number = {28},
 	journaltitle = {Proceedings of the National Academy of Sciences},
 	author = {Hove, Michael J. and Marie, Céline and Bruce, Ian C. and Trainor, Laurel J.},
 	date = {2014},
@@ -173,11 +154,8 @@
 	location = {Cham},
 	title = {Conditional Drums Generation Using Compound Word Representations},
 	abstract = {The field of automatic music composition has seen great progress in recent years, specifically with the invention of transformer-based architectures. When using any deep learning model which considers music as a sequence of events with multiple complex dependencies, the selection of a proper data representation is crucial. In this paper, we tackle the task of conditional drums generation using a novel data encoding scheme inspired by the Compound Word representation, a tokenization process of sequential data. Therefore, we present a sequence-to-sequence architecture where a Bidirectional Long short-term memory ({BiLSTM}) Encoder receives information about the conditioning parameters (i.e., accompanying tracks and musical attributes), while a Transformer-based Decoder with relative global attention produces the generated drum sequences. We conducted experiments to thoroughly compare the effectiveness of our method to several baselines. Quantitative evaluation shows that our model is able to generate drums sequences that have similar statistical distributions and characteristics to the training corpus. These features include syncopation, compression ratio, and symmetry among others. We also verified, through a listening test, that generated drum sequences sound pleasant, natural and coherent while they “groove” with the given accompaniment.},
-	pages = {179--194},
 	booktitle = {Artificial Intelligence in Music, Sound, Art and Design},
-	publisher = {Springer International Publishing},
 	author = {Makris, Dimos and Zixun, Guo and Kaliakatsos-Papakostas, Maximos and Herremans, Dorien},
-	editor = {Martins, Tiago and Rodríguez-Fernández, Nereida and Rebelo, Sérgio M.},
 	date = {2022},
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\JIVK8KFX\\Makris et al. - 2022 - Conditional Drums Generation using Compound Word Representations.pdf:application/pdf},
 }
@@ -186,7 +164,6 @@
   author = {Sarmento, Pedro and Kumar, Adarsh and Carr, CJ and Zukowski, Zack and Barthet, Mathieu and Yang, Yi-Hsuan},
   booktitle = {Proceedings of the 22nd International Society for Music Information Retrieval Conference},
   title = {{DadaGP: a Dataset of Tokenized GuitarPro Songs for Sequence Models}},
-  url = {https://archives.ismir.net/ismir2021/paper/000076.pdf},
   year = {2021}
 }
 
@@ -215,11 +192,10 @@
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\Z4U9YB3F\\How Popular Musicians Learn A Way Ahead for Music Education.pdf:application/pdf},
 }
 
-@article{raffel_learning-based_2016,
-	title = {Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-{MIDI} Alignment and Matching},
-	author = {Raffel, Colin},
-	date = {2016},
-	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\2T7FTDDM\\Raffel - Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Mat.pdf:application/pdf;The Lakh MIDI Dataset v0.1:C\:\\Users\\oanou\\Zotero\\storage\\C44UCVTT\\lmd.html:text/html},
+@inproceedings{raffel_learning-based_2016,
+	title={Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Matching},
+	author={Colin Raffel},
+	year={2016}
 }
 
 @inproceedings{hawthorne_enabling_2018,
@@ -231,23 +207,31 @@
 	file = {Full Text PDF:C\:\\Users\\oanou\\Zotero\\storage\\3TVR5IC5\\Hawthorne et al. - 2018 - Enabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset.pdf:application/pdf},
 }
 
-@article{xi_guitarset_2018,
-	title = {​Guitarset: A Dataset for Guitar Transcription},
-	abstract = {The guitar is a popular instrument for a variety of reasons, including its ability to produce polyphonic sound and its musical versatility. The resulting variability of sounds, however, poses signiﬁcant challenges to automated methods for analyzing guitar recordings. As data driven methods become increasingly popular for difﬁcult problems like guitar transcription, sets of labeled audio data are highly valuable resources. In this paper we present {GuitarSet}, a dataset that provides high quality guitar recordings alongside rich annotations and metadata. In particular, by recording guitars using a hexaphonic pickup, we are able to not only provide recordings of the individual strings but also to largely automate the expensive annotation process. The dataset contains recordings of a variety of musical excerpts played on an acoustic guitar, along with time-aligned annotations of string and fret positions, chords, beats, downbeats, and playing style. We conclude with an analysis of new challenges presented by this data, and see that it is interesting for a wide variety of tasks in addition to guitar transcription, including performance analysis, beat/downbeat tracking, and chord estimation.},
-	author = {Xi, Qingyang and Bittner, Rachel M and Pauwels, Johan and Ye, Xuzhou and Bello, Juan P},
-	date = {2018},
-	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\9HSHHK65\\Xi et al. - GUITARSET A DATASET FOR GUITAR TRANSCRIPTION.pdf:application/pdf},
+@inproceedings{xi_guitarset_2018,
+	title={GuitarSet: A Dataset for Guitar Transcription},
+	author={Qingyang Xi and Rachel M. Bittner and Johan Pauwels and Xuzhou Ye and Juan Pablo Bello},
+	booktitle={International Society for Music Information Retrieval Conference},
+	year={2018},
 }
 
 @inproceedings{huang_pop_2020,
 	location = {New York, {NY}, {USA}},
 	title = {Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions},
-	series = {{MM} '20},
 	abstract = {A great number of deep learning based models have been recently proposed for automatic music composition. Among these models, the Transformer stands out as a prominent approach for generating expressive classical piano performance with a coherent structure of up to one minute. The model is powerful in that it learns abstractions of data on its own, without much human-imposed domain knowledge or constraints. In contrast with this general approach, this paper shows that Transformers can do even better for music modeling, when we improve the way a musical score is converted into the data fed to a Transformer model. In particular, we seek to impose a metrical structure in the input data, so that Transformers can be more easily aware of the beat-bar-phrase hierarchical structure in music. The new data representation maintains the flexibility of local tempo changes, and provides hurdles to control the rhythmic and harmonic structure of music. With this approach, we build a Pop Music Transformer that composes Pop piano music with better rhythmic structure than existing Transformer models.},
-	pages = {1180--1188},
 	booktitle = {Proceedings of the 28th {ACM} International Conference on Multimedia},
 	publisher = {Association for Computing Machinery},
 	author = {Huang, Yu-Siang and Yang, Yi-Hsuan},
 	date = {2020},
 	file = {PDF:C\:\\Users\\oanou\\Zotero\\storage\\W8NBBAZU\\Huang et Yang - 2020 - Pop Music Transformer Beat-based Modeling and Generation of Expressive Pop Piano Compositions.pdf:application/pdf},
+}
+
+@article{schwartz_green_2020,
+	author = {Schwartz, Roy and Dodge, Jesse and Smith, Noah A. and Etzioni, Oren},
+	title = {Green AI},
+	year = {2020},
+	issue_date = {December 2020},
+	publisher = {Association for Computing Machinery},
+	address = {New York, NY, USA},
+	abstract = {Creating efficiency in AI research will decrease its carbon footprint and increase its inclusivity as deep learning study should not require the deepest pockets.},
+	journal = {Commun. ACM}
 }

@@ -445,6 +445,11 @@ I implemented stride on the gathering of sequences and with a stride of 8 we now
 
 Worked on the report.
 
+13/03/2025
+
+Worked on the comments of Alexandre and Ken on the report.
+Finished the report and sent it!
+
 TO DO LIST:
 
 Focus on report for thursday evening, slides for friday at noon.
