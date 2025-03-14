@@ -84,20 +84,18 @@ Their tokenization model introduces a compound word (CP) representation, inspire
 Unlike other tokenization strategies such as MIDI-like or REMI, which encode music as a linear sequence of tokens, CP groups multiple features of a musical event into a single "super token" or "word".
 This n-dimensional representation significantly reduces sequence length and improves computational efficiency in Transformer-based architectures.
 
-
-In this model, the CP representation is adapted for an Encoder-Decoder architecture to condition drum generation on accompanying rhythm tracks, such as bass and guitar.
-The Encoder processes a 5-dimensional CP representation that includes rhythm track features and high-level musical information like tempo and time signature, which are known to influence the complexity and density of drum tracks.
-Both the Encoder and Decoder adopt bar-based segmentation, consistent with existing CP and REMI representations.
-By combining rhythm section inputs and high-level parameters, this tokenization approach aligns with the fundamental musical principles of contemporary Western music's rhythm section~\cite{makris_conditional_2022}.
-As said previously, our work will use the DadaGP tokenization. However, the nature of the generation task we want to perform is very similar to the one of Makris et al. in the sense that bass guitar and drums are part of the same rhythm section.
-
-
 \begin{figure}[!h]
     \centering
     \includegraphics[width=.9\linewidth]{../images-figures/tokenization_makris.png}
     \caption{Example of a CP representation used for conditional drums generation. Figure taken from~\cite{makris_conditional_2022}.}
     \label{fig:compound_gen_tokenization}
 \end{figure}
+
+In this model, the CP representation is adapted for an Encoder-Decoder architecture to condition drum generation on accompanying rhythm tracks, such as bass and guitar.
+The Encoder processes a 5-dimensional CP representation that includes rhythm track features and high-level musical information like tempo and time signature, which are known to influence the complexity and density of drum tracks.
+Both the Encoder and Decoder adopt bar-based segmentation, consistent with existing CP and REMI representations.
+By combining rhythm section inputs and high-level parameters, this tokenization approach aligns with the fundamental musical principles of contemporary Western music's rhythm section~\cite{makris_conditional_2022}.
+As said previously, our work will use the DadaGP tokenization. However, the nature of the generation task we want to perform is very similar to the one of Makris et al. in the sense that bass guitar and drums are part of the same rhythm section.
 
 
 Figure \ref{fig:compound_gen_tokenization} shows an example of a CP representation used for training in the model developed by Makris et al.
@@ -111,7 +109,7 @@ Drums notes and are only represented by their onset in the bar and the drum comp
 % Intro about conditional generation using control tokens (prompt tokens)
 % --> GTR CTRL, ShredGP, ProgGP
 Our first idea was to use the GuitarCTRL model developed by Sarmento et al.~\cite{sarmento_gtr-ctrl_2023}.
-The GTR CTRL model utilizes a Transformer-XL architecture~\cite{dai_transformer-xl_2019}, which improves on the vanilla Transformer by introducing recurrence and modified positional encodings, enabling long-term dependency learning.
+GTR CTRL uses a Transformer-XL architecture~\cite{dai_transformer-xl_2019}, which improves on the vanilla Transformer by introducing recurrence and modified positional encodings, enabling long-term dependency learning.
 This model includes two key control types: instrumentation (inst-CTRL) and genre (genre-CTRL).
 For instrumentation, tokens marking the start and end of each instrument are inserted into the header, guiding the model to generate music for specified instruments, such as bass and drums or distorted guitar and drums.
 Genre control tokens are similarly placed at the beginning of the sequence, with a dataset covering over 200 songs per genre, including Metal, Rock, Punk, Folk, and Classical.

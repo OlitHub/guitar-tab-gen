@@ -57,7 +57,7 @@ This compound representation is also replaced by a single embedding in our case.
 
 The Encoder processes rhythm guitar tokens using a bidirectional Long Short-Term Memory (BiLSTM) network, allowing the model to capture dependencies both forward and backward in the sequence.
 The BiLSTM generates a latent variable \( z \), which encodes both rhythmic and structural information from the input sequence.
-This latent variable serves as a compressed representation of the rhythm guitar part, preserving key musical attributes necessary for bass generation.  
+This latent variable serves as a compressed representation of the rhythm guitar part. 
 The Decoder follows an autoregressive approach, predicting each token sequentially.
 At each time step \( t-1 \), the Decoder receives the previously generated token, embedded through a dense layer, along with the latent variable \( z \) from the Encoder, which provides contextual information.
 The Decoder is based on a Transformer architecture with self-attention layers, allowing it to model long-range dependencies within the generated sequence.
