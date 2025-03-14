@@ -88,7 +88,6 @@ Both functions incorporate a masking mechanism to handle padding tokens and remo
 Training was done on GPU with at most 200 epochs and an early-stopping criterion of 5 epochs without improvement on the validation loss.
 This means that the training stops if the validation loss does not decrease for 5 consecutive epochs.
 We used Adam optimizer with the following hyperparameters: $\alpha=5e^{-4}$, $\beta_1=0.9$, $\beta_2=0.98$, $epsilon=1e^{-9}$, and a batch size of 32.
-
 The training stopped at epoch 37 because the validation loss did not decrease anymore for 5 epochs.
 We reached 0.97 accuracy on the validation set with 0.14 loss.
 
