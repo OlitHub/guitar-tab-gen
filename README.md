@@ -16,7 +16,7 @@ The generated tablatures will then be evaluated both numerically and qualitative
 
 -------------------------------------
 
-**reports-presentations/.** Contains the final report, mid-term report, final presentation slides, all the figures and tables used and bibliography.    
+**reports-presentations/.** Contains the final report, mid-term report, final presentation slides, all the figures, tables, audios and videos used and bibliography.    
 
 -------------------------------------
 
