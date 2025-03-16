@@ -1,15 +1,15 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is '.\final_report.blg'
-[100] biber-MSWIN64:340> INFO - === 
-[132] Biber.pm:420> INFO - Reading '.\final_report.bcf'
-[227] Biber.pm:994> INFO - Found 20 citekeys in bib section 0
-[240] Biber.pm:4463> INFO - Processing section 0
-[253] Biber.pm:4654> INFO - Looking for bibtex file 'bgtg_lib.bib' for section 0
-[306] bibtex.pm:1713> INFO - LaTeX decoding ...
-[347] bibtex.pm:1519> INFO - Found BibTeX data source 'bgtg_lib.bib'
-[492] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[492] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[493] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[493] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[515] bbl.pm:676> INFO - Writing '.\final_report.bbl' with encoding 'UTF-8'
-[533] bbl.pm:779> INFO - Output to .\final_report.bbl
+[224] biber-MSWIN64:340> INFO - === 
+[318] Biber.pm:420> INFO - Reading '.\final_report.bcf'
+[412] Biber.pm:994> INFO - Found 20 citekeys in bib section 0
+[424] Biber.pm:4463> INFO - Processing section 0
+[457] Biber.pm:4654> INFO - Looking for bibtex file 'bgtg_lib.bib' for section 0
+[516] bibtex.pm:1713> INFO - LaTeX decoding ...
+[558] bibtex.pm:1519> INFO - Found BibTeX data source 'bgtg_lib.bib'
+[733] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[733] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[734] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[734] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[754] bbl.pm:676> INFO - Writing '.\final_report.bbl' with encoding 'UTF-8'
+[771] bbl.pm:779> INFO - Output to .\final_report.bbl

@@ -1,13 +1,17 @@
 \subsection{Results}
 
+
 We did not have time to find and implement quantitative evaluation metrics beyond accuracy and loss, 
 so we rely on our expertise to assess the quality of the generated tablatures.
 In the context of music generation, a creative task, quantitative metrics are rarely enough to evaluate the quality of the generated content.
-Inference was conducted on the entire test set of 11,817 sequences.
+Inference was conducted on the entire test set of $11 817$ sequences with temperature $0.9$.
+This means that the softmax output of the model is divided by $0.9$ in log-space before sampling, which amplifies the differences between the probabilities and thus makes the model safer.
+$0.7$ and $1.1$ were also tested, but $0.9$ gave the best results.
 The model achieved an accuracy of $0.9654$ on those sequences, with a corresponding loss of $0.1340$.
 These values are very close to those observed on the validation set.
 
-In this section, we showcase a selection of three results from our experiments.
+In this section, we showcase a selection of three results from our experiments\footnote{10 experiments can be downloaded from the GitHub repository: \url{https://github.com/OlitHub/guitar-tab-gen}}.
+To generate these examples we split the rhythm guitar tracks into 16-measure sequences and generated the bass guitar part for each of them, concatenating the generated sequences to obtain a full song.
 The examples were carefully chosen to demonstrate the model's ability to generate tablatures across different musical genres and diverse rhythm guitar patterns.
 We manually selected rhythm guitar parts and extracted their corresponding tokens.
 These examples originate from Songsterr \footnote{https://www.songsterr.com/} and are not part of the training dataset.
@@ -17,10 +21,7 @@ Our work is the first to generate bass tablatures conditioned on rhythm guitar p
 The examples chosen are "Ricard Peinard" by Ultra Vomit (metal), "Do I Wanna Know" by Arctic Monkeys (indie rock), and "Saturday Night" by Herbie Hancock (jazz funk).
 The generated bass tablatures are displayed alongside the rhythm guitar parts used for conditioning and the original bass guitar parts for comparison.
 
-\newpage
-
 \subsection{Examples}
-
 % FIGURE EXAMPLE 1: METAL: ULTRA VOMIT RICARD PEINARD
 
 \begin{figure}[!ht]
@@ -39,8 +40,6 @@ on the first measure the bass plays several F notes, while the rhythm guitar pla
 Rhythmically, the generated part either copies the rhythm guitar or plays a simpler pattern such as a succession of eighth notes.
 This is a correct outcome in the context of metal music, but needs to be further evaluated in other genres.
 Finally, one may notice that the generated part is very close to the original bass part on measures 5 to 8.
-
-
 % FIGURE EXAMPLE 2: INDIE ROCK: ARCTIC MONKEYS DO I WANNA KNOW
 
 \begin{figure}[!ht]
