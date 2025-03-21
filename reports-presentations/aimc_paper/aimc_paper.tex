@@ -1,0 +1,113 @@
+% License: LaTeX Project Public License 1.3c
+% file aimc2025.tex 
+% This is the LaTeX source for the instructions to authors using
+% the LaTeX2e package 'aimc22.sty' for contributions to
+% the Conference on AI Music Creativity.
+
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading aimc2025
+
+% load package
+\usepackage{aimc2025}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = black, %Colour of internal links
+  citecolor   = black %Colour of citations
+}
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{graphicx}       % figures
+
+\title{\LaTeX{} Conditional Generation of Bass Guitar Tablature for Guitar Accompaniment in Western Popular Music}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{%
+  Olivier Anoufa\thanks{Use footnote for providing further information
+    about author (webpage, alternative address)---\emph{not} for acknowledging
+    funding agencies.} \\
+  Department of Music\\
+  Ecole Centrale de Lille\\
+  Pittsburgh, PA 15213 \\
+  \texttt{olivier.anoufa@centrale.centralelille.fr} \\
+  % examples of more authors
+  \And
+  Coauthor \\
+  Affiliation \\
+  Address \\
+  \texttt{email} \\
+  \AND
+  Coauthor \\
+  Affiliation \\
+  Address \\
+  \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  The field of symbolic music generation has seen great advancements with the rise of transformer-based architectures.
+  Addressing a specific need identified through a user study conducted on guitar players, we focus on developing AI tools to generate bass guitar tablatures conditioned on scores of other instruments in Western popular music.
+  The bass guitar, a crucial component of the rhythmic and harmonic sections in music, presents a unique challenge due to its dual role in providing structure and groove.
+  Building upon the tablature notation, the most popular way to share music among guitarists, this work adopts modern encoding schemes to integrate tablature representation into transformer-based models.
+  To this end, the project involves preprocessing a large dataset of music scores and fine-tuning state-of-the-art transformer architectures.
+  Due to the project being the first of its kind and its creative nature, the evaluation of the generated tablatures is mainly done qualitatively.
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+
+\input{aux_tex/introduction}
+
+\section{State of the art}
+
+\input{aux_tex/sota}
+
+\section{Data preprocessing}
+
+\input{aux_tex/data_processing}
+
+\section{Models}
+
+\input{aux_tex/models}
+
+\section{Results, discussion and perspectives}
+
+\input{aux_tex/results}
+
+\newpage
+
+\bibliographystyle{apalike}   
+\bibliography{references}  
+
+\end{document}

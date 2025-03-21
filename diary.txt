@@ -461,3 +461,27 @@ Zoom with Alexandre to get his feedback and advices on the slides.
 Finished the report and the slides.
 Now I have to prepare the oral presentation.
 
+
+21/03/2025
+
+We are motivated to pusblish it (try at least) for AIMC 2025.
+
+--> Change introduction and SOTA to present the contributions more clearly.
+--> Remove information that is useless for the conference.
+--> DadaGP model should not presented as a baseline but as a SOTA modal unadapted to the task.
+
+Introduction with general context, not necessarily a separate SOTA (related work) section.
+Or add more stuff on accompaniment generation.
+Otherwise, just show that the related works have limitations and do not fit the task.
+--> We have to build our model, results etc.
+
+Work on the evaluation of the results:
+- Demonstration (webpage, user study?), more examples to point out errors of the model.
+- Identify what's working (works on rock styles)
+- Identify what's not working (jazz, funk) but does it work if the artist is not unknown.
+- Results more structured in something like "harmonic coherence", "rhythmic coherence", "adaptability to the style of the artist".
+- Javascript library to implement the tablatures in the paper.
+
+
+Send inference on the whole test set on the server and gather all the text token files.
+
